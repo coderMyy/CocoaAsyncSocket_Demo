@@ -1,0 +1,18 @@
+//
+//  PrefixHeader.pch
+//  CocoaAsyncSocket_TCP
+//
+//  Created by 孟遥 on 2017/4/19.
+//  Copyright © 2017年 mengyao. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+#import "MJExtension.h"
+#import "AccountTool.h"
+#import "Config.h"
+#import "Constant.h"
+#import "RealReachability.h"
+
+#endif /* PrefixHeader_pch */
