@@ -40,6 +40,7 @@
         _messageTextField.textAlignment = NSTextAlignmentLeft;
         _messageTextField.layer.borderColor = [UIColor redColor].CGColor;
         _messageTextField.layer.borderWidth = 1.f;
+        
     }
     return _messageTextField;
 }
