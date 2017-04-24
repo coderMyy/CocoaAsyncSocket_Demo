@@ -317,6 +317,19 @@ NSInteger autoConnectCount = TCP_AutoConnectCount;
 }
 
 
+#pragma mark - 网络监听
+- (void)networkChanged:(NSNotification *)notification {
+    
+    if (_connectStatus == SocketConnectStatus_DisconnectByUser) return; //主动断开连接
+    
+    if (networkStatus == RealStatusNotReachable||_connectStatus == SocketConnectStatus_UnConnected) {
+        [self serverInterruption];//断开连接,默认还会重连3次 ,还未连接自动断开
+    }
+    if (networkStatus == RealStatusViaWWAN || networkStatus == RealStatusViaWiFi) {
+        [self connectServerHost]; //连接服务器
+    }
+}
+
 
 
 

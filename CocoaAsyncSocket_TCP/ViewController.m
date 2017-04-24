@@ -7,61 +7,40 @@
 //
 
 #import "ViewController.h"
+#import "ChatHandler.h"
 
-@interface ViewController ()
-
-@property (nonatomic, strong) UITextField *messageTextField;
-
-@property (nonatomic, strong) UIButton *sendBtn;
+@interface ViewController ()<ChatHandlerDelegate>
 
 @end
 
 @implementation ViewController
 
-- (UIButton *)sendBtn
-{
-    if (!_sendBtn) {
-        _sendBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        _sendBtn.titleLabel.font = [UIFont systemFontOfSize:18.f weight:0.5];
-        _sendBtn.titleLabel.textAlignment = NSTextAlignmentCenter;
-        [_sendBtn setTitle:@"发送" forState:UIControlStateNormal];
-        [_sendBtn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
-    }
-    return _sendBtn;
-}
-
-- (UITextField *)messageTextField
-{
-    if (!_messageTextField) {
-        _messageTextField = [[UITextField alloc]init];
-        _messageTextField.placeholder = @"请输入消息内容";
-        _messageTextField.textColor = [UIColor redColor];
-        _messageTextField.font = [UIFont systemFontOfSize:14.f];
-        _messageTextField.textAlignment = NSTextAlignmentLeft;
-        _messageTextField.layer.borderColor = [UIColor redColor].CGColor;
-        _messageTextField.layer.borderWidth = 1.f;
-        
-    }
-    return _messageTextField;
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self initUI];
+    //注册当前控制器为ChatHanlder的接收消息代理
+    [[ChatHandler shareInstance]addDelegate:self delegateQueue:nil];
 }
 
-
-- (void)initUI
+#pragma mark - 接收消息代理
+- (void)didReceiveMessage:(ChatModel *)chatModel type:(ChatMessageType)messageType
 {
-    [self.view addSubview:self.messageTextField];
-    self.messageTextField.frame = CGRectMake(([UIScreen mainScreen].bounds.size.width - 200)*0.5,200, 200, 20);
     
-    [self.view addSubview:self.sendBtn];
-    self.sendBtn.frame = CGRectMake(([UIScreen mainScreen].bounds.size.width - 100)*0.5, 250, 80,50);
+}
+
+#pragma mark - 超时消息返回
+- (void)sendMessageTimeOutWithTag:(long)tag
+{
+    
 }
 
 /*
+ 
+ <<<<Socket连接>>>>
+ 
+ 登录 -> 连接服务器端口 -> 成功连接 -> SSL验证 -> 发送登录TCP请求(login) -> 收到服务端返回登录成功回执(loginReceipt) ->发送心跳 -> 出现连接中断 ->断网重连3次 -> 退出程序主动断开连接
+ 
  
   <<<<关于连接状态监听>>>>
  
@@ -253,6 +232,8 @@
  解决办法：离线消息服务端全部进行拼接或者以jsonArray方式，并协议分割方式，客户端收到后仅需仅需切割，直接在角标上进行总数的相加，并直接更新最后一条消息即可。亦或者，设置包头信息，告知每条消息长度，切割方式等。
  
  
+ 
+ 以上仅为大体的思路 , 实际上搭建IM , 更多的难点在于逻辑的处理和各种细节问题 . 比如数据库,本地缓存,和服务端的通信协议,和安卓端私下通信协议.以及聊天UI的细节处理,例如聊天背景实时拉高,图文混排等等一系列麻烦的事.没办法写到很详细 ,都需要自己仔细的去思考.难度并不算很大,只是比较费心.
  
 */
 
