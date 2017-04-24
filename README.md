@@ -4,7 +4,7 @@
 
 ### 聊天列表页
 
-![image](https://github.com/coderMyy/CocoaAsyncSocket_Demo/blob/master/chatPics/chatlist.png)
+![image](https://github.com/coderMyy/CocoaAsyncSocket_Demo/blob/master/chatPics/chatlist.jpg)
 
 ### 好友验证
 
@@ -16,7 +16,7 @@
 
 ### 会话页
 
-![image](https://github.com/coderMyy/CocoaAsyncSocket_Demo/blob/master/chatPics/chatinfo.jpg)
+![image](https://github.com/coderMyy/CocoaAsyncSocket_Demo/blob/master/chatPics/chatinfo.png)
 
 ### 表情键盘
 
