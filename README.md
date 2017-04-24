@@ -4,11 +4,11 @@
 
 ### 聊天列表页
 
-![image](https://github.com/coderMyy/CocoaAsyncSocket_Demo/blob/master/chatPics/chatlist.jpg)
+![image](https://github.com/coderMyy/CocoaAsyncSocket_Demo/blob/master/chatPics/chatlist.png)
 
 ### 好友验证
 
-![image](https://github.com/coderMyy/CocoaAsyncSocket_Demo/blob/master/chatPics/addFriends.jpg)
+![image](https://github.com/coderMyy/CocoaAsyncSocket_Demo/blob/master/chatPics/addFriends.png)
 
 ### 会话页
 
