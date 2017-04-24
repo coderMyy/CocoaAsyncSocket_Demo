@@ -12,11 +12,11 @@
 
 ### 会话页
 
-![image](https://github.com/coderMyy/CocoaAsyncSocket_Demo/blob/master/chatPics/chatinfo.jpg)
+![image](https://github.com/coderMyy/CocoaAsyncSocket_Demo/blob/master/chatPics/chatinfo1.jpg)
 
 ### 会话页
 
-![image](https://github.com/coderMyy/CocoaAsyncSocket_Demo/blob/master/chatPics/chatinfo1.jpg)
+![image](https://github.com/coderMyy/CocoaAsyncSocket_Demo/blob/master/chatPics/chatinfo.jpg)
 
 ### 表情键盘
 
