@@ -9,4 +9,4 @@
 
 ![image](https://github.com/coderMyy/CocoaAsyncSocket_Demo/blob/master/chatPics/faceKeyboard.jpg)
 
-![image](https://github.com/coderMyy/CocoaAsyncSocket_Demo/blob/master/chatPics/keyboardHandle.jpg)
+![image](https://github.com/coderMyy/CocoaAsyncSocket_Demo/blob/master/chatPics/keyboardHandle.png)
