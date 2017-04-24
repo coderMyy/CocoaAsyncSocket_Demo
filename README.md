@@ -1,2 +1,12 @@
-# CocoaAsyncSocket_Demo
-基于AsyncSocket搭建即时通讯体系 . 包含TCP连接 , 消息发送 , 消息接收 , 心跳处理 ,断网重连 , 消息超时 , 消息分发 , 数据库结构设计 , 消息丢失等 . 以及UI设计, 文本消息/语音消息/图片消息/视频消息/文件消息/撤回消息/提示语消息的实现思路讲解
+##以下是真正项目中的运用 , 当然还在处于不断的完善之中 , 很多细节还需要处理.不过在IM这块 , 微信的大体功能基本上已经实现了 ,当然视频语音通话还有待开发.
+![image](https://github.com/coderMyy/CocoaAsyncSocket_Demo/blob/master/chatPics/chatlist.jpg)
+
+![image](https://github.com/coderMyy/CocoaAsyncSocket_Demo/blob/master/chatPics/addFriends.jpg)
+
+![image](https://github.com/coderMyy/CocoaAsyncSocket_Demo/blob/master/chatPics/chatinfo.jpg)
+
+![image](https://github.com/coderMyy/CocoaAsyncSocket_Demo/blob/master/chatPics/chatinfo1.jpg)
+
+![image](https://github.com/coderMyy/CocoaAsyncSocket_Demo/blob/master/chatPics/faceKeyboard.jpg)
+
+![image](https://github.com/coderMyy/CocoaAsyncSocket_Demo/blob/master/chatPics/keyboardHandle.jpg)
