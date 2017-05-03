@@ -5,5 +5,10 @@
 //  Created by 孟遥 on 2017/4/14.
 //  Copyright © 2017年 mengyao. All rights reserved.
 //
-
+#import "ChatModel.h"
     
+@implementation ChatModel
+
+
+
+@end
