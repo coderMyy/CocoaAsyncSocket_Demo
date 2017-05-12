@@ -47,6 +47,10 @@ static NSString *Content_Tip             = @"tip";   //提示消息
 static NSString *defaulUserIcon           = @"userhead";   //文本,表情消息
 
 
+/*
+   标题
+ */
+static NSString *ChatlistTitle           = @"聊天列表";   //聊天列表标题
 
 
 
