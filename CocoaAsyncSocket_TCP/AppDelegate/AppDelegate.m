@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 #import "RealReachability.h"
-
+#import "AppDelegate+main.h"
 
 @interface AppDelegate ()
 
@@ -19,6 +19,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
    
+    //加载主控制器
+    [self initMainController];
     //开启网络监听
     [GLobalRealReachability startNotifier];
     

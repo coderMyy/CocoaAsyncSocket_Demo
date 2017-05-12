@@ -97,9 +97,15 @@ typedef NS_ENUM(NSInteger){
 
 @property (nonatomic, copy) NSString *nickName; //好友昵称
 
-@property (nonatomic, strong) NSNumber *noDisturb; //免打扰状态
+@property (nonatomic, strong) NSNumber *noDisturb; //免打扰状态  , 1为正常接收  , 2为免打扰状态 , 3为屏蔽状态
 
-@property (nonatomic, copy) ChatContentModel *content; //内容
+@property (nonatomic, strong) ChatContentModel *content; //内容
+
+
+#pragma mark - chatlist独有部分
+@property (nonatomic, strong) NSNumber *unreadCount; //未读数
+@property (nonatomic, copy) NSString *lastMessage; //最后一条消息
+@property (nonatomic, copy) NSString *lastTimeString; //最后一条消息时间
 
 @end
 

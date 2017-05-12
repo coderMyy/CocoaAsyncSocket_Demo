@@ -11,6 +11,8 @@ platform :ios, '8.0'
 
 pod 'CocoaAsyncSocket', '7.5.0'
 pod 'MJExtension', '3.0.13'
+pod 'FMDB', '2.6.2'
+pod 'SDWebImage', '4.0.0-beta2'
 
 use_frameworks!
 

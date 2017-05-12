@@ -9,6 +9,34 @@
     
 @implementation ChatModel
 
+- (void)setValue:(id)value forUndefinedKey:(NSString *)key
+{
+    
+}
+
+- (instancetype)init
+{
+    if (self = [super init]) {
+        self.senTime = getSendTime();
+    }
+    return self;
+}
+
+NS_INLINE NSString *getSendTime() {
+    UInt64 recordTime = [[NSDate date] timeIntervalSince1970]*1000;
+    return [NSString stringWithFormat:@"%llu",recordTime];
+}
+
+@end
+
+
+@implementation ChatContentModel
+
+- (void)setValue:(id)value forUndefinedKey:(NSString *)key
+{
+}
+
+
 
 
 @end

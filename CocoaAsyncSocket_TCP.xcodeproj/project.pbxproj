@@ -7,11 +7,40 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B8672E891EA8C5660042EF07 /* Account.m in Sources */ = {isa = PBXBuildFile; fileRef = B8672E881EA8C5660042EF07 /* Account.m */; };
-		B8672E8C1EA8C5AD0042EF07 /* AccountTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B8672E8B1EA8C5AD0042EF07 /* AccountTool.m */; };
+		B845064E1EC59D83004366C3 /* Account.m in Sources */ = {isa = PBXBuildFile; fileRef = B84506241EC59D83004366C3 /* Account.m */; };
+		B845064F1EC59D83004366C3 /* AccountTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B84506261EC59D83004366C3 /* AccountTool.m */; };
+		B84506501EC59D83004366C3 /* ChatBaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = B84506291EC59D83004366C3 /* ChatBaseController.m */; };
+		B84506511EC59D83004366C3 /* ChatNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = B845062E1EC59D83004366C3 /* ChatNavigationController.m */; };
+		B84506521EC59D83004366C3 /* LocalConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = B84506321EC59D83004366C3 /* LocalConnection.m */; };
+		B84506531EC59D83004366C3 /* FSMEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = B84506361EC59D83004366C3 /* FSMEngine.m */; };
+		B84506541EC59D83004366C3 /* FSMStateUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = B84506381EC59D83004366C3 /* FSMStateUtil.m */; };
+		B84506551EC59D83004366C3 /* ReachState.m in Sources */ = {isa = PBXBuildFile; fileRef = B845063A1EC59D83004366C3 /* ReachState.m */; };
+		B84506561EC59D83004366C3 /* ReachStateLoading.m in Sources */ = {isa = PBXBuildFile; fileRef = B845063C1EC59D83004366C3 /* ReachStateLoading.m */; };
+		B84506571EC59D83004366C3 /* ReachStateUnloaded.m in Sources */ = {isa = PBXBuildFile; fileRef = B845063E1EC59D83004366C3 /* ReachStateUnloaded.m */; };
+		B84506581EC59D83004366C3 /* ReachStateUnReachable.m in Sources */ = {isa = PBXBuildFile; fileRef = B84506401EC59D83004366C3 /* ReachStateUnReachable.m */; };
+		B84506591EC59D83004366C3 /* ReachStateWIFI.m in Sources */ = {isa = PBXBuildFile; fileRef = B84506421EC59D83004366C3 /* ReachStateWIFI.m */; };
+		B845065A1EC59D83004366C3 /* ReachStateWWAN.m in Sources */ = {isa = PBXBuildFile; fileRef = B84506441EC59D83004366C3 /* ReachStateWWAN.m */; };
+		B845065B1EC59D83004366C3 /* PingFoundation.m in Sources */ = {isa = PBXBuildFile; fileRef = B84506471EC59D83004366C3 /* PingFoundation.m */; };
+		B845065C1EC59D83004366C3 /* PingHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B84506491EC59D83004366C3 /* PingHelper.m */; };
+		B845065D1EC59D83004366C3 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = B845064A1EC59D83004366C3 /* README.md */; };
+		B845065E1EC59D83004366C3 /* RealReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = B845064C1EC59D83004366C3 /* RealReachability.m */; };
+		B84506641EC59DD1004366C3 /* ChatListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B84506611EC59DD1004366C3 /* ChatListViewController.m */; };
+		B84506651EC59DD1004366C3 /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B84506631EC59DD1004366C3 /* ChatViewController.m */; };
+		B84506781EC59DEF004366C3 /* ChatAudioCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B84506691EC59DEF004366C3 /* ChatAudioCell.m */; };
+		B84506791EC59DEF004366C3 /* ChatFileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B845066B1EC59DEF004366C3 /* ChatFileCell.m */; };
+		B845067A1EC59DEF004366C3 /* ChatImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B845066D1EC59DEF004366C3 /* ChatImageCell.m */; };
+		B845067B1EC59DEF004366C3 /* ChatTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B845066F1EC59DEF004366C3 /* ChatTextCell.m */; };
+		B845067C1EC59DEF004366C3 /* ChatTipCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B84506711EC59DEF004366C3 /* ChatTipCell.m */; };
+		B845067D1EC59DEF004366C3 /* ChatVideoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B84506731EC59DEF004366C3 /* ChatVideoCell.m */; };
+		B845067E1EC59DEF004366C3 /* ChatListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B84506761EC59DEF004366C3 /* ChatListCell.m */; };
+		B845067F1EC59DEF004366C3 /* ChatListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B84506771EC59DEF004366C3 /* ChatListCell.xib */; };
+		B84506861EC59E1F004366C3 /* AppDelegate+main.m in Sources */ = {isa = PBXBuildFile; fileRef = B84506831EC59E1F004366C3 /* AppDelegate+main.m */; };
+		B84506871EC59E1F004366C3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B84506851EC59E1F004366C3 /* AppDelegate.m */; };
+		B845068A1EC5A00F004366C3 /* ChatUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = B84506891EC5A00F004366C3 /* ChatUtil.m */; };
+		B845068E1EC5ABB5004366C3 /* UIImageView+SDWebImage.m in Sources */ = {isa = PBXBuildFile; fileRef = B845068D1EC5ABB5004366C3 /* UIImageView+SDWebImage.m */; };
+		B84506941EC5AD49004366C3 /* UIImage+colorImage.m in Sources */ = {isa = PBXBuildFile; fileRef = B84506931EC5AD49004366C3 /* UIImage+colorImage.m */; };
+		B845069A1EC5B278004366C3 /* NSDate+extension.m in Sources */ = {isa = PBXBuildFile; fileRef = B84506991EC5B277004366C3 /* NSDate+extension.m */; };
 		B86DF34D1EA0DB4A0089A05F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B86DF34C1EA0DB4A0089A05F /* main.m */; };
-		B86DF3501EA0DB4A0089A05F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B86DF34F1EA0DB4A0089A05F /* AppDelegate.m */; };
-		B86DF3531EA0DB4A0089A05F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B86DF3521EA0DB4A0089A05F /* ViewController.m */; };
 		B86DF3561EA0DB4A0089A05F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B86DF3541EA0DB4A0089A05F /* Main.storyboard */; };
 		B86DF3581EA0DB4A0089A05F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B86DF3571EA0DB4A0089A05F /* Assets.xcassets */; };
 		B86DF35B1EA0DB4A0089A05F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B86DF3591EA0DB4A0089A05F /* LaunchScreen.storyboard */; };
@@ -19,19 +48,6 @@
 		B86DF3711EA0DB4A0089A05F /* CocoaAsyncSocket_TCPUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = B86DF3701EA0DB4A0089A05F /* CocoaAsyncSocket_TCPUITests.m */; };
 		B86DF3811EA0DF990089A05F /* ChatHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = B86DF3801EA0DF990089A05F /* ChatHandler.m */; };
 		B86DF3851EA0E72E0089A05F /* ChatModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B86DF3841EA0E72E0089A05F /* ChatModel.m */; };
-		B8A7A0591EA933FA00A75239 /* LocalConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = B8A7A03E1EA933FA00A75239 /* LocalConnection.m */; };
-		B8A7A05A1EA933FA00A75239 /* FSMEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = B8A7A0421EA933FA00A75239 /* FSMEngine.m */; };
-		B8A7A05B1EA933FA00A75239 /* FSMStateUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = B8A7A0441EA933FA00A75239 /* FSMStateUtil.m */; };
-		B8A7A05C1EA933FA00A75239 /* ReachState.m in Sources */ = {isa = PBXBuildFile; fileRef = B8A7A0461EA933FA00A75239 /* ReachState.m */; };
-		B8A7A05D1EA933FA00A75239 /* ReachStateLoading.m in Sources */ = {isa = PBXBuildFile; fileRef = B8A7A0481EA933FA00A75239 /* ReachStateLoading.m */; };
-		B8A7A05E1EA933FA00A75239 /* ReachStateUnloaded.m in Sources */ = {isa = PBXBuildFile; fileRef = B8A7A04A1EA933FA00A75239 /* ReachStateUnloaded.m */; };
-		B8A7A05F1EA933FA00A75239 /* ReachStateUnReachable.m in Sources */ = {isa = PBXBuildFile; fileRef = B8A7A04C1EA933FA00A75239 /* ReachStateUnReachable.m */; };
-		B8A7A0601EA933FA00A75239 /* ReachStateWIFI.m in Sources */ = {isa = PBXBuildFile; fileRef = B8A7A04E1EA933FA00A75239 /* ReachStateWIFI.m */; };
-		B8A7A0611EA933FA00A75239 /* ReachStateWWAN.m in Sources */ = {isa = PBXBuildFile; fileRef = B8A7A0501EA933FA00A75239 /* ReachStateWWAN.m */; };
-		B8A7A0621EA933FA00A75239 /* PingFoundation.m in Sources */ = {isa = PBXBuildFile; fileRef = B8A7A0531EA933FA00A75239 /* PingFoundation.m */; };
-		B8A7A0631EA933FA00A75239 /* PingHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B8A7A0551EA933FA00A75239 /* PingHelper.m */; };
-		B8A7A0641EA933FA00A75239 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = B8A7A0561EA933FA00A75239 /* README.md */; };
-		B8A7A0651EA933FA00A75239 /* RealReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = B8A7A0581EA933FA00A75239 /* RealReachability.m */; };
 		B8A7A0671EA9384000A75239 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8A7A0661EA9384000A75239 /* SystemConfiguration.framework */; };
 		C85C5D0ED7B51EAA0D860FC1 /* Pods_CocoaAsyncSocket_TCP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F875622A8064877AC67AF7B5 /* Pods_CocoaAsyncSocket_TCP.framework */; };
 /* End PBXBuildFile section */
@@ -55,17 +71,76 @@
 
 /* Begin PBXFileReference section */
 		8BC614971BC18AA02B1E20EF /* Pods-CocoaAsyncSocket_TCP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CocoaAsyncSocket_TCP.release.xcconfig"; path = "Pods/Target Support Files/Pods-CocoaAsyncSocket_TCP/Pods-CocoaAsyncSocket_TCP.release.xcconfig"; sourceTree = "<group>"; };
-		B8672E851EA8C4E20042EF07 /* Constant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constant.h; sourceTree = "<group>"; };
-		B8672E871EA8C5660042EF07 /* Account.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Account.h; sourceTree = "<group>"; };
-		B8672E881EA8C5660042EF07 /* Account.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Account.m; sourceTree = "<group>"; };
-		B8672E8A1EA8C5AD0042EF07 /* AccountTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountTool.h; sourceTree = "<group>"; };
-		B8672E8B1EA8C5AD0042EF07 /* AccountTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountTool.m; sourceTree = "<group>"; };
+		B84506231EC59D83004366C3 /* Account.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Account.h; sourceTree = "<group>"; };
+		B84506241EC59D83004366C3 /* Account.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Account.m; sourceTree = "<group>"; };
+		B84506251EC59D83004366C3 /* AccountTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountTool.h; sourceTree = "<group>"; };
+		B84506261EC59D83004366C3 /* AccountTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountTool.m; sourceTree = "<group>"; };
+		B84506281EC59D83004366C3 /* ChatBaseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatBaseController.h; sourceTree = "<group>"; };
+		B84506291EC59D83004366C3 /* ChatBaseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatBaseController.m; sourceTree = "<group>"; };
+		B845062A1EC59D83004366C3 /* Config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
+		B845062B1EC59D83004366C3 /* Constant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constant.h; sourceTree = "<group>"; };
+		B845062D1EC59D83004366C3 /* ChatNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatNavigationController.h; sourceTree = "<group>"; };
+		B845062E1EC59D83004366C3 /* ChatNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatNavigationController.m; sourceTree = "<group>"; };
+		B84506311EC59D83004366C3 /* LocalConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalConnection.h; sourceTree = "<group>"; };
+		B84506321EC59D83004366C3 /* LocalConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalConnection.m; sourceTree = "<group>"; };
+		B84506341EC59D83004366C3 /* FSMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMDefines.h; sourceTree = "<group>"; };
+		B84506351EC59D83004366C3 /* FSMEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMEngine.h; sourceTree = "<group>"; };
+		B84506361EC59D83004366C3 /* FSMEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSMEngine.m; sourceTree = "<group>"; };
+		B84506371EC59D83004366C3 /* FSMStateUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMStateUtil.h; sourceTree = "<group>"; };
+		B84506381EC59D83004366C3 /* FSMStateUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSMStateUtil.m; sourceTree = "<group>"; };
+		B84506391EC59D83004366C3 /* ReachState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReachState.h; sourceTree = "<group>"; };
+		B845063A1EC59D83004366C3 /* ReachState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReachState.m; sourceTree = "<group>"; };
+		B845063B1EC59D83004366C3 /* ReachStateLoading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReachStateLoading.h; sourceTree = "<group>"; };
+		B845063C1EC59D83004366C3 /* ReachStateLoading.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReachStateLoading.m; sourceTree = "<group>"; };
+		B845063D1EC59D83004366C3 /* ReachStateUnloaded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReachStateUnloaded.h; sourceTree = "<group>"; };
+		B845063E1EC59D83004366C3 /* ReachStateUnloaded.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReachStateUnloaded.m; sourceTree = "<group>"; };
+		B845063F1EC59D83004366C3 /* ReachStateUnReachable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReachStateUnReachable.h; sourceTree = "<group>"; };
+		B84506401EC59D83004366C3 /* ReachStateUnReachable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReachStateUnReachable.m; sourceTree = "<group>"; };
+		B84506411EC59D83004366C3 /* ReachStateWIFI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReachStateWIFI.h; sourceTree = "<group>"; };
+		B84506421EC59D83004366C3 /* ReachStateWIFI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReachStateWIFI.m; sourceTree = "<group>"; };
+		B84506431EC59D83004366C3 /* ReachStateWWAN.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReachStateWWAN.h; sourceTree = "<group>"; };
+		B84506441EC59D83004366C3 /* ReachStateWWAN.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReachStateWWAN.m; sourceTree = "<group>"; };
+		B84506461EC59D83004366C3 /* PingFoundation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PingFoundation.h; sourceTree = "<group>"; };
+		B84506471EC59D83004366C3 /* PingFoundation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PingFoundation.m; sourceTree = "<group>"; };
+		B84506481EC59D83004366C3 /* PingHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PingHelper.h; sourceTree = "<group>"; };
+		B84506491EC59D83004366C3 /* PingHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PingHelper.m; sourceTree = "<group>"; };
+		B845064A1EC59D83004366C3 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		B845064B1EC59D83004366C3 /* RealReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RealReachability.h; sourceTree = "<group>"; };
+		B845064C1EC59D83004366C3 /* RealReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RealReachability.m; sourceTree = "<group>"; };
+		B845064D1EC59D83004366C3 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		B84506601EC59DD1004366C3 /* ChatListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatListViewController.h; sourceTree = "<group>"; };
+		B84506611EC59DD1004366C3 /* ChatListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatListViewController.m; sourceTree = "<group>"; };
+		B84506621EC59DD1004366C3 /* ChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatViewController.h; sourceTree = "<group>"; };
+		B84506631EC59DD1004366C3 /* ChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatViewController.m; sourceTree = "<group>"; };
+		B84506681EC59DEF004366C3 /* ChatAudioCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatAudioCell.h; sourceTree = "<group>"; };
+		B84506691EC59DEF004366C3 /* ChatAudioCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatAudioCell.m; sourceTree = "<group>"; };
+		B845066A1EC59DEF004366C3 /* ChatFileCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatFileCell.h; sourceTree = "<group>"; };
+		B845066B1EC59DEF004366C3 /* ChatFileCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatFileCell.m; sourceTree = "<group>"; };
+		B845066C1EC59DEF004366C3 /* ChatImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatImageCell.h; sourceTree = "<group>"; };
+		B845066D1EC59DEF004366C3 /* ChatImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatImageCell.m; sourceTree = "<group>"; };
+		B845066E1EC59DEF004366C3 /* ChatTextCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatTextCell.h; sourceTree = "<group>"; };
+		B845066F1EC59DEF004366C3 /* ChatTextCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatTextCell.m; sourceTree = "<group>"; };
+		B84506701EC59DEF004366C3 /* ChatTipCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatTipCell.h; sourceTree = "<group>"; };
+		B84506711EC59DEF004366C3 /* ChatTipCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatTipCell.m; sourceTree = "<group>"; };
+		B84506721EC59DEF004366C3 /* ChatVideoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatVideoCell.h; sourceTree = "<group>"; };
+		B84506731EC59DEF004366C3 /* ChatVideoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatVideoCell.m; sourceTree = "<group>"; };
+		B84506751EC59DEF004366C3 /* ChatListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatListCell.h; sourceTree = "<group>"; };
+		B84506761EC59DEF004366C3 /* ChatListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatListCell.m; sourceTree = "<group>"; };
+		B84506771EC59DEF004366C3 /* ChatListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatListCell.xib; sourceTree = "<group>"; };
+		B84506821EC59E1F004366C3 /* AppDelegate+main.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+main.h"; sourceTree = "<group>"; };
+		B84506831EC59E1F004366C3 /* AppDelegate+main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+main.m"; sourceTree = "<group>"; };
+		B84506841EC59E1F004366C3 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		B84506851EC59E1F004366C3 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		B84506881EC5A00F004366C3 /* ChatUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatUtil.h; sourceTree = "<group>"; };
+		B84506891EC5A00F004366C3 /* ChatUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatUtil.m; sourceTree = "<group>"; };
+		B845068C1EC5ABB5004366C3 /* UIImageView+SDWebImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+SDWebImage.h"; sourceTree = "<group>"; };
+		B845068D1EC5ABB5004366C3 /* UIImageView+SDWebImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+SDWebImage.m"; sourceTree = "<group>"; };
+		B84506921EC5AD49004366C3 /* UIImage+colorImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+colorImage.h"; sourceTree = "<group>"; };
+		B84506931EC5AD49004366C3 /* UIImage+colorImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+colorImage.m"; sourceTree = "<group>"; };
+		B84506981EC5B277004366C3 /* NSDate+extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+extension.h"; sourceTree = "<group>"; };
+		B84506991EC5B277004366C3 /* NSDate+extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+extension.m"; sourceTree = "<group>"; };
 		B86DF3481EA0DB4A0089A05F /* CocoaAsyncSocket_TCP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CocoaAsyncSocket_TCP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B86DF34C1EA0DB4A0089A05F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		B86DF34E1EA0DB4A0089A05F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		B86DF34F1EA0DB4A0089A05F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		B86DF3511EA0DB4A0089A05F /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		B86DF3521EA0DB4A0089A05F /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		B86DF3551EA0DB4A0089A05F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B86DF3571EA0DB4A0089A05F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B86DF35A1EA0DB4A0089A05F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -80,35 +155,7 @@
 		B86DF3801EA0DF990089A05F /* ChatHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatHandler.m; sourceTree = "<group>"; };
 		B86DF3831EA0E72E0089A05F /* ChatModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatModel.h; sourceTree = "<group>"; };
 		B86DF3841EA0E72E0089A05F /* ChatModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatModel.m; sourceTree = "<group>"; };
-		B8A7A0361EA8CD6D00A75239 /* Config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
-		B8A7A03D1EA933FA00A75239 /* LocalConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalConnection.h; sourceTree = "<group>"; };
-		B8A7A03E1EA933FA00A75239 /* LocalConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalConnection.m; sourceTree = "<group>"; };
-		B8A7A0401EA933FA00A75239 /* FSMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMDefines.h; sourceTree = "<group>"; };
-		B8A7A0411EA933FA00A75239 /* FSMEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMEngine.h; sourceTree = "<group>"; };
-		B8A7A0421EA933FA00A75239 /* FSMEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSMEngine.m; sourceTree = "<group>"; };
-		B8A7A0431EA933FA00A75239 /* FSMStateUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMStateUtil.h; sourceTree = "<group>"; };
-		B8A7A0441EA933FA00A75239 /* FSMStateUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSMStateUtil.m; sourceTree = "<group>"; };
-		B8A7A0451EA933FA00A75239 /* ReachState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReachState.h; sourceTree = "<group>"; };
-		B8A7A0461EA933FA00A75239 /* ReachState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReachState.m; sourceTree = "<group>"; };
-		B8A7A0471EA933FA00A75239 /* ReachStateLoading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReachStateLoading.h; sourceTree = "<group>"; };
-		B8A7A0481EA933FA00A75239 /* ReachStateLoading.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReachStateLoading.m; sourceTree = "<group>"; };
-		B8A7A0491EA933FA00A75239 /* ReachStateUnloaded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReachStateUnloaded.h; sourceTree = "<group>"; };
-		B8A7A04A1EA933FA00A75239 /* ReachStateUnloaded.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReachStateUnloaded.m; sourceTree = "<group>"; };
-		B8A7A04B1EA933FA00A75239 /* ReachStateUnReachable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReachStateUnReachable.h; sourceTree = "<group>"; };
-		B8A7A04C1EA933FA00A75239 /* ReachStateUnReachable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReachStateUnReachable.m; sourceTree = "<group>"; };
-		B8A7A04D1EA933FA00A75239 /* ReachStateWIFI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReachStateWIFI.h; sourceTree = "<group>"; };
-		B8A7A04E1EA933FA00A75239 /* ReachStateWIFI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReachStateWIFI.m; sourceTree = "<group>"; };
-		B8A7A04F1EA933FA00A75239 /* ReachStateWWAN.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReachStateWWAN.h; sourceTree = "<group>"; };
-		B8A7A0501EA933FA00A75239 /* ReachStateWWAN.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReachStateWWAN.m; sourceTree = "<group>"; };
-		B8A7A0521EA933FA00A75239 /* PingFoundation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PingFoundation.h; sourceTree = "<group>"; };
-		B8A7A0531EA933FA00A75239 /* PingFoundation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PingFoundation.m; sourceTree = "<group>"; };
-		B8A7A0541EA933FA00A75239 /* PingHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PingHelper.h; sourceTree = "<group>"; };
-		B8A7A0551EA933FA00A75239 /* PingHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PingHelper.m; sourceTree = "<group>"; };
-		B8A7A0561EA933FA00A75239 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		B8A7A0571EA933FA00A75239 /* RealReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RealReachability.h; sourceTree = "<group>"; };
-		B8A7A0581EA933FA00A75239 /* RealReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RealReachability.m; sourceTree = "<group>"; };
 		B8A7A0661EA9384000A75239 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		B8DF1C051EA795AD00F2F9E2 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		CAE613590B9AA7B46799B48A /* Pods-CocoaAsyncSocket_TCP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CocoaAsyncSocket_TCP.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CocoaAsyncSocket_TCP/Pods-CocoaAsyncSocket_TCP.debug.xcconfig"; sourceTree = "<group>"; };
 		F875622A8064877AC67AF7B5 /* Pods_CocoaAsyncSocket_TCP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CocoaAsyncSocket_TCP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -149,15 +196,178 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		B8672E861EA8C5590042EF07 /* Account */ = {
+		B84506211EC59D83004366C3 /* Comon */ = {
 			isa = PBXGroup;
 			children = (
-				B8672E871EA8C5660042EF07 /* Account.h */,
-				B8672E881EA8C5660042EF07 /* Account.m */,
-				B8672E8A1EA8C5AD0042EF07 /* AccountTool.h */,
-				B8672E8B1EA8C5AD0042EF07 /* AccountTool.m */,
+				B845068B1EC5AB8E004366C3 /* Category */,
+				B84506221EC59D83004366C3 /* Account */,
+				B84506271EC59D83004366C3 /* BaseController */,
+				B845062C1EC59D83004366C3 /* Navigation */,
+				B845062F1EC59D83004366C3 /* NetworkObserver */,
+				B845062A1EC59D83004366C3 /* Config.h */,
+				B845062B1EC59D83004366C3 /* Constant.h */,
+				B845064D1EC59D83004366C3 /* PrefixHeader.pch */,
+			);
+			path = Comon;
+			sourceTree = "<group>";
+		};
+		B84506221EC59D83004366C3 /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				B84506231EC59D83004366C3 /* Account.h */,
+				B84506241EC59D83004366C3 /* Account.m */,
+				B84506251EC59D83004366C3 /* AccountTool.h */,
+				B84506261EC59D83004366C3 /* AccountTool.m */,
 			);
 			path = Account;
+			sourceTree = "<group>";
+		};
+		B84506271EC59D83004366C3 /* BaseController */ = {
+			isa = PBXGroup;
+			children = (
+				B84506281EC59D83004366C3 /* ChatBaseController.h */,
+				B84506291EC59D83004366C3 /* ChatBaseController.m */,
+			);
+			path = BaseController;
+			sourceTree = "<group>";
+		};
+		B845062C1EC59D83004366C3 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				B845062D1EC59D83004366C3 /* ChatNavigationController.h */,
+				B845062E1EC59D83004366C3 /* ChatNavigationController.m */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
+		B845062F1EC59D83004366C3 /* NetworkObserver */ = {
+			isa = PBXGroup;
+			children = (
+				B84506301EC59D83004366C3 /* Connection */,
+				B84506331EC59D83004366C3 /* FSM */,
+				B84506451EC59D83004366C3 /* Ping */,
+				B845064B1EC59D83004366C3 /* RealReachability.h */,
+				B845064C1EC59D83004366C3 /* RealReachability.m */,
+			);
+			path = NetworkObserver;
+			sourceTree = "<group>";
+		};
+		B84506301EC59D83004366C3 /* Connection */ = {
+			isa = PBXGroup;
+			children = (
+				B84506311EC59D83004366C3 /* LocalConnection.h */,
+				B84506321EC59D83004366C3 /* LocalConnection.m */,
+			);
+			path = Connection;
+			sourceTree = "<group>";
+		};
+		B84506331EC59D83004366C3 /* FSM */ = {
+			isa = PBXGroup;
+			children = (
+				B84506341EC59D83004366C3 /* FSMDefines.h */,
+				B84506351EC59D83004366C3 /* FSMEngine.h */,
+				B84506361EC59D83004366C3 /* FSMEngine.m */,
+				B84506371EC59D83004366C3 /* FSMStateUtil.h */,
+				B84506381EC59D83004366C3 /* FSMStateUtil.m */,
+				B84506391EC59D83004366C3 /* ReachState.h */,
+				B845063A1EC59D83004366C3 /* ReachState.m */,
+				B845063B1EC59D83004366C3 /* ReachStateLoading.h */,
+				B845063C1EC59D83004366C3 /* ReachStateLoading.m */,
+				B845063D1EC59D83004366C3 /* ReachStateUnloaded.h */,
+				B845063E1EC59D83004366C3 /* ReachStateUnloaded.m */,
+				B845063F1EC59D83004366C3 /* ReachStateUnReachable.h */,
+				B84506401EC59D83004366C3 /* ReachStateUnReachable.m */,
+				B84506411EC59D83004366C3 /* ReachStateWIFI.h */,
+				B84506421EC59D83004366C3 /* ReachStateWIFI.m */,
+				B84506431EC59D83004366C3 /* ReachStateWWAN.h */,
+				B84506441EC59D83004366C3 /* ReachStateWWAN.m */,
+			);
+			path = FSM;
+			sourceTree = "<group>";
+		};
+		B84506451EC59D83004366C3 /* Ping */ = {
+			isa = PBXGroup;
+			children = (
+				B84506461EC59D83004366C3 /* PingFoundation.h */,
+				B84506471EC59D83004366C3 /* PingFoundation.m */,
+				B84506481EC59D83004366C3 /* PingHelper.h */,
+				B84506491EC59D83004366C3 /* PingHelper.m */,
+				B845064A1EC59D83004366C3 /* README.md */,
+			);
+			path = Ping;
+			sourceTree = "<group>";
+		};
+		B845065F1EC59DD1004366C3 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				B84506601EC59DD1004366C3 /* ChatListViewController.h */,
+				B84506611EC59DD1004366C3 /* ChatListViewController.m */,
+				B84506621EC59DD1004366C3 /* ChatViewController.h */,
+				B84506631EC59DD1004366C3 /* ChatViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		B84506661EC59DEF004366C3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B84506671EC59DEF004366C3 /* ChatCells */,
+				B84506741EC59DEF004366C3 /* ChatListCell */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B84506671EC59DEF004366C3 /* ChatCells */ = {
+			isa = PBXGroup;
+			children = (
+				B84506681EC59DEF004366C3 /* ChatAudioCell.h */,
+				B84506691EC59DEF004366C3 /* ChatAudioCell.m */,
+				B845066A1EC59DEF004366C3 /* ChatFileCell.h */,
+				B845066B1EC59DEF004366C3 /* ChatFileCell.m */,
+				B845066C1EC59DEF004366C3 /* ChatImageCell.h */,
+				B845066D1EC59DEF004366C3 /* ChatImageCell.m */,
+				B845066E1EC59DEF004366C3 /* ChatTextCell.h */,
+				B845066F1EC59DEF004366C3 /* ChatTextCell.m */,
+				B84506701EC59DEF004366C3 /* ChatTipCell.h */,
+				B84506711EC59DEF004366C3 /* ChatTipCell.m */,
+				B84506721EC59DEF004366C3 /* ChatVideoCell.h */,
+				B84506731EC59DEF004366C3 /* ChatVideoCell.m */,
+			);
+			path = ChatCells;
+			sourceTree = "<group>";
+		};
+		B84506741EC59DEF004366C3 /* ChatListCell */ = {
+			isa = PBXGroup;
+			children = (
+				B84506751EC59DEF004366C3 /* ChatListCell.h */,
+				B84506761EC59DEF004366C3 /* ChatListCell.m */,
+				B84506771EC59DEF004366C3 /* ChatListCell.xib */,
+			);
+			path = ChatListCell;
+			sourceTree = "<group>";
+		};
+		B84506811EC59E1F004366C3 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				B84506821EC59E1F004366C3 /* AppDelegate+main.h */,
+				B84506831EC59E1F004366C3 /* AppDelegate+main.m */,
+				B84506841EC59E1F004366C3 /* AppDelegate.h */,
+				B84506851EC59E1F004366C3 /* AppDelegate.m */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		B845068B1EC5AB8E004366C3 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				B845068C1EC5ABB5004366C3 /* UIImageView+SDWebImage.h */,
+				B845068D1EC5ABB5004366C3 /* UIImageView+SDWebImage.m */,
+				B84506921EC5AD49004366C3 /* UIImage+colorImage.h */,
+				B84506931EC5AD49004366C3 /* UIImage+colorImage.m */,
+				B84506981EC5B277004366C3 /* NSDate+extension.h */,
+				B84506991EC5B277004366C3 /* NSDate+extension.m */,
+			);
+			path = Category;
 			sourceTree = "<group>";
 		};
 		B86DF33F1EA0DB4A0089A05F = {
@@ -185,14 +395,12 @@
 		B86DF34A1EA0DB4A0089A05F /* CocoaAsyncSocket_TCP */ = {
 			isa = PBXGroup;
 			children = (
-				B8A7A03B1EA933FA00A75239 /* NetworkObserver */,
-				B8672E861EA8C5590042EF07 /* Account */,
+				B84506811EC59E1F004366C3 /* AppDelegate */,
+				B84506661EC59DEF004366C3 /* View */,
+				B845065F1EC59DD1004366C3 /* Controller */,
+				B84506211EC59D83004366C3 /* Comon */,
 				B86DF3821EA0E7250089A05F /* ChatModel */,
 				B86DF37E1EA0DF8E0089A05F /* ChatHandler */,
-				B86DF34E1EA0DB4A0089A05F /* AppDelegate.h */,
-				B86DF34F1EA0DB4A0089A05F /* AppDelegate.m */,
-				B86DF3511EA0DB4A0089A05F /* ViewController.h */,
-				B86DF3521EA0DB4A0089A05F /* ViewController.m */,
 				B86DF3541EA0DB4A0089A05F /* Main.storyboard */,
 				B86DF3571EA0DB4A0089A05F /* Assets.xcassets */,
 				B86DF3591EA0DB4A0089A05F /* LaunchScreen.storyboard */,
@@ -206,9 +414,6 @@
 			isa = PBXGroup;
 			children = (
 				B86DF34C1EA0DB4A0089A05F /* main.m */,
-				B8DF1C051EA795AD00F2F9E2 /* PrefixHeader.pch */,
-				B8672E851EA8C4E20042EF07 /* Constant.h */,
-				B8A7A0361EA8CD6D00A75239 /* Config.h */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -236,6 +441,8 @@
 			children = (
 				B86DF37F1EA0DF990089A05F /* ChatHandler.h */,
 				B86DF3801EA0DF990089A05F /* ChatHandler.m */,
+				B84506881EC5A00F004366C3 /* ChatUtil.h */,
+				B84506891EC5A00F004366C3 /* ChatUtil.m */,
 			);
 			path = ChatHandler;
 			sourceTree = "<group>";
@@ -247,63 +454,6 @@
 				B86DF3841EA0E72E0089A05F /* ChatModel.m */,
 			);
 			path = ChatModel;
-			sourceTree = "<group>";
-		};
-		B8A7A03B1EA933FA00A75239 /* NetworkObserver */ = {
-			isa = PBXGroup;
-			children = (
-				B8A7A03C1EA933FA00A75239 /* Connection */,
-				B8A7A03F1EA933FA00A75239 /* FSM */,
-				B8A7A0511EA933FA00A75239 /* Ping */,
-				B8A7A0571EA933FA00A75239 /* RealReachability.h */,
-				B8A7A0581EA933FA00A75239 /* RealReachability.m */,
-			);
-			path = NetworkObserver;
-			sourceTree = "<group>";
-		};
-		B8A7A03C1EA933FA00A75239 /* Connection */ = {
-			isa = PBXGroup;
-			children = (
-				B8A7A03D1EA933FA00A75239 /* LocalConnection.h */,
-				B8A7A03E1EA933FA00A75239 /* LocalConnection.m */,
-			);
-			path = Connection;
-			sourceTree = "<group>";
-		};
-		B8A7A03F1EA933FA00A75239 /* FSM */ = {
-			isa = PBXGroup;
-			children = (
-				B8A7A0401EA933FA00A75239 /* FSMDefines.h */,
-				B8A7A0411EA933FA00A75239 /* FSMEngine.h */,
-				B8A7A0421EA933FA00A75239 /* FSMEngine.m */,
-				B8A7A0431EA933FA00A75239 /* FSMStateUtil.h */,
-				B8A7A0441EA933FA00A75239 /* FSMStateUtil.m */,
-				B8A7A0451EA933FA00A75239 /* ReachState.h */,
-				B8A7A0461EA933FA00A75239 /* ReachState.m */,
-				B8A7A0471EA933FA00A75239 /* ReachStateLoading.h */,
-				B8A7A0481EA933FA00A75239 /* ReachStateLoading.m */,
-				B8A7A0491EA933FA00A75239 /* ReachStateUnloaded.h */,
-				B8A7A04A1EA933FA00A75239 /* ReachStateUnloaded.m */,
-				B8A7A04B1EA933FA00A75239 /* ReachStateUnReachable.h */,
-				B8A7A04C1EA933FA00A75239 /* ReachStateUnReachable.m */,
-				B8A7A04D1EA933FA00A75239 /* ReachStateWIFI.h */,
-				B8A7A04E1EA933FA00A75239 /* ReachStateWIFI.m */,
-				B8A7A04F1EA933FA00A75239 /* ReachStateWWAN.h */,
-				B8A7A0501EA933FA00A75239 /* ReachStateWWAN.m */,
-			);
-			path = FSM;
-			sourceTree = "<group>";
-		};
-		B8A7A0511EA933FA00A75239 /* Ping */ = {
-			isa = PBXGroup;
-			children = (
-				B8A7A0521EA933FA00A75239 /* PingFoundation.h */,
-				B8A7A0531EA933FA00A75239 /* PingFoundation.m */,
-				B8A7A0541EA933FA00A75239 /* PingHelper.h */,
-				B8A7A0551EA933FA00A75239 /* PingHelper.m */,
-				B8A7A0561EA933FA00A75239 /* README.md */,
-			);
-			path = Ping;
 			sourceTree = "<group>";
 		};
 		DE44A4FA10870B8DE9660954 /* Frameworks */ = {
@@ -425,6 +575,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B86DF35B1EA0DB4A0089A05F /* LaunchScreen.storyboard in Resources */,
+				B845067F1EC59DEF004366C3 /* ChatListCell.xib in Resources */,
 				B86DF3581EA0DB4A0089A05F /* Assets.xcassets in Resources */,
 				B86DF3561EA0DB4A0089A05F /* Main.storyboard in Resources */,
 			);
@@ -499,26 +650,41 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B8A7A0601EA933FA00A75239 /* ReachStateWIFI.m in Sources */,
-				B8A7A05D1EA933FA00A75239 /* ReachStateLoading.m in Sources */,
-				B8A7A05A1EA933FA00A75239 /* FSMEngine.m in Sources */,
-				B8A7A0631EA933FA00A75239 /* PingHelper.m in Sources */,
-				B86DF3531EA0DB4A0089A05F /* ViewController.m in Sources */,
-				B8672E8C1EA8C5AD0042EF07 /* AccountTool.m in Sources */,
-				B86DF3501EA0DB4A0089A05F /* AppDelegate.m in Sources */,
+				B845067D1EC59DEF004366C3 /* ChatVideoCell.m in Sources */,
+				B84506591EC59D83004366C3 /* ReachStateWIFI.m in Sources */,
+				B84506561EC59D83004366C3 /* ReachStateLoading.m in Sources */,
+				B845068A1EC5A00F004366C3 /* ChatUtil.m in Sources */,
+				B84506861EC59E1F004366C3 /* AppDelegate+main.m in Sources */,
+				B845065E1EC59D83004366C3 /* RealReachability.m in Sources */,
+				B845069A1EC5B278004366C3 /* NSDate+extension.m in Sources */,
+				B84506511EC59D83004366C3 /* ChatNavigationController.m in Sources */,
+				B845067E1EC59DEF004366C3 /* ChatListCell.m in Sources */,
+				B84506781EC59DEF004366C3 /* ChatAudioCell.m in Sources */,
+				B845065D1EC59D83004366C3 /* README.md in Sources */,
+				B845064E1EC59D83004366C3 /* Account.m in Sources */,
+				B845067A1EC59DEF004366C3 /* ChatImageCell.m in Sources */,
+				B84506571EC59D83004366C3 /* ReachStateUnloaded.m in Sources */,
+				B84506641EC59DD1004366C3 /* ChatListViewController.m in Sources */,
+				B845065C1EC59D83004366C3 /* PingHelper.m in Sources */,
+				B84506531EC59D83004366C3 /* FSMEngine.m in Sources */,
+				B84506551EC59D83004366C3 /* ReachState.m in Sources */,
+				B84506791EC59DEF004366C3 /* ChatFileCell.m in Sources */,
+				B84506651EC59DD1004366C3 /* ChatViewController.m in Sources */,
 				B86DF3811EA0DF990089A05F /* ChatHandler.m in Sources */,
-				B8672E891EA8C5660042EF07 /* Account.m in Sources */,
+				B845064F1EC59D83004366C3 /* AccountTool.m in Sources */,
 				B86DF3851EA0E72E0089A05F /* ChatModel.m in Sources */,
+				B84506541EC59D83004366C3 /* FSMStateUtil.m in Sources */,
+				B84506941EC5AD49004366C3 /* UIImage+colorImage.m in Sources */,
+				B845065B1EC59D83004366C3 /* PingFoundation.m in Sources */,
+				B84506871EC59E1F004366C3 /* AppDelegate.m in Sources */,
+				B845067B1EC59DEF004366C3 /* ChatTextCell.m in Sources */,
+				B845068E1EC5ABB5004366C3 /* UIImageView+SDWebImage.m in Sources */,
+				B84506521EC59D83004366C3 /* LocalConnection.m in Sources */,
 				B86DF34D1EA0DB4A0089A05F /* main.m in Sources */,
-				B8A7A05C1EA933FA00A75239 /* ReachState.m in Sources */,
-				B8A7A05B1EA933FA00A75239 /* FSMStateUtil.m in Sources */,
-				B8A7A0641EA933FA00A75239 /* README.md in Sources */,
-				B8A7A0621EA933FA00A75239 /* PingFoundation.m in Sources */,
-				B8A7A0611EA933FA00A75239 /* ReachStateWWAN.m in Sources */,
-				B8A7A05E1EA933FA00A75239 /* ReachStateUnloaded.m in Sources */,
-				B8A7A05F1EA933FA00A75239 /* ReachStateUnReachable.m in Sources */,
-				B8A7A0651EA933FA00A75239 /* RealReachability.m in Sources */,
-				B8A7A0591EA933FA00A75239 /* LocalConnection.m in Sources */,
+				B84506581EC59D83004366C3 /* ReachStateUnReachable.m in Sources */,
+				B845067C1EC59DEF004366C3 /* ChatTipCell.m in Sources */,
+				B845065A1EC59D83004366C3 /* ReachStateWWAN.m in Sources */,
+				B84506501EC59D83004366C3 /* ChatBaseController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -670,6 +836,7 @@
 			baseConfigurationReference = CAE613590B9AA7B46799B48A /* Pods-CocoaAsyncSocket_TCP.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = CocoaAsyncSocket_TCP/Comon/PrefixHeader.pch;
 				INFOPLIST_FILE = CocoaAsyncSocket_TCP/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "mengyao.CocoaAsyncSocket-TCP";
@@ -682,6 +849,7 @@
 			baseConfigurationReference = 8BC614971BC18AA02B1E20EF /* Pods-CocoaAsyncSocket_TCP.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = CocoaAsyncSocket_TCP/Comon/PrefixHeader.pch;
 				INFOPLIST_FILE = CocoaAsyncSocket_TCP/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "mengyao.CocoaAsyncSocket-TCP";
