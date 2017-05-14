@@ -16,5 +16,6 @@
 #import "RealReachability.h"
 #import "UIImageView+SDWebImage.h"
 #import "NSDate+extension.h"
+#import "NSString+extension.h"
 
 #endif /* PrefixHeader_pch */

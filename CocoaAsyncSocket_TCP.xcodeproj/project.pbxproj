@@ -48,6 +48,10 @@
 		B86DF3711EA0DB4A0089A05F /* CocoaAsyncSocket_TCPUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = B86DF3701EA0DB4A0089A05F /* CocoaAsyncSocket_TCPUITests.m */; };
 		B86DF3811EA0DF990089A05F /* ChatHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = B86DF3801EA0DF990089A05F /* ChatHandler.m */; };
 		B86DF3851EA0E72E0089A05F /* ChatModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B86DF3841EA0E72E0089A05F /* ChatModel.m */; };
+		B8843D5B1EC873A0006A01A4 /* MYCoreTextLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = B8843D561EC873A0006A01A4 /* MYCoreTextLabel.m */; };
+		B8843D5C1EC873A0006A01A4 /* MYCoretextResultTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B8843D581EC873A0006A01A4 /* MYCoretextResultTool.m */; };
+		B8843D5D1EC873A0006A01A4 /* MYSubCoretextResult.m in Sources */ = {isa = PBXBuildFile; fileRef = B8843D5A1EC873A0006A01A4 /* MYSubCoretextResult.m */; };
+		B8843D601EC8787C006A01A4 /* NSString+extension.m in Sources */ = {isa = PBXBuildFile; fileRef = B8843D5F1EC8787C006A01A4 /* NSString+extension.m */; };
 		B8A7A0671EA9384000A75239 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8A7A0661EA9384000A75239 /* SystemConfiguration.framework */; };
 		C85C5D0ED7B51EAA0D860FC1 /* Pods_CocoaAsyncSocket_TCP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F875622A8064877AC67AF7B5 /* Pods_CocoaAsyncSocket_TCP.framework */; };
 /* End PBXBuildFile section */
@@ -155,6 +159,14 @@
 		B86DF3801EA0DF990089A05F /* ChatHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatHandler.m; sourceTree = "<group>"; };
 		B86DF3831EA0E72E0089A05F /* ChatModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatModel.h; sourceTree = "<group>"; };
 		B86DF3841EA0E72E0089A05F /* ChatModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatModel.m; sourceTree = "<group>"; };
+		B8843D551EC873A0006A01A4 /* MYCoreTextLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYCoreTextLabel.h; sourceTree = "<group>"; };
+		B8843D561EC873A0006A01A4 /* MYCoreTextLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYCoreTextLabel.m; sourceTree = "<group>"; };
+		B8843D571EC873A0006A01A4 /* MYCoretextResultTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYCoretextResultTool.h; sourceTree = "<group>"; };
+		B8843D581EC873A0006A01A4 /* MYCoretextResultTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYCoretextResultTool.m; sourceTree = "<group>"; };
+		B8843D591EC873A0006A01A4 /* MYSubCoretextResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYSubCoretextResult.h; sourceTree = "<group>"; };
+		B8843D5A1EC873A0006A01A4 /* MYSubCoretextResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYSubCoretextResult.m; sourceTree = "<group>"; };
+		B8843D5E1EC8787C006A01A4 /* NSString+extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+extension.h"; sourceTree = "<group>"; };
+		B8843D5F1EC8787C006A01A4 /* NSString+extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+extension.m"; sourceTree = "<group>"; };
 		B8A7A0661EA9384000A75239 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		CAE613590B9AA7B46799B48A /* Pods-CocoaAsyncSocket_TCP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CocoaAsyncSocket_TCP.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CocoaAsyncSocket_TCP/Pods-CocoaAsyncSocket_TCP.debug.xcconfig"; sourceTree = "<group>"; };
 		F875622A8064877AC67AF7B5 /* Pods_CocoaAsyncSocket_TCP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CocoaAsyncSocket_TCP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -199,6 +211,7 @@
 		B84506211EC59D83004366C3 /* Comon */ = {
 			isa = PBXGroup;
 			children = (
+				B8843D531EC87366006A01A4 /* Helper */,
 				B845068B1EC5AB8E004366C3 /* Category */,
 				B84506221EC59D83004366C3 /* Account */,
 				B84506271EC59D83004366C3 /* BaseController */,
@@ -366,6 +379,8 @@
 				B84506931EC5AD49004366C3 /* UIImage+colorImage.m */,
 				B84506981EC5B277004366C3 /* NSDate+extension.h */,
 				B84506991EC5B277004366C3 /* NSDate+extension.m */,
+				B8843D5E1EC8787C006A01A4 /* NSString+extension.h */,
+				B8843D5F1EC8787C006A01A4 /* NSString+extension.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -454,6 +469,27 @@
 				B86DF3841EA0E72E0089A05F /* ChatModel.m */,
 			);
 			path = ChatModel;
+			sourceTree = "<group>";
+		};
+		B8843D531EC87366006A01A4 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				B8843D541EC873A0006A01A4 /* MYCoreTextLabel */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		B8843D541EC873A0006A01A4 /* MYCoreTextLabel */ = {
+			isa = PBXGroup;
+			children = (
+				B8843D551EC873A0006A01A4 /* MYCoreTextLabel.h */,
+				B8843D561EC873A0006A01A4 /* MYCoreTextLabel.m */,
+				B8843D571EC873A0006A01A4 /* MYCoretextResultTool.h */,
+				B8843D581EC873A0006A01A4 /* MYCoretextResultTool.m */,
+				B8843D591EC873A0006A01A4 /* MYSubCoretextResult.h */,
+				B8843D5A1EC873A0006A01A4 /* MYSubCoretextResult.m */,
+			);
+			path = MYCoreTextLabel;
 			sourceTree = "<group>";
 		};
 		DE44A4FA10870B8DE9660954 /* Frameworks */ = {
@@ -670,16 +706,20 @@
 				B84506551EC59D83004366C3 /* ReachState.m in Sources */,
 				B84506791EC59DEF004366C3 /* ChatFileCell.m in Sources */,
 				B84506651EC59DD1004366C3 /* ChatViewController.m in Sources */,
+				B8843D5B1EC873A0006A01A4 /* MYCoreTextLabel.m in Sources */,
 				B86DF3811EA0DF990089A05F /* ChatHandler.m in Sources */,
+				B8843D5C1EC873A0006A01A4 /* MYCoretextResultTool.m in Sources */,
 				B845064F1EC59D83004366C3 /* AccountTool.m in Sources */,
 				B86DF3851EA0E72E0089A05F /* ChatModel.m in Sources */,
 				B84506541EC59D83004366C3 /* FSMStateUtil.m in Sources */,
 				B84506941EC5AD49004366C3 /* UIImage+colorImage.m in Sources */,
+				B8843D5D1EC873A0006A01A4 /* MYSubCoretextResult.m in Sources */,
 				B845065B1EC59D83004366C3 /* PingFoundation.m in Sources */,
 				B84506871EC59E1F004366C3 /* AppDelegate.m in Sources */,
 				B845067B1EC59DEF004366C3 /* ChatTextCell.m in Sources */,
 				B845068E1EC5ABB5004366C3 /* UIImageView+SDWebImage.m in Sources */,
 				B84506521EC59D83004366C3 /* LocalConnection.m in Sources */,
+				B8843D601EC8787C006A01A4 /* NSString+extension.m in Sources */,
 				B86DF34D1EA0DB4A0089A05F /* main.m in Sources */,
 				B84506581EC59D83004366C3 /* ReachStateUnReachable.m in Sources */,
 				B845067C1EC59DEF004366C3 /* ChatTipCell.m in Sources */,

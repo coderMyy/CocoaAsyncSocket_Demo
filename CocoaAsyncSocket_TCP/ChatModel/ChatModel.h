@@ -87,7 +87,7 @@ typedef NS_ENUM(NSInteger){
 
 @property (nonatomic, strong) NSNumber *isRead; //是否已读
 
-@property (nonatomic, copy) NSString *senTime; //时间戳
+@property (nonatomic, copy) NSString *sendTime; //时间戳
 
 @property (nonatomic, copy) NSString *beatID; //心跳标识
 
@@ -106,6 +106,13 @@ typedef NS_ENUM(NSInteger){
 @property (nonatomic, strong) NSNumber *unreadCount; //未读数
 @property (nonatomic, copy) NSString *lastMessage; //最后一条消息
 @property (nonatomic, copy) NSString *lastTimeString; //最后一条消息时间
+
+
+
+
+#pragma mark - 额外需要部分属性
+@property (nonatomic , assign) CGFloat messageHeight; //消息高度
+@property (nonatomic, assign,getter=shouldShowTime) BOOL showTime; // 是否展示时间
 
 @end
 

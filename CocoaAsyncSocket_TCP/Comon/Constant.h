@@ -37,8 +37,7 @@ static NSString *Content_Audio          = @"audio";   //语音消息
 static NSString *Content_Picture        = @"picture";   //图片消息
 static NSString *Content_Video          = @"video";   //视频消息
 static NSString *Content_File             = @"file";   //文件消息
-static NSString *Content_Repeal        = @"repeal";   //撤回消息
-static NSString *Content_Tip             = @"tip";   //提示消息
+static NSString *Content_Tip             = @"tip";   //提示消息(欢迎XX加入群 , XX撤回了一条消息等)
 
 
 /*

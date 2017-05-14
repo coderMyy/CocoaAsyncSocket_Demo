@@ -8,6 +8,10 @@
 
 #import "ChatBaseController.h"
 
+@class  ChatModel;
+
 @interface ChatViewController : ChatBaseController
+
+@property (nonatomic, strong) ChatModel *chatModel;
 
 @end

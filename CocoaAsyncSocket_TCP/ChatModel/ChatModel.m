@@ -17,7 +17,7 @@
 - (instancetype)init
 {
     if (self = [super init]) {
-        self.senTime = getSendTime();
+        self.sendTime = getSendTime();
     }
     return self;
 }

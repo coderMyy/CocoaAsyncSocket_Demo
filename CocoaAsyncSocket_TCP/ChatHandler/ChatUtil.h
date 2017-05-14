@@ -8,6 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
+@class ChatModel;
+
 @interface ChatUtil : NSObject
+
+//消息高度计算
++ (CGFloat)heightForMessage:(ChatModel *)currentChatmodel premodel:(ChatModel *)premodel;
 
 @end

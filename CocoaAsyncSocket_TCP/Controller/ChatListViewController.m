@@ -101,8 +101,9 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
+    ChatModel *seletedChatModel = self.messagesArray[indexPath.row];
     ChatViewController *chatVc = [[ChatViewController alloc]init];
+    chatVc.chatModel = seletedChatModel;
     [self.navigationController pushViewController:chatVc animated:YES];
 }
 
@@ -133,7 +134,7 @@
         chatModel.lastMessage  = @"模拟数据,UI部分持续更新中...涉及面较多,比较耗时";
         chatModel.noDisturb      = index%3==0 ? @2 : @1;
         chatModel.unreadCount = @(index);
-        chatModel.lastTimeString = [NSDate timeStringWithTimeInterval:chatModel.senTime];
+        chatModel.lastTimeString = [NSDate timeStringWithTimeInterval:chatModel.sendTime];
         [self.messagesArray addObject:chatModel];
     }
     
@@ -199,7 +200,7 @@
                                                             沙盒缓存(语音data)  沙盒缓存(图片data) 沙盒缓存(视频)
  
  
-                       ===================================================================================
+                            ===================================================================================
  
  
  
