@@ -1,6 +1,0 @@
-framework module UMSocialNetwork {
-  umbrella header "UMSocialNetwork.h"
-
-  export *
-  module * { export * }
-}

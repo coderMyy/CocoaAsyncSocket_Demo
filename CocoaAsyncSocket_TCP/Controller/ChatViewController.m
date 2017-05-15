@@ -7,14 +7,15 @@
 //
 
 #import "ChatViewController.h"
-#import "ChatTextCell.h"
-#import "ChatAudioCell.h"
-#import "ChatImageCell.h"
-#import "ChatVideoCell.h"
-#import "ChatFileCell.h"
-#import "ChatTipCell.h"
-#import "ChatModel.h"
-#import "ChatUtil.h"
+#import "ChatKeyboard.h"   //键盘
+#import "ChatTextCell.h"   //文本cell
+#import "ChatAudioCell.h" //语音cell
+#import "ChatImageCell.h" //图片cell
+#import "ChatVideoCell.h"  //视频cell
+#import "ChatFileCell.h"  // 文件cell
+#import "ChatTipCell.h"  //提示语cell
+#import "ChatModel.h"   //消息模型
+#import "ChatUtil.h"    //工具类
 
 @interface ChatViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -26,10 +27,20 @@
 @property (nonatomic, strong) UILabel *titleView;
 //铃铛
 @property (nonatomic, strong) UIImageView *bellView;
+//键盘
+@property (nonatomic, strong) ChatKeyboard *customKeyboard;
 
 @end
 
 @implementation ChatViewController
+
+- (ChatKeyboard *)customKeyboard
+{
+    if (!_customKeyboard) {
+        _customKeyboard = [[ChatKeyboard alloc]init];
+    }
+    return _customKeyboard;
+}
 
 - (UIImageView *)bellView
 {
@@ -63,7 +74,7 @@
 - (UITableView *)chatTableView
 {
     if (!_chatTableView) {
-        _chatTableView = [[UITableView alloc]initWithFrame:self.view.bounds style:UITableViewStylePlain];
+        _chatTableView = [[UITableView alloc]initWithFrame:Frame(0, 0, SCREEN_WITDTH, Height(self.view.bounds)-49) style:UITableViewStylePlain];
         _chatTableView.delegate     = self;
         _chatTableView.dataSource = self;
         //普通文本,表情消息类型
@@ -168,7 +179,7 @@
 #pragma mark - 初始化UI
 - (void)initUI
 {
-    //导航
+    //初始化导航
     self.titleView.text = [_chatModel.chatType isEqualToString:@"groupChat"] ? _chatModel.groupName : _chatModel.nickName;
     self.navigationItem.titleView = self.titleView;
     CGSize titleSize = [self.titleView.text sizeWithFont:self.titleView.font maxSize:CGSizeMake(200,16)];
@@ -180,6 +191,13 @@
         self.titleView.bounds  = Frame(0, 0, titleSize.width + 5 + 14, 16);
         self.bellView.frame    = Frame(titleSize.width + 5, (Height(self.titleView.frame)-14)*0.5, 14, 14);
     }
+    
+    //初始化聊天界面
+    [self.view addSubview:self.chatTableView];
+    
+    //初始化键盘
+    [self.view addSubview:self.customKeyboard];
+    self.customKeyboard.frame = Frame(0, SCREEN_HEIGHT - 49, SCREEN_WITDTH, CUSTOMKEYBOARD_HEIGHT);
 }
 
 

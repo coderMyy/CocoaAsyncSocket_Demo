@@ -6,11 +6,11 @@
 //  Copyright © 2017年 mengyao. All rights reserved.
 //
 
-#import "ChatBaseController.h"
+#import "BaseViewController.h"
 
 @class  ChatModel;
 
-@interface ChatViewController : ChatBaseController
+@interface ChatViewController : BaseViewController
 
 @property (nonatomic, strong) ChatModel *chatModel;
 

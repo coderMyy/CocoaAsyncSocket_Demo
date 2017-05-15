@@ -7,17 +7,15 @@
 //
 
 #import "AppDelegate+main.h"
-#import "ChatNavigationController.h"
-#import "ChatListViewController.h"
+#import "ChatTabbarController.h"
 
 @implementation AppDelegate (main)
 
 - (void)initMainController
 {
     self.window = [[UIWindow alloc]initWithFrame:SCREEN_BOUNDS];
-    ChatListViewController *chatlistVC= [[ChatListViewController alloc]init];
-    ChatNavigationController *nav = [[ChatNavigationController alloc]initWithRootViewController:chatlistVC];
-    self.window.rootViewController = nav;
+    ChatTabbarController *tabbarVc = [[ChatTabbarController alloc]init];
+    self.window.rootViewController = tabbarVc;
     [self.window makeKeyAndVisible];
 }
 

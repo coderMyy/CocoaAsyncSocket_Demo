@@ -6,8 +6,8 @@
 //  Copyright © 2017年 mengyao. All rights reserved.
 //
 
-#import "ChatBaseController.h"
+#import "BaseViewController.h"
 
-@interface ChatListViewController : ChatBaseController
+@interface ChatListViewController : BaseViewController
 
 @end

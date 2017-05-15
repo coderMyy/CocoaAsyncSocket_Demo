@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>ItemImageName</key>
+		<string>JY_Tab_im</string>
+		<key>ItemName</key>
+		<string>首页</string>
+		<key>ControllerName</key>
+		<string>MainViewController</string>
+	</dict>
+	<dict>
+		<key>ItemImageName</key>
+		<string>JY_Tab_im</string>
+		<key>ItemName</key>
+		<string>聊天</string>
+		<key>ControllerName</key>
+		<string>ChatListViewController</string>
+	</dict>
+	<dict>
+		<key>ItemImageName</key>
+		<string>JY_Tab_im</string>
+		<key>ItemName</key>
+		<string>第三页面</string>
+		<key>ControllerName</key>
+		<string>ThirdViewController</string>
+	</dict>
+	<dict>
+		<key>ItemImageName</key>
+		<string>JY_Tab_im</string>
+		<key>ItemName</key>
+		<string>第四页面</string>
+		<key>ControllerName</key>
+		<string>LastViewController</string>
+	</dict>
+</array>
+</plist>

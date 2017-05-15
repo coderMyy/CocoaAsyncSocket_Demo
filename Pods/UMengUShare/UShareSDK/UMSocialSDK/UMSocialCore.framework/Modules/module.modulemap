@@ -1,6 +1,0 @@
-framework module UMSocialCore {
-  umbrella header "UMSocialCore.h"
-
-  export *
-  module * { export * }
-}
