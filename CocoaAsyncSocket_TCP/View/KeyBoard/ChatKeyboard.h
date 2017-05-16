@@ -10,5 +10,14 @@
 #import <UIKit/UIKit.h>
 
 @interface ChatKeyboard : UIView
+//仅声明,消除警告
+- (void)systemKeyboardWillShow:(NSNotification *)note;
+
+
+
+
+
+
+
 
 @end

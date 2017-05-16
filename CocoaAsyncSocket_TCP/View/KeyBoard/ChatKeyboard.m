@@ -41,11 +41,23 @@
 @end
 
 @implementation ChatKeyboard
+
+//表情键盘
+- (UIView *)facesKeyboard
+{
+    if (!_facesKeyboard) {
+        _facesKeyboard = [[UIView alloc]init];
+        _facesKeyboard.backgroundColor = [UIColor greenColor];
+    }
+    return _facesKeyboard;
+}
+
 //操作按钮键盘
 - (UIView *)handleKeyboard
 {
     if (!_handleKeyboard) {
         _handleKeyboard = [[UIView alloc]init];
+        _handleKeyboard.backgroundColor = [UIColor redColor];
         NSArray *buttonNames = @[@"照片",@"拍摄",@"视频"];
         for (NSInteger index = 0; index < 3; index ++) {
             NSInteger  colum = index % 3;
@@ -135,6 +147,8 @@
         _audioLpButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [_audioLpButton setTitle:@"按住说话" forState:UIControlStateNormal];
         [_audioLpButton setTitle:@"松开发送" forState:UIControlStateHighlighted];
+        [_audioLpButton setTitleColor:UICOLOR_RGB_Alpha(0x333333, 1) forState:UIControlStateNormal];
+        _audioLpButton.titleLabel.font = FontSet(14);
         //按下录音按钮
         [_audioLpButton addTarget:self action:@selector(audioLpButtonTouchDown:) forControlEvents:UIControlEventTouchDown];
         //手指离开录音按钮 , 但不松开
@@ -147,6 +161,9 @@
         [_audioLpButton addTarget:self action:@selector(audioLpButtonTouchUpInside:) forControlEvents:UIControlEventTouchUpInside];
         //默认隐藏
         _audioLpButton.hidden = YES;
+        //边框,切角
+        ViewBorder(_audioLpButton, UICOLOR_RGB_Alpha(0x999999, 1), 1);
+        ViewRadius(_audioLpButton, 5);
     }
     return _audioLpButton;
 }
@@ -157,13 +174,16 @@
         [self addSubview:self.messageBar];
         [self addSubview:self.facesKeyboard];
         [self addSubview:self.handleKeyboard];
+        
+        //布局
+        [self configUIFrame];
     }
     return self;
 }
 
-- (void)layoutSubviews
+#pragma mark - 初始化布局
+- (void)configUIFrame
 {
-    [super layoutSubviews];
     self.messageBar.frame = Frame(0, 0, SCREEN_WITDTH, 49);  //消息栏
     self.audioButton.frame = Frame(10, (Height(self.messageBar.frame) - 30)*0.5, 30, 30); //语音按钮
     self.audioLpButton.frame = Frame(MaxX(self.audioButton.frame)+15,(Height(self.messageBar.frame)-34)*0.5, SCREEN_WITDTH - 155, 34); //长按录音按钮
@@ -174,10 +194,22 @@
     self.facesKeyboard.frame = self.handleKeyboard.frame; //表情容器部分
 }
 
+#pragma mark - 系统键盘即将弹起
+- (void)systemKeyboardWillShow:(NSNotification *)note
+{
+    //获取系统键盘高度
+    CGFloat systemKbHeight  = [note.userInfo[@"UIKeyboardBoundsUserInfoKey"]CGRectValue].size.height;
+    //将自定义键盘跟随位移
+    [self customKeyboardMove:SCREEN_HEIGHT - systemKbHeight - Height(self.messageBar.frame)];
+}
+
 #pragma mark - 切换至语音录制
 - (void)audioButtonClick:(UIButton *)audioButton
 {
-    
+    [_msgTextView resignFirstResponder];
+    self.msgTextView.hidden = YES;
+    self.audioLpButton.hidden = NO;
+    [self customKeyboardMove:SCREEN_HEIGHT - Height(self.messageBar.frame)];
 }
 #pragma mark - 语音按钮点击
 - (void)audioLpButtonTouchDown:(UIButton *)audioLpButton
@@ -207,12 +239,40 @@
 #pragma mark - 切换到表情键盘
 - (void)switchFaceKeyboard:(UIButton *)swtFaceButton
 {
-    
+    _msgTextView.hidden = NO;
+    _audioLpButton.hidden  = YES;
+    [_msgTextView resignFirstResponder];
+    [self bringSubviewToFront:self.facesKeyboard];
+    //自定义键盘位移
+     [self customKeyboardMove:SCREEN_HEIGHT - Height(self.frame)];
 }
 #pragma mark - 切换到操作键盘
 - (void)switchHandleKeyboard:(UIButton *)swtHandleButton
 {
+    _msgTextView.hidden = NO;
+    _audioLpButton.hidden = YES;
+    [_msgTextView resignFirstResponder];
+    [self bringSubviewToFront:self.handleKeyboard];
+    //自定义键盘位移
+    [self customKeyboardMove:SCREEN_HEIGHT - Height(self.frame)];
+}
+
+#pragma mark - 自定义键盘位移变化
+- (void)customKeyboardMove:(CGFloat)customKbY
+{
+    [UIView animateWithDuration:0.25 animations:^{
+        self.frame = Frame(0,customKbY, SCREEN_WITDTH, Height(self.frame));
+    }];
+}
+
+#pragma mark - 监听输入框
+- (void)textViewDidChange:(UITextView *)textView
+{
     
+}
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
+{
+    return YES;
 }
 
 #pragma mark - 拍摄 , 照片 ,视频按钮点击

@@ -200,5 +200,19 @@
     self.customKeyboard.frame = Frame(0, SCREEN_HEIGHT - 49, SCREEN_WITDTH, CUSTOMKEYBOARD_HEIGHT);
 }
 
+#pragma mark - 注册通知
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    //键盘弹起通知
+    [[NSNotificationCenter defaultCenter]addObserver:self.customKeyboard selector:@selector(systemKeyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    
+}
+
+#pragma mark - 滚动,点击等相关处理
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    
+}
 
 @end
