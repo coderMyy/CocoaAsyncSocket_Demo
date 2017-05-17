@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B8565C921ECC67D300D53996 /* ChatRecordCover.m in Sources */ = {isa = PBXBuildFile; fileRef = B8565C911ECC67D300D53996 /* ChatRecordCover.m */; };
 		B85F39BF1EC9C95100B2EA9E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B85F39BE1EC9C95100B2EA9E /* main.m */; };
 		B85F39C81EC9C95100B2EA9E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B85F39C61EC9C95100B2EA9E /* Main.storyboard */; };
 		B85F39CA1EC9C95100B2EA9E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B85F39C91EC9C95100B2EA9E /* Assets.xcassets */; };
@@ -83,6 +84,8 @@
 		24AA3076491D2596209CE424 /* Pods_CocoaAsyncSocket_TCP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CocoaAsyncSocket_TCP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AE7FCF3D1D9A8F040607338 /* Pods-CocoaAsyncSocket_TCP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CocoaAsyncSocket_TCP.release.xcconfig"; path = "Pods/Target Support Files/Pods-CocoaAsyncSocket_TCP/Pods-CocoaAsyncSocket_TCP.release.xcconfig"; sourceTree = "<group>"; };
 		66DD7434C83D6F468099D4BF /* Pods-CocoaAsyncSocket_TCP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CocoaAsyncSocket_TCP.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CocoaAsyncSocket_TCP/Pods-CocoaAsyncSocket_TCP.debug.xcconfig"; sourceTree = "<group>"; };
+		B8565C901ECC67D300D53996 /* ChatRecordCover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatRecordCover.h; sourceTree = "<group>"; };
+		B8565C911ECC67D300D53996 /* ChatRecordCover.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatRecordCover.m; sourceTree = "<group>"; };
 		B85F39BA1EC9C95100B2EA9E /* CocoaAsyncSocket_TCP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CocoaAsyncSocket_TCP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B85F39BE1EC9C95100B2EA9E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B85F39C71EC9C95100B2EA9E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -216,6 +219,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B8565C8F1ECC67C300D53996 /* ChatRecordCover */ = {
+			isa = PBXGroup;
+			children = (
+				B8565C901ECC67D300D53996 /* ChatRecordCover.h */,
+				B8565C911ECC67D300D53996 /* ChatRecordCover.m */,
+			);
+			path = ChatRecordCover;
+			sourceTree = "<group>";
+		};
 		B85F39B11EC9C95100B2EA9E = {
 			isa = PBXGroup;
 			children = (
@@ -464,6 +476,7 @@
 		B85F3A661EC9C9DE00B2EA9E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				B8565C8F1ECC67C300D53996 /* ChatRecordCover */,
 				B85F3A671EC9C9DE00B2EA9E /* ChatCells */,
 				B85F3A741EC9C9DE00B2EA9E /* ChatListCell */,
 				B85F3A781EC9C9DE00B2EA9E /* KeyBoard */,
@@ -744,6 +757,7 @@
 				B85F3A631EC9C9C600B2EA9E /* LastViewController.m in Sources */,
 				B85F3A831EC9C9DE00B2EA9E /* ChatKeyboard.m in Sources */,
 				B85F3A651EC9C9C600B2EA9E /* ThirdViewController.m in Sources */,
+				B8565C921ECC67D300D53996 /* ChatRecordCover.m in Sources */,
 				B85F3A4C1EC9C9C600B2EA9E /* UIImageView+SDWebImage.m in Sources */,
 				B85F3A641EC9C9C600B2EA9E /* MainViewController.m in Sources */,
 				B85F3A8E1EC9C9E400B2EA9E /* ChatModel.m in Sources */,
@@ -1012,6 +1026,7 @@
 				B85F39E91EC9C95100B2EA9E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B85F39EA1EC9C95100B2EA9E /* Build configuration list for PBXNativeTarget "CocoaAsyncSocket_TCPTests" */ = {
 			isa = XCConfigurationList;
@@ -1020,6 +1035,7 @@
 				B85F39EC1EC9C95100B2EA9E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B85F39ED1EC9C95100B2EA9E /* Build configuration list for PBXNativeTarget "CocoaAsyncSocket_TCPUITests" */ = {
 			isa = XCConfigurationList;
@@ -1028,6 +1044,7 @@
 				B85F39EF1EC9C95100B2EA9E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

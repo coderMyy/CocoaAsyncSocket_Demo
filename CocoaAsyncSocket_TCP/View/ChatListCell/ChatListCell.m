@@ -50,6 +50,7 @@
     _nameLabel.text              = _chatModel.nickName;
     _timeLabel.text               = _chatModel.lastTimeString;
     _lastMessageLabel.text   = _chatModel.lastMessage;
+    _lastMessageLabel.attributedText = [[NSAttributedString alloc]initWithString:_chatModel.lastMessage attributes:@{NSFontAttributeName:FontSet(13),NSForegroundColorAttributeName:[UIColor redColor]}];
     _unreadLabel.text           = [_chatModel.unreadCount stringValue];
     _bellImageView.hidden    = _chatModel.noDisturb.integerValue == 1;
     _tipLabel.hidden             = _chatModel.noDisturb.integerValue == 1;
