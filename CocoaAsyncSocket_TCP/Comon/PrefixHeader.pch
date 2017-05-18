@@ -17,5 +17,6 @@
 #import "UIImageView+SDWebImage.h"
 #import "NSDate+extension.h"
 #import "NSString+extension.h"
+#import "UIImageView+GIF.h"
 
 #endif /* PrefixHeader_pch */

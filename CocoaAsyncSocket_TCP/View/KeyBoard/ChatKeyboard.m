@@ -8,6 +8,7 @@
 
 
 #import "ChatKeyboard.h"
+#import "ChatRecordTool.h"
 
 @interface ChatHandleButton : UIButton
 @end
@@ -38,9 +39,21 @@
 @property (nonatomic, strong) UIButton *swtHandleButton;
 //输入框
 @property (nonatomic, strong) UITextView *msgTextView;
+//录音工具(需引用)
+@property (nonatomic, strong) ChatRecordTool *recordTool;
+
 @end
 
 @implementation ChatKeyboard
+
+//录音工具
+- (ChatRecordTool *)recordTool
+{
+    if (!_recordTool) {
+        _recordTool = [ChatRecordTool chatRecordTool];
+    }
+    return _recordTool;
+}
 
 //表情键盘
 - (UIView *)facesKeyboard
@@ -214,27 +227,31 @@
 #pragma mark - 语音按钮点击
 - (void)audioLpButtonTouchDown:(UIButton *)audioLpButton
 {
-    
+    [self.recordTool beginRecord];
 }
 #pragma mark - 手指离开录音按钮 , 但不松开
 - (void)audioLpButtonMoveOut:(UIButton *)audioLpButton
 {
-    
+    [self.recordTool moveOut];
 }
 #pragma mark - 手指离开录音按钮 , 松开
 - (void)audioLpButtonMoveOutTouchUp:(UIButton *)audioLpButton
 {
-    
+    [self.recordTool cancelRecord];
+    //手动释放一下,每次录音创建新的蒙板,避免过多处理 定时器和子控件逻辑
+    self.recordTool = nil;
 }
 #pragma mark - 手指回到录音按钮,但不松开
 - (void)audioLpButtonMoveInside:(UIButton *)audioLpButton
 {
-    
+    [self.recordTool continueRecord];
 }
 #pragma mark - 手指回到录音按钮 , 松开
 - (void)audioLpButtonTouchUpInside:(UIButton *)audioLpButton
 {
-    
+    [self.recordTool stopRecord];
+    //手动释放一下,每次录音创建新的蒙板,避免过多处理 定时器和子控件逻辑
+    self.recordTool = nil;
 }
 #pragma mark - 切换到表情键盘
 - (void)switchFaceKeyboard:(UIButton *)swtFaceButton

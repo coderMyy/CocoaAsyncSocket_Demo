@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B8565C921ECC67D300D53996 /* ChatRecordCover.m in Sources */ = {isa = PBXBuildFile; fileRef = B8565C911ECC67D300D53996 /* ChatRecordCover.m */; };
 		B85F39BF1EC9C95100B2EA9E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B85F39BE1EC9C95100B2EA9E /* main.m */; };
 		B85F39C81EC9C95100B2EA9E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B85F39C61EC9C95100B2EA9E /* Main.storyboard */; };
 		B85F39CA1EC9C95100B2EA9E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B85F39C91EC9C95100B2EA9E /* Assets.xcassets */; };
@@ -60,6 +59,11 @@
 		B85F3A8C1EC9C9E400B2EA9E /* ChatHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = B85F3A861EC9C9E400B2EA9E /* ChatHandler.m */; };
 		B85F3A8D1EC9C9E400B2EA9E /* ChatUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = B85F3A881EC9C9E400B2EA9E /* ChatUtil.m */; };
 		B85F3A8E1EC9C9E400B2EA9E /* ChatModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B85F3A8B1EC9C9E400B2EA9E /* ChatModel.m */; };
+		B8661AA21ECD7D120022753D /* libmp3lame.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B8661A9E1ECD7D120022753D /* libmp3lame.a */; };
+		B8661AA31ECD7D120022753D /* Mp3Recorder.m in Sources */ = {isa = PBXBuildFile; fileRef = B8661AA01ECD7D120022753D /* Mp3Recorder.m */; };
+		B8661AA41ECD7D120022753D /* TSMessagesDefaultDesign.json in Resources */ = {isa = PBXBuildFile; fileRef = B8661AA11ECD7D120022753D /* TSMessagesDefaultDesign.json */; };
+		B8661AA71ECD95680022753D /* ChatRecordTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B8661AA61ECD95680022753D /* ChatRecordTool.m */; };
+		B8661AAA1ECD998E0022753D /* UIImageView+GIF.m in Sources */ = {isa = PBXBuildFile; fileRef = B8661AA91ECD998E0022753D /* UIImageView+GIF.m */; };
 		E1527204E4A6C66E20ABAB19 /* Pods_CocoaAsyncSocket_TCP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24AA3076491D2596209CE424 /* Pods_CocoaAsyncSocket_TCP.framework */; };
 /* End PBXBuildFile section */
 
@@ -84,8 +88,6 @@
 		24AA3076491D2596209CE424 /* Pods_CocoaAsyncSocket_TCP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CocoaAsyncSocket_TCP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AE7FCF3D1D9A8F040607338 /* Pods-CocoaAsyncSocket_TCP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CocoaAsyncSocket_TCP.release.xcconfig"; path = "Pods/Target Support Files/Pods-CocoaAsyncSocket_TCP/Pods-CocoaAsyncSocket_TCP.release.xcconfig"; sourceTree = "<group>"; };
 		66DD7434C83D6F468099D4BF /* Pods-CocoaAsyncSocket_TCP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CocoaAsyncSocket_TCP.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CocoaAsyncSocket_TCP/Pods-CocoaAsyncSocket_TCP.debug.xcconfig"; sourceTree = "<group>"; };
-		B8565C901ECC67D300D53996 /* ChatRecordCover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatRecordCover.h; sourceTree = "<group>"; };
-		B8565C911ECC67D300D53996 /* ChatRecordCover.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatRecordCover.m; sourceTree = "<group>"; };
 		B85F39BA1EC9C95100B2EA9E /* CocoaAsyncSocket_TCP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CocoaAsyncSocket_TCP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B85F39BE1EC9C95100B2EA9E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B85F39C71EC9C95100B2EA9E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -191,6 +193,16 @@
 		B85F3A881EC9C9E400B2EA9E /* ChatUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatUtil.m; sourceTree = "<group>"; };
 		B85F3A8A1EC9C9E400B2EA9E /* ChatModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatModel.h; sourceTree = "<group>"; };
 		B85F3A8B1EC9C9E400B2EA9E /* ChatModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatModel.m; sourceTree = "<group>"; };
+		B8661A9C1ECD7D120022753D /* ACMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACMacros.h; sourceTree = "<group>"; };
+		B8661A9D1ECD7D120022753D /* lame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lame.h; sourceTree = "<group>"; };
+		B8661A9E1ECD7D120022753D /* libmp3lame.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libmp3lame.a; sourceTree = "<group>"; };
+		B8661A9F1ECD7D120022753D /* Mp3Recorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mp3Recorder.h; sourceTree = "<group>"; };
+		B8661AA01ECD7D120022753D /* Mp3Recorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Mp3Recorder.m; sourceTree = "<group>"; };
+		B8661AA11ECD7D120022753D /* TSMessagesDefaultDesign.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TSMessagesDefaultDesign.json; sourceTree = "<group>"; };
+		B8661AA51ECD95680022753D /* ChatRecordTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatRecordTool.h; sourceTree = "<group>"; };
+		B8661AA61ECD95680022753D /* ChatRecordTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatRecordTool.m; sourceTree = "<group>"; };
+		B8661AA81ECD998E0022753D /* UIImageView+GIF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+GIF.h"; sourceTree = "<group>"; };
+		B8661AA91ECD998E0022753D /* UIImageView+GIF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+GIF.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -199,6 +211,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1527204E4A6C66E20ABAB19 /* Pods_CocoaAsyncSocket_TCP.framework in Frameworks */,
+				B8661AA21ECD7D120022753D /* libmp3lame.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -222,8 +235,9 @@
 		B8565C8F1ECC67C300D53996 /* ChatRecordCover */ = {
 			isa = PBXGroup;
 			children = (
-				B8565C901ECC67D300D53996 /* ChatRecordCover.h */,
-				B8565C911ECC67D300D53996 /* ChatRecordCover.m */,
+				B8661A9B1ECD7D120022753D /* RecordUtil */,
+				B8661AA51ECD95680022753D /* ChatRecordTool.h */,
+				B8661AA61ECD95680022753D /* ChatRecordTool.m */,
 			);
 			path = ChatRecordCover;
 			sourceTree = "<group>";
@@ -353,6 +367,8 @@
 				B85F3A061EC9C9C600B2EA9E /* UIImage+colorImage.m */,
 				B85F3A071EC9C9C600B2EA9E /* UIImageView+SDWebImage.h */,
 				B85F3A081EC9C9C600B2EA9E /* UIImageView+SDWebImage.m */,
+				B8661AA81ECD998E0022753D /* UIImageView+GIF.h */,
+				B8661AA91ECD998E0022753D /* UIImageView+GIF.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -542,6 +558,19 @@
 			path = ChatModel;
 			sourceTree = "<group>";
 		};
+		B8661A9B1ECD7D120022753D /* RecordUtil */ = {
+			isa = PBXGroup;
+			children = (
+				B8661A9C1ECD7D120022753D /* ACMacros.h */,
+				B8661A9D1ECD7D120022753D /* lame.h */,
+				B8661A9E1ECD7D120022753D /* libmp3lame.a */,
+				B8661A9F1ECD7D120022753D /* Mp3Recorder.h */,
+				B8661AA01ECD7D120022753D /* Mp3Recorder.m */,
+				B8661AA11ECD7D120022753D /* TSMessagesDefaultDesign.json */,
+			);
+			path = RecordUtil;
+			sourceTree = "<group>";
+		};
 		CBB7B1986CB029097EB5B82F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -672,6 +701,7 @@
 				B85F39CA1EC9C95100B2EA9E /* Assets.xcassets in Resources */,
 				B85F3A821EC9C9DE00B2EA9E /* ChatListCell.xib in Resources */,
 				B85F3A601EC9C9C600B2EA9E /* Tabbars.plist in Resources */,
+				B8661AA41ECD7D120022753D /* TSMessagesDefaultDesign.json in Resources */,
 				B85F39C81EC9C95100B2EA9E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -757,8 +787,8 @@
 				B85F3A631EC9C9C600B2EA9E /* LastViewController.m in Sources */,
 				B85F3A831EC9C9DE00B2EA9E /* ChatKeyboard.m in Sources */,
 				B85F3A651EC9C9C600B2EA9E /* ThirdViewController.m in Sources */,
-				B8565C921ECC67D300D53996 /* ChatRecordCover.m in Sources */,
 				B85F3A4C1EC9C9C600B2EA9E /* UIImageView+SDWebImage.m in Sources */,
+				B8661AA31ECD7D120022753D /* Mp3Recorder.m in Sources */,
 				B85F3A641EC9C9C600B2EA9E /* MainViewController.m in Sources */,
 				B85F3A8E1EC9C9E400B2EA9E /* ChatModel.m in Sources */,
 				B85F3A581EC9C9C600B2EA9E /* ReachStateWIFI.m in Sources */,
@@ -768,7 +798,9 @@
 				B85F3A611EC9C9C600B2EA9E /* ChatListViewController.m in Sources */,
 				B85F3A7E1EC9C9DE00B2EA9E /* ChatTextCell.m in Sources */,
 				B85F3A571EC9C9C600B2EA9E /* ReachStateUnReachable.m in Sources */,
+				B8661AA71ECD95680022753D /* ChatRecordTool.m in Sources */,
 				B85F3A551EC9C9C600B2EA9E /* ReachStateLoading.m in Sources */,
+				B8661AAA1ECD998E0022753D /* UIImageView+GIF.m in Sources */,
 				B85F3A491EC9C9C600B2EA9E /* NSDate+extension.m in Sources */,
 				B85F3A621EC9C9C600B2EA9E /* ChatViewController.m in Sources */,
 				B85F3A4E1EC9C9C600B2EA9E /* MYCoretextResultTool.m in Sources */,
@@ -943,6 +975,10 @@
 				GCC_PREFIX_HEADER = CocoaAsyncSocket_TCP/Comon/PrefixHeader.pch;
 				INFOPLIST_FILE = CocoaAsyncSocket_TCP/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/CocoaAsyncSocket_TCP/View/ChatRecordCover/RecordUtil",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mengyao-block-outlook.CocoaAsyncSocket-TCP";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -956,6 +992,10 @@
 				GCC_PREFIX_HEADER = CocoaAsyncSocket_TCP/Comon/PrefixHeader.pch;
 				INFOPLIST_FILE = CocoaAsyncSocket_TCP/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/CocoaAsyncSocket_TCP/View/ChatRecordCover/RecordUtil",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mengyao-block-outlook.CocoaAsyncSocket-TCP";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
