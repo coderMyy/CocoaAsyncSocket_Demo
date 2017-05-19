@@ -59,6 +59,7 @@
 		B85F3A8C1EC9C9E400B2EA9E /* ChatHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = B85F3A861EC9C9E400B2EA9E /* ChatHandler.m */; };
 		B85F3A8D1EC9C9E400B2EA9E /* ChatUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = B85F3A881EC9C9E400B2EA9E /* ChatUtil.m */; };
 		B85F3A8E1EC9C9E400B2EA9E /* ChatModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B85F3A8B1EC9C9E400B2EA9E /* ChatModel.m */; };
+		B862F5B51ECE7EB300B40BA1 /* ChatEmotions.plist in Resources */ = {isa = PBXBuildFile; fileRef = B862F5B41ECE7EB300B40BA1 /* ChatEmotions.plist */; };
 		B8661AA21ECD7D120022753D /* libmp3lame.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B8661A9E1ECD7D120022753D /* libmp3lame.a */; };
 		B8661AA31ECD7D120022753D /* Mp3Recorder.m in Sources */ = {isa = PBXBuildFile; fileRef = B8661AA01ECD7D120022753D /* Mp3Recorder.m */; };
 		B8661AA41ECD7D120022753D /* TSMessagesDefaultDesign.json in Resources */ = {isa = PBXBuildFile; fileRef = B8661AA11ECD7D120022753D /* TSMessagesDefaultDesign.json */; };
@@ -193,6 +194,7 @@
 		B85F3A881EC9C9E400B2EA9E /* ChatUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatUtil.m; sourceTree = "<group>"; };
 		B85F3A8A1EC9C9E400B2EA9E /* ChatModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatModel.h; sourceTree = "<group>"; };
 		B85F3A8B1EC9C9E400B2EA9E /* ChatModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatModel.m; sourceTree = "<group>"; };
+		B862F5B41ECE7EB300B40BA1 /* ChatEmotions.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ChatEmotions.plist; sourceTree = "<group>"; };
 		B8661A9C1ECD7D120022753D /* ACMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACMacros.h; sourceTree = "<group>"; };
 		B8661A9D1ECD7D120022753D /* lame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lame.h; sourceTree = "<group>"; };
 		B8661A9E1ECD7D120022753D /* libmp3lame.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libmp3lame.a; sourceTree = "<group>"; };
@@ -534,6 +536,7 @@
 			children = (
 				B85F3A791EC9C9DE00B2EA9E /* ChatKeyboard.h */,
 				B85F3A7A1EC9C9DE00B2EA9E /* ChatKeyboard.m */,
+				B862F5B41ECE7EB300B40BA1 /* ChatEmotions.plist */,
 			);
 			path = KeyBoard;
 			sourceTree = "<group>";
@@ -702,6 +705,7 @@
 				B85F3A821EC9C9DE00B2EA9E /* ChatListCell.xib in Resources */,
 				B85F3A601EC9C9C600B2EA9E /* Tabbars.plist in Resources */,
 				B8661AA41ECD7D120022753D /* TSMessagesDefaultDesign.json in Resources */,
+				B862F5B51ECE7EB300B40BA1 /* ChatEmotions.plist in Resources */,
 				B85F39C81EC9C95100B2EA9E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
