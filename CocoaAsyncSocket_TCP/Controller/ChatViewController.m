@@ -197,7 +197,7 @@
     
     //初始化键盘
     [self.view addSubview:self.customKeyboard];
-    self.customKeyboard.frame = Frame(0, SCREEN_HEIGHT - 49, SCREEN_WITDTH, CUSTOMKEYBOARD_HEIGHT);
+    self.customKeyboard.frame = Frame(0, SCREEN_HEIGHT - 49, SCREEN_WITDTH, CTKEYBOARD_DEFAULTHEIGHT);
 }
 
 #pragma mark - 注册通知

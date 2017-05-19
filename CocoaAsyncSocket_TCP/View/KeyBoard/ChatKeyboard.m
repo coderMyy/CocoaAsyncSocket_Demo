@@ -231,11 +231,12 @@
         _msgTextView.font = FontSet(14);
         _msgTextView.showsVerticalScrollIndicator = NO;
         _msgTextView.showsHorizontalScrollIndicator = NO;
-        _msgTextView.scrollEnabled = NO;
         _msgTextView.returnKeyType = UIReturnKeySend;
         _msgTextView.enablesReturnKeyAutomatically = YES;
         _msgTextView.delegate = self;
         ViewRadius(_msgTextView, 5);
+        //观察者监听高度变化
+        [_msgTextView addObserver:self forKeyPath:@"contentSize" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:nil];
     }
     return _msgTextView;
 }
@@ -318,11 +319,11 @@
 {
     self.messageBar.frame = Frame(0, 0, SCREEN_WITDTH, 49);  //消息栏
     self.audioButton.frame = Frame(10, (Height(self.messageBar.frame) - 30)*0.5, 30, 30); //语音按钮
-    self.audioLpButton.frame = Frame(MaxX(self.audioButton.frame)+15,(Height(self.messageBar.frame)-34)*0.5, SCREEN_WITDTH - 155, 34); //长按录音按钮
+    self.audioLpButton.frame = Frame(MaxX(self.audioButton.frame)+15,(Height(self.messageBar.frame)-35)*0.5, SCREEN_WITDTH - 155, 35); //长按录音按钮
     self.msgTextView.frame = self.audioLpButton.frame;  //输入框
     self.swtFaceButton.frame  = Frame(MaxX(self.msgTextView.frame)+15, (Height(self.messageBar.frame)-30)*0.5,30, 30); //表情键盘切换按钮
     self.swtHandleButton.frame = Frame(MaxX(self.swtFaceButton.frame)+15, (Height(self.messageBar.frame)-30)*0.5, 30, 30); //加号按钮切换操作键盘
-     self.keyBoardContainer.frame = Frame(0,Height(self.messageBar.frame), SCREEN_WITDTH,CUSTOMKEYBOARD_HEIGHT - Height(self.messageBar.frame)); //自定义键盘容器
+     self.keyBoardContainer.frame = Frame(0,Height(self.messageBar.frame), SCREEN_WITDTH,CTKEYBOARD_DEFAULTHEIGHT - Height(self.messageBar.frame)); //自定义键盘容器
     self.handleKeyboard.frame = self.keyBoardContainer.bounds ;//键盘操作栏
     self.facesKeyboard.frame = self.keyBoardContainer.bounds ; //表情键盘部分
     
@@ -388,6 +389,14 @@
 #pragma mark - 切换到表情键盘
 - (void)switchFaceKeyboard:(UIButton *)swtFaceButton
 {
+    
+    if (swtFaceButton.selected) {
+        
+    }else{
+        
+    }
+    
+    
     _msgTextView.hidden = NO;
     _audioLpButton.hidden  = YES;
     [_msgTextView resignFirstResponder];
@@ -421,6 +430,25 @@
 {
     
 }
+
+#pragma mark - 监听输入框变化 (这里如果放到layout里自动让他布局 , 会稍显麻烦一些 , 所以自动手动控制一下)
+//这里用contentSize计算较为简单和精确 , 如果计算文字高度 ,  还需要加上textView的内间距.
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context
+{
+    CGFloat oldHeight  = [change[@"old"]CGSizeValue].height;
+    CGFloat newHeight = [change[@"new"]CGSizeValue].height;
+    if (oldHeight <=0 || newHeight <=0) return;
+    NSLog(@"------new ----%@",change[@"new"]);
+    NSLog(@"-------old ---%@",change[@"old"]);
+    if (change[@"new"] != change[@"old"]) {
+        NSLog(@"高度变化");
+        self.messageBar.frame = Frame(0, 0, SCREEN_WITDTH, newHeight+MinY(self.msgTextView.frame)*2);
+        self.msgTextView.frame = Frame(MinX(self.msgTextView.frame),(Height(self.messageBar.frame)-newHeight)*0.5, Width(self.msgTextView.frame), newHeight);
+        self.keyBoardContainer.frame = Frame(0, MaxY(self.messageBar.frame), SCREEN_WITDTH, Height(self.keyBoardContainer.frame));
+        self.frame = Frame(0,SCREEN_HEIGHT - Height(self.messageBar.frame) - Height(self.keyBoardContainer.frame)-49, SCREEN_WITDTH,Height(self.keyBoardContainer.frame) + Height(self.messageBar.frame));
+    }
+}
+
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
 {
     return YES;
@@ -471,4 +499,9 @@
     
 }
 
+
+- (void)dealloc
+{
+    [self.msgTextView removeObserver:self forKeyPath:@"contentSize"];
+}
 @end
