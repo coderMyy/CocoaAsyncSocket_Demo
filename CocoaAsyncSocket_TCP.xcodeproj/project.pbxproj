@@ -21,6 +21,7 @@
 		B816A1E01ED040A20024859F /* TZProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = B816A1D01ED040A20024859F /* TZProgressView.m */; };
 		B816A1E11ED040A20024859F /* TZVideoPlayerController.m in Sources */ = {isa = PBXBuildFile; fileRef = B816A1D21ED040A20024859F /* TZVideoPlayerController.m */; };
 		B816A1E21ED040A20024859F /* UIView+Layout.m in Sources */ = {isa = PBXBuildFile; fileRef = B816A1D41ED040A20024859F /* UIView+Layout.m */; };
+		B816A1E81ED056070024859F /* ChatAlbumModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B816A1E71ED056070024859F /* ChatAlbumModel.m */; };
 		B85F39BF1EC9C95100B2EA9E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B85F39BE1EC9C95100B2EA9E /* main.m */; };
 		B85F39C81EC9C95100B2EA9E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B85F39C61EC9C95100B2EA9E /* Main.storyboard */; };
 		B85F39CA1EC9C95100B2EA9E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B85F39C91EC9C95100B2EA9E /* Assets.xcassets */; };
@@ -131,6 +132,8 @@
 		B816A1D21ED040A20024859F /* TZVideoPlayerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TZVideoPlayerController.m; sourceTree = "<group>"; };
 		B816A1D31ED040A20024859F /* UIView+Layout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Layout.h"; sourceTree = "<group>"; };
 		B816A1D41ED040A20024859F /* UIView+Layout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Layout.m"; sourceTree = "<group>"; };
+		B816A1E61ED056070024859F /* ChatAlbumModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatAlbumModel.h; sourceTree = "<group>"; };
+		B816A1E71ED056070024859F /* ChatAlbumModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatAlbumModel.m; sourceTree = "<group>"; };
 		B85F39BA1EC9C95100B2EA9E /* CocoaAsyncSocket_TCP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CocoaAsyncSocket_TCP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B85F39BE1EC9C95100B2EA9E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B85F39C71EC9C95100B2EA9E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -638,6 +641,8 @@
 			children = (
 				B85F3A8A1EC9C9E400B2EA9E /* ChatModel.h */,
 				B85F3A8B1EC9C9E400B2EA9E /* ChatModel.m */,
+				B816A1E61ED056070024859F /* ChatAlbumModel.h */,
+				B816A1E71ED056070024859F /* ChatAlbumModel.m */,
 			);
 			path = ChatModel;
 			sourceTree = "<group>";
@@ -874,6 +879,7 @@
 				B85F3A631EC9C9C600B2EA9E /* LastViewController.m in Sources */,
 				B816A1D71ED040A20024859F /* TZAssetModel.m in Sources */,
 				B85F3A831EC9C9DE00B2EA9E /* ChatKeyboard.m in Sources */,
+				B816A1E81ED056070024859F /* ChatAlbumModel.m in Sources */,
 				B816A1E11ED040A20024859F /* TZVideoPlayerController.m in Sources */,
 				B85F3A651EC9C9C600B2EA9E /* ThirdViewController.m in Sources */,
 				B85F3A4C1EC9C9C600B2EA9E /* UIImageView+SDWebImage.m in Sources */,
