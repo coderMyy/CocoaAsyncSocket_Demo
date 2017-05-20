@@ -22,7 +22,8 @@
 
 @end
 
-static CGFloat sysKeyboardEndY = 0;
+//记录当前键盘的高度 ，键盘除了系统的键盘还有咱们自定义的键盘，互相来回切换
+static CGFloat keyboardHeight = 0;
 
 @interface ChatKeyboard ()<UITextViewDelegate,UIScrollViewDelegate>
  //表情
@@ -349,7 +350,8 @@ static CGFloat sysKeyboardEndY = 0;
     [self reloadSwitchButtons];
     //获取系统键盘高度
     CGFloat systemKbHeight  = [note.userInfo[@"UIKeyboardBoundsUserInfoKey"]CGRectValue].size.height;
-    //记录Y值
+    //记录系统键盘高度
+    keyboardHeight = systemKbHeight;
     //将自定义键盘跟随位移
     [self customKeyboardMove:SCREEN_HEIGHT - systemKbHeight - Height(self.messageBar.frame)];
 }
@@ -390,6 +392,8 @@ static CGFloat sysKeyboardEndY = 0;
     //重置其他按钮seleted
     self.audioButton.selected = NO;
     self.swtHandleButton.selected = NO;
+    //更新记录键盘高度
+    keyboardHeight = Height(self.keyBoardContainer.frame);
     
     if (swtFaceButton.selected) {
         _msgTextView.hidden = NO;
@@ -410,6 +414,8 @@ static CGFloat sysKeyboardEndY = 0;
     //重置其他按钮selected
     self.audioButton.selected = NO;
     self.swtFaceButton.selected = NO;
+    //更新记录键盘高度
+    keyboardHeight = Height(self.keyBoardContainer.frame);
     
     if (swtHandleButton.selected) {
         _msgTextView.hidden = NO;
@@ -469,7 +475,8 @@ static CGFloat sysKeyboardEndY = 0;
     NSLog(@"-------old ---%@",change[@"old"]);
     if (change[@"new"] != change[@"old"]) {
         NSLog(@"高度变化");
-        [self msgTextViewHeightFit];
+        //根据实时的键盘高度进行布局
+        [self msgTextViewHeightFit:keyboardHeight];
     }
 }
 
@@ -487,12 +494,12 @@ static CGFloat sysKeyboardEndY = 0;
 }
 
 #pragma mark - 输入框拉高
-- (void)msgTextViewHeightFit
+- (void)msgTextViewHeightFit:(CGFloat)currentKbHeight
 {
     self.messageBar.frame = Frame(0, 0, SCREEN_WITDTH, self.msgTextView.contentSize.height +MinY(self.msgTextView.frame)*2);
     self.msgTextView.frame = Frame(MinX(self.msgTextView.frame),(Height(self.messageBar.frame)-self.msgTextView.contentSize.height)*0.5, Width(self.msgTextView.frame), self.msgTextView.contentSize.height);
     self.keyBoardContainer.frame = Frame(0, MaxY(self.messageBar.frame), SCREEN_WITDTH, Height(self.keyBoardContainer.frame));
-    self.frame = Frame(0,SCREEN_HEIGHT - Height(self.messageBar.frame) - Height(self.keyBoardContainer.frame)-49, SCREEN_WITDTH,Height(self.keyBoardContainer.frame) + Height(self.messageBar.frame));
+    self.frame = Frame(0,SCREEN_HEIGHT - currentKbHeight-Height(self.messageBar.frame), SCREEN_WITDTH,Height(self.keyBoardContainer.frame) + Height(self.messageBar.frame));
 }
 
 #pragma mark - 拍摄 , 照片 ,视频按钮点击
@@ -522,15 +529,50 @@ static CGFloat sysKeyboardEndY = 0;
 #pragma mark - 点击表情
 - (void)emotionClick:(UIButton *)emotionBtn
 {
+    
     //获取点击的表情
     NSString *emotionKey = [NSString stringWithFormat:@"ChatEmotion_%li",emotionBtn.tag - 999];
     NSString *emotionName = [self.emotionDict objectForKey:emotionKey];
     //获取光标所在位置
     NSInteger location = self.msgTextView.selectedRange.location;
+    //变为可变字符串
     NSMutableString *txtStrM = [[NSMutableString alloc]initWithString:self.msgTextView.text];
-    [txtStrM insertString:emotionName atIndex:location];
-    self.msgTextView.text = txtStrM;
-    NSLog(@"--------当前点击了表情 : ------------------%@",emotionName);
+    
+    //判断是删除 ， 还是点击了正常的emotion表情
+    if ([emotionName isEqualToString:@"[del_]"]) {
+        
+        if (!txtStrM.length) return;
+        
+        //正则检测是否存在表情
+        NSRegularExpression *pression = [NSRegularExpression regularExpressionWithPattern:@"\\[[^\\[\\]]*\\]" options:NSRegularExpressionCaseInsensitive error:NULL];
+        NSArray *results = [pression matchesInString:self.msgTextView.text options:NSMatchingReportProgress range:NSMakeRange(0, self.msgTextView.text.length)];
+        //检测光标前是否有表情
+        __block BOOL deleteEmotion = NO;
+        [results enumerateObjectsUsingBlock:^(NSTextCheckingResult  *_Nonnull checkResult, NSUInteger idx, BOOL * _Nonnull stop) {
+            //光标前面有表情
+            if (checkResult.range.location + checkResult.range.length == location) {
+                
+                NSLog(@"-------光标前是表情------------");
+                [txtStrM replaceCharactersInRange:checkResult.range withString:@""];
+                self.msgTextView.text = txtStrM;
+                deleteEmotion = YES;
+                *stop = YES;
+            }
+        }];
+        
+        //如果光标前没有表情
+        if (!deleteEmotion) {
+            [txtStrM replaceCharactersInRange:NSMakeRange(txtStrM.length-1, 1) withString:@""];
+            self.msgTextView.text = txtStrM;
+        }
+        
+    }else{
+        [txtStrM insertString:emotionName atIndex:location];
+        self.msgTextView.text = txtStrM;
+        //光标后移
+        self.msgTextView.selectedRange = NSMakeRange(location + emotionName.length, 0);
+        NSLog(@"--------当前点击了表情 : ------------------%@",emotionName);
+    }
 }
 
 #pragma mark - scrollViewDelegate
@@ -550,4 +592,7 @@ static CGFloat sysKeyboardEndY = 0;
 {
     [self.msgTextView removeObserver:self forKeyPath:@"contentSize"];
 }
+
+
+
 @end
