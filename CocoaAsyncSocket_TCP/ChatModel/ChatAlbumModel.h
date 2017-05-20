@@ -2,7 +2,7 @@
 //  ChatAlbumModel.h
 //  CocoaAsyncSocket_TCP
 //
-//  Created by 孟遥遥 on 2017/5/20.
+//  Created by 孟遥 on 2017/5/20.
 //  Copyright © 2017年 mengyao. All rights reserved.
 //
 
@@ -26,4 +26,5 @@
 @property (nonatomic, strong) UIImage *videoCoverImg;
 //视频时长
 @property (nonatomic, copy) NSString *videoDuration;
+
 @end

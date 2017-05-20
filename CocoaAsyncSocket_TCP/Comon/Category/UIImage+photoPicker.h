@@ -13,7 +13,7 @@
 typedef void(^photoPickerImagesCallback)(NSArray<ChatAlbumModel *> *images);
 
 //返回视频存储的位置
-typedef void(^videoPathCallback)(ChatAlbumModel *);
+typedef void(^videoPathCallback)(ChatAlbumModel *videoModel);
 
 
 @interface UIImage (photoPicker)

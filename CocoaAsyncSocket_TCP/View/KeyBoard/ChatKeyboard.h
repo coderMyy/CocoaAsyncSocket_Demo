@@ -13,7 +13,7 @@
 //仅声明,消除警告
 - (void)systemKeyboardWillShow:(NSNotification *)note;
 
-
+@property (nonatomic, strong) UIViewController *target;
 
 
 

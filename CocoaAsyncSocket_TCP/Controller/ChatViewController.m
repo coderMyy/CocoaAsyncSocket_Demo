@@ -38,6 +38,8 @@
 {
     if (!_customKeyboard) {
         _customKeyboard = [[ChatKeyboard alloc]init];
+        //传入当前控制器 ，方便打开相册（如放到控制器 ， 后期的逻辑过多，控制器会更加臃肿）
+        _customKeyboard.target = self;
     }
     return _customKeyboard;
 }

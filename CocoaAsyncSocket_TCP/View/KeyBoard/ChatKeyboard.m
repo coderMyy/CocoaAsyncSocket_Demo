@@ -9,6 +9,7 @@
 
 #import "ChatKeyboard.h"
 #import "ChatRecordTool.h"
+#import "UIImage+photoPicker.h"
 
 @interface ChatHandleButton : UIButton
 @end
@@ -515,6 +516,10 @@ static CGFloat keyboardHeight = 0;
     switch (button.tag - 9999) {
         case 0:
         {
+            // 这里用到了TZImagerPicker 相册选择器 写得挺好的 ，我对它进行了封装和修改了里面一些代码 。 后期有时间会自己写一个相册的选择器
+            [UIImage openPhotoPickerGetImages:^(NSArray<ChatAlbumModel *> *images) {
+                
+            } target:self.target maxCount:9];
             NSLog(@"-------------点击了相册");
         }
             break;
@@ -525,6 +530,9 @@ static CGFloat keyboardHeight = 0;
             break;
         case 2:
         {
+            [UIImage openPhotoPickerGetVideo:^(ChatAlbumModel *videoModel) {
+                
+            } target:self.target cacheDirectory:nil];
             NSLog(@"-------------点击了视频相册");
         }
             break;
