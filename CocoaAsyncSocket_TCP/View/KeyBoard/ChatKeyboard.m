@@ -349,14 +349,6 @@
     [self customKeyboardMove:SCREEN_HEIGHT - systemKbHeight - Height(self.messageBar.frame)];
 }
 
-#pragma mark - 切换至语音录制
-- (void)audioButtonClick:(UIButton *)audioButton
-{
-    [_msgTextView resignFirstResponder];
-    self.msgTextView.hidden = YES;
-    self.audioLpButton.hidden = NO;
-    [self customKeyboardMove:SCREEN_HEIGHT - Height(self.messageBar.frame)];
-}
 #pragma mark - 语音按钮点击
 - (void)audioLpButtonTouchDown:(UIButton *)audioLpButton
 {
@@ -389,32 +381,61 @@
 #pragma mark - 切换到表情键盘
 - (void)switchFaceKeyboard:(UIButton *)swtFaceButton
 {
+    swtFaceButton.selected = !swtFaceButton.selected;
+    //刷新表情和操作按钮
+    self.audioButton.selected = NO;
+    self.swtHandleButton.selected = NO;
     
     if (swtFaceButton.selected) {
-        
+        _msgTextView.hidden = NO;
+        _audioLpButton.hidden  = YES;
+        [_msgTextView resignFirstResponder];
+        //展示表情键盘
+        [self.keyBoardContainer bringSubviewToFront:self.facesKeyboard];
+        //自定义键盘位移
+        [self customKeyboardMove:SCREEN_HEIGHT - Height(self.frame)];
     }else{
-        
+        [_msgTextView becomeFirstResponder];
     }
-    
-    
-    _msgTextView.hidden = NO;
-    _audioLpButton.hidden  = YES;
-    [_msgTextView resignFirstResponder];
-    //展示表情键盘
-    [self.keyBoardContainer bringSubviewToFront:self.facesKeyboard];
-    //自定义键盘位移
-     [self customKeyboardMove:SCREEN_HEIGHT - Height(self.frame)];
 }
 #pragma mark - 切换到操作键盘
 - (void)switchHandleKeyboard:(UIButton *)swtHandleButton
 {
-    _msgTextView.hidden = NO;
-    _audioLpButton.hidden = YES;
-    [_msgTextView resignFirstResponder];
-    //展示操作键盘
-    [self.keyBoardContainer bringSubviewToFront:self.handleKeyboard];
-    //自定义键盘位移
-    [self customKeyboardMove:SCREEN_HEIGHT - Height(self.frame)];
+    swtHandleButton.selected = !swtHandleButton.selected;
+    //刷新表情和操作按钮
+    self.swtFaceButton.selected = NO;
+    self.audioButton.selected = NO;
+    
+    if (swtHandleButton.selected) {
+        _msgTextView.hidden = NO;
+        _audioLpButton.hidden = YES;
+        [_msgTextView resignFirstResponder];
+        //展示操作键盘
+        [self.keyBoardContainer bringSubviewToFront:self.handleKeyboard];
+        //自定义键盘位移
+        [self customKeyboardMove:SCREEN_HEIGHT - Height(self.frame)];
+    }else{
+        [_msgTextView becomeFirstResponder];
+    }
+}
+#pragma mark - 切换至语音录制
+- (void)audioButtonClick:(UIButton *)audioButton
+{
+    audioButton.selected = !audioButton.selected;
+    //刷新表情和操作按钮
+    self.swtFaceButton.selected = NO;
+    self.swtHandleButton.selected = NO;
+    
+    if (audioButton.selected) {
+        [_msgTextView resignFirstResponder];
+        self.msgTextView.hidden = YES;
+        self.audioLpButton.hidden = NO;
+        [self customKeyboardMove:SCREEN_HEIGHT - 49]; //默认高度 输入栏 49
+    }else{
+        self.msgTextView.hidden = NO;
+        self.audioLpButton.hidden = YES;
+        [self.msgTextView becomeFirstResponder];
+    }
 }
 
 #pragma mark - 自定义键盘位移变化
