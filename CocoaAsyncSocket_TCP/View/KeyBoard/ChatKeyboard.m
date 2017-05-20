@@ -486,6 +486,9 @@ static CGFloat keyboardHeight = 0;
     if ([text isEqualToString:@""""]) {
         
         NSLog(@"----------------点击了系统键盘删除键");
+        //系统键盘删除
+        [self keyboardDelete];
+        return NO;
     }
     return YES;
 }
