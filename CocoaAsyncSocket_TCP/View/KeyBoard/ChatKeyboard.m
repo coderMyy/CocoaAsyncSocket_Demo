@@ -22,6 +22,8 @@
 
 @end
 
+static CGFloat sysKeyboardEndY = 0;
+
 @interface ChatKeyboard ()<UITextViewDelegate,UIScrollViewDelegate>
  //表情
 @property (nonatomic, strong) UIView *facesKeyboard;
@@ -345,9 +347,9 @@
 {
     //重置所有按钮selected
     [self reloadSwitchButtons];
-    
     //获取系统键盘高度
     CGFloat systemKbHeight  = [note.userInfo[@"UIKeyboardBoundsUserInfoKey"]CGRectValue].size.height;
+    //记录Y值
     //将自定义键盘跟随位移
     [self customKeyboardMove:SCREEN_HEIGHT - systemKbHeight - Height(self.messageBar.frame)];
 }
@@ -467,10 +469,7 @@
     NSLog(@"-------old ---%@",change[@"old"]);
     if (change[@"new"] != change[@"old"]) {
         NSLog(@"高度变化");
-        self.messageBar.frame = Frame(0, 0, SCREEN_WITDTH, newHeight+MinY(self.msgTextView.frame)*2);
-        self.msgTextView.frame = Frame(MinX(self.msgTextView.frame),(Height(self.messageBar.frame)-newHeight)*0.5, Width(self.msgTextView.frame), newHeight);
-        self.keyBoardContainer.frame = Frame(0, MaxY(self.messageBar.frame), SCREEN_WITDTH, Height(self.keyBoardContainer.frame));
-        self.frame = Frame(0,SCREEN_HEIGHT - Height(self.messageBar.frame) - Height(self.keyBoardContainer.frame)-49, SCREEN_WITDTH,Height(self.keyBoardContainer.frame) + Height(self.messageBar.frame));
+        [self msgTextViewHeightFit];
     }
 }
 
@@ -485,6 +484,15 @@
     self.audioButton.selected        = NO;
     self.swtFaceButton.selected    = NO;
     self.swtHandleButton.selected = NO;
+}
+
+#pragma mark - 输入框拉高
+- (void)msgTextViewHeightFit
+{
+    self.messageBar.frame = Frame(0, 0, SCREEN_WITDTH, self.msgTextView.contentSize.height +MinY(self.msgTextView.frame)*2);
+    self.msgTextView.frame = Frame(MinX(self.msgTextView.frame),(Height(self.messageBar.frame)-self.msgTextView.contentSize.height)*0.5, Width(self.msgTextView.frame), self.msgTextView.contentSize.height);
+    self.keyBoardContainer.frame = Frame(0, MaxY(self.messageBar.frame), SCREEN_WITDTH, Height(self.keyBoardContainer.frame));
+    self.frame = Frame(0,SCREEN_HEIGHT - Height(self.messageBar.frame) - Height(self.keyBoardContainer.frame)-49, SCREEN_WITDTH,Height(self.keyBoardContainer.frame) + Height(self.messageBar.frame));
 }
 
 #pragma mark - 拍摄 , 照片 ,视频按钮点击
@@ -517,6 +525,11 @@
     //获取点击的表情
     NSString *emotionKey = [NSString stringWithFormat:@"ChatEmotion_%li",emotionBtn.tag - 999];
     NSString *emotionName = [self.emotionDict objectForKey:emotionKey];
+    //获取光标所在位置
+    NSInteger location = self.msgTextView.selectedRange.location;
+    NSMutableString *txtStrM = [[NSMutableString alloc]initWithString:self.msgTextView.text];
+    [txtStrM insertString:emotionName atIndex:location];
+    self.msgTextView.text = txtStrM;
     NSLog(@"--------当前点击了表情 : ------------------%@",emotionName);
 }
 
