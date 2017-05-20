@@ -343,6 +343,9 @@
 #pragma mark - 系统键盘即将弹起
 - (void)systemKeyboardWillShow:(NSNotification *)note
 {
+    //重置所有按钮selected
+    [self reloadSwitchButtons];
+    
     //获取系统键盘高度
     CGFloat systemKbHeight  = [note.userInfo[@"UIKeyboardBoundsUserInfoKey"]CGRectValue].size.height;
     //将自定义键盘跟随位移
@@ -382,7 +385,7 @@
 - (void)switchFaceKeyboard:(UIButton *)swtFaceButton
 {
     swtFaceButton.selected = !swtFaceButton.selected;
-    //刷新表情和操作按钮
+    //重置其他按钮seleted
     self.audioButton.selected = NO;
     self.swtHandleButton.selected = NO;
     
@@ -402,9 +405,9 @@
 - (void)switchHandleKeyboard:(UIButton *)swtHandleButton
 {
     swtHandleButton.selected = !swtHandleButton.selected;
-    //刷新表情和操作按钮
-    self.swtFaceButton.selected = NO;
+    //重置其他按钮selected
     self.audioButton.selected = NO;
+    self.swtFaceButton.selected = NO;
     
     if (swtHandleButton.selected) {
         _msgTextView.hidden = NO;
@@ -422,7 +425,7 @@
 - (void)audioButtonClick:(UIButton *)audioButton
 {
     audioButton.selected = !audioButton.selected;
-    //刷新表情和操作按钮
+     //重置其他按钮selected
     self.swtFaceButton.selected = NO;
     self.swtHandleButton.selected = NO;
     
@@ -436,6 +439,7 @@
         self.audioLpButton.hidden = YES;
         [self.msgTextView becomeFirstResponder];
     }
+    audioButton.selected = !_msgTextView.isFirstResponder;
 }
 
 #pragma mark - 自定义键盘位移变化
@@ -473,6 +477,14 @@
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
 {
     return YES;
+}
+
+#pragma mark - 切换按钮初始化
+- (void)reloadSwitchButtons
+{
+    self.audioButton.selected        = NO;
+    self.swtFaceButton.selected    = NO;
+    self.swtHandleButton.selected = NO;
 }
 
 #pragma mark - 拍摄 , 照片 ,视频按钮点击
