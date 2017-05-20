@@ -65,6 +65,22 @@
 		B8661AA41ECD7D120022753D /* TSMessagesDefaultDesign.json in Resources */ = {isa = PBXBuildFile; fileRef = B8661AA11ECD7D120022753D /* TSMessagesDefaultDesign.json */; };
 		B8661AA71ECD95680022753D /* ChatRecordTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B8661AA61ECD95680022753D /* ChatRecordTool.m */; };
 		B8661AAA1ECD998E0022753D /* UIImageView+GIF.m in Sources */ = {isa = PBXBuildFile; fileRef = B8661AA91ECD998E0022753D /* UIImageView+GIF.m */; };
+		B89E046A1ED03F23000863F1 /* UIImage+photoPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = B89E04691ED03F23000863F1 /* UIImage+photoPicker.m */; };
+		B89E048A1ED03FD4000863F1 /* JYImagePickerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B89E046D1ED03FD4000863F1 /* JYImagePickerManager.m */; };
+		B89E048B1ED03FD4000863F1 /* NSBundle+TZImagePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = B89E04701ED03FD4000863F1 /* NSBundle+TZImagePicker.m */; };
+		B89E048C1ED03FD4000863F1 /* TZAssetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B89E04721ED03FD4000863F1 /* TZAssetCell.m */; };
+		B89E048D1ED03FD4000863F1 /* TZAssetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B89E04741ED03FD4000863F1 /* TZAssetModel.m */; };
+		B89E048E1ED03FD4000863F1 /* TZGifPhotoPreviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B89E04761ED03FD4000863F1 /* TZGifPhotoPreviewController.m */; };
+		B89E048F1ED03FD4000863F1 /* TZImageCropManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B89E04781ED03FD4000863F1 /* TZImageCropManager.m */; };
+		B89E04901ED03FD4000863F1 /* TZImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B89E047A1ED03FD4000863F1 /* TZImageManager.m */; };
+		B89E04911ED03FD4000863F1 /* TZImagePickerController.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B89E047B1ED03FD4000863F1 /* TZImagePickerController.bundle */; };
+		B89E04921ED03FD4000863F1 /* TZImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = B89E047D1ED03FD4000863F1 /* TZImagePickerController.m */; };
+		B89E04931ED03FD4000863F1 /* TZPhotoPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = B89E047F1ED03FD4000863F1 /* TZPhotoPickerController.m */; };
+		B89E04941ED03FD4000863F1 /* TZPhotoPreviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B89E04811ED03FD4000863F1 /* TZPhotoPreviewCell.m */; };
+		B89E04951ED03FD4000863F1 /* TZPhotoPreviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B89E04831ED03FD4000863F1 /* TZPhotoPreviewController.m */; };
+		B89E04961ED03FD4000863F1 /* TZProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = B89E04851ED03FD4000863F1 /* TZProgressView.m */; };
+		B89E04971ED03FD4000863F1 /* TZVideoPlayerController.m in Sources */ = {isa = PBXBuildFile; fileRef = B89E04871ED03FD4000863F1 /* TZVideoPlayerController.m */; };
+		B89E04981ED03FD4000863F1 /* UIView+Layout.m in Sources */ = {isa = PBXBuildFile; fileRef = B89E04891ED03FD4000863F1 /* UIView+Layout.m */; };
 		E1527204E4A6C66E20ABAB19 /* Pods_CocoaAsyncSocket_TCP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24AA3076491D2596209CE424 /* Pods_CocoaAsyncSocket_TCP.framework */; };
 /* End PBXBuildFile section */
 
@@ -205,6 +221,37 @@
 		B8661AA61ECD95680022753D /* ChatRecordTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatRecordTool.m; sourceTree = "<group>"; };
 		B8661AA81ECD998E0022753D /* UIImageView+GIF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+GIF.h"; sourceTree = "<group>"; };
 		B8661AA91ECD998E0022753D /* UIImageView+GIF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+GIF.m"; sourceTree = "<group>"; };
+		B89E04681ED03F23000863F1 /* UIImage+photoPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+photoPicker.h"; sourceTree = "<group>"; };
+		B89E04691ED03F23000863F1 /* UIImage+photoPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+photoPicker.m"; sourceTree = "<group>"; };
+		B89E046C1ED03FD4000863F1 /* JYImagePickerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYImagePickerManager.h; sourceTree = "<group>"; };
+		B89E046D1ED03FD4000863F1 /* JYImagePickerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYImagePickerManager.m; sourceTree = "<group>"; };
+		B89E046F1ED03FD4000863F1 /* NSBundle+TZImagePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+TZImagePicker.h"; sourceTree = "<group>"; };
+		B89E04701ED03FD4000863F1 /* NSBundle+TZImagePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+TZImagePicker.m"; sourceTree = "<group>"; };
+		B89E04711ED03FD4000863F1 /* TZAssetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TZAssetCell.h; sourceTree = "<group>"; };
+		B89E04721ED03FD4000863F1 /* TZAssetCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TZAssetCell.m; sourceTree = "<group>"; };
+		B89E04731ED03FD4000863F1 /* TZAssetModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TZAssetModel.h; sourceTree = "<group>"; };
+		B89E04741ED03FD4000863F1 /* TZAssetModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TZAssetModel.m; sourceTree = "<group>"; };
+		B89E04751ED03FD4000863F1 /* TZGifPhotoPreviewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TZGifPhotoPreviewController.h; sourceTree = "<group>"; };
+		B89E04761ED03FD4000863F1 /* TZGifPhotoPreviewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TZGifPhotoPreviewController.m; sourceTree = "<group>"; };
+		B89E04771ED03FD4000863F1 /* TZImageCropManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TZImageCropManager.h; sourceTree = "<group>"; };
+		B89E04781ED03FD4000863F1 /* TZImageCropManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TZImageCropManager.m; sourceTree = "<group>"; };
+		B89E04791ED03FD4000863F1 /* TZImageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TZImageManager.h; sourceTree = "<group>"; };
+		B89E047A1ED03FD4000863F1 /* TZImageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TZImageManager.m; sourceTree = "<group>"; };
+		B89E047B1ED03FD4000863F1 /* TZImagePickerController.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TZImagePickerController.bundle; sourceTree = "<group>"; };
+		B89E047C1ED03FD4000863F1 /* TZImagePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TZImagePickerController.h; sourceTree = "<group>"; };
+		B89E047D1ED03FD4000863F1 /* TZImagePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TZImagePickerController.m; sourceTree = "<group>"; };
+		B89E047E1ED03FD4000863F1 /* TZPhotoPickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TZPhotoPickerController.h; sourceTree = "<group>"; };
+		B89E047F1ED03FD4000863F1 /* TZPhotoPickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TZPhotoPickerController.m; sourceTree = "<group>"; };
+		B89E04801ED03FD4000863F1 /* TZPhotoPreviewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TZPhotoPreviewCell.h; sourceTree = "<group>"; };
+		B89E04811ED03FD4000863F1 /* TZPhotoPreviewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TZPhotoPreviewCell.m; sourceTree = "<group>"; };
+		B89E04821ED03FD4000863F1 /* TZPhotoPreviewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TZPhotoPreviewController.h; sourceTree = "<group>"; };
+		B89E04831ED03FD4000863F1 /* TZPhotoPreviewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TZPhotoPreviewController.m; sourceTree = "<group>"; };
+		B89E04841ED03FD4000863F1 /* TZProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TZProgressView.h; sourceTree = "<group>"; };
+		B89E04851ED03FD4000863F1 /* TZProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TZProgressView.m; sourceTree = "<group>"; };
+		B89E04861ED03FD4000863F1 /* TZVideoPlayerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TZVideoPlayerController.h; sourceTree = "<group>"; };
+		B89E04871ED03FD4000863F1 /* TZVideoPlayerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TZVideoPlayerController.m; sourceTree = "<group>"; };
+		B89E04881ED03FD4000863F1 /* UIView+Layout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Layout.h"; sourceTree = "<group>"; };
+		B89E04891ED03FD4000863F1 /* UIView+Layout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Layout.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -324,6 +371,7 @@
 		B85F39F71EC9C9C600B2EA9E /* Comon */ = {
 			isa = PBXGroup;
 			children = (
+				B89E046B1ED03FD4000863F1 /* ImagePicker */,
 				B85F39F81EC9C9C600B2EA9E /* Account */,
 				B85F39FD1EC9C9C600B2EA9E /* BaseController */,
 				B85F3A001EC9C9C600B2EA9E /* Category */,
@@ -361,6 +409,8 @@
 		B85F3A001EC9C9C600B2EA9E /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				B89E04681ED03F23000863F1 /* UIImage+photoPicker.h */,
+				B89E04691ED03F23000863F1 /* UIImage+photoPicker.m */,
 				B85F3A011EC9C9C600B2EA9E /* NSDate+extension.h */,
 				B85F3A021EC9C9C600B2EA9E /* NSDate+extension.m */,
 				B85F3A031EC9C9C600B2EA9E /* NSString+extension.h */,
@@ -574,6 +624,50 @@
 			path = RecordUtil;
 			sourceTree = "<group>";
 		};
+		B89E046B1ED03FD4000863F1 /* ImagePicker */ = {
+			isa = PBXGroup;
+			children = (
+				B89E046C1ED03FD4000863F1 /* JYImagePickerManager.h */,
+				B89E046D1ED03FD4000863F1 /* JYImagePickerManager.m */,
+				B89E046E1ED03FD4000863F1 /* TZImagePickerController */,
+			);
+			path = ImagePicker;
+			sourceTree = "<group>";
+		};
+		B89E046E1ED03FD4000863F1 /* TZImagePickerController */ = {
+			isa = PBXGroup;
+			children = (
+				B89E046F1ED03FD4000863F1 /* NSBundle+TZImagePicker.h */,
+				B89E04701ED03FD4000863F1 /* NSBundle+TZImagePicker.m */,
+				B89E04711ED03FD4000863F1 /* TZAssetCell.h */,
+				B89E04721ED03FD4000863F1 /* TZAssetCell.m */,
+				B89E04731ED03FD4000863F1 /* TZAssetModel.h */,
+				B89E04741ED03FD4000863F1 /* TZAssetModel.m */,
+				B89E04751ED03FD4000863F1 /* TZGifPhotoPreviewController.h */,
+				B89E04761ED03FD4000863F1 /* TZGifPhotoPreviewController.m */,
+				B89E04771ED03FD4000863F1 /* TZImageCropManager.h */,
+				B89E04781ED03FD4000863F1 /* TZImageCropManager.m */,
+				B89E04791ED03FD4000863F1 /* TZImageManager.h */,
+				B89E047A1ED03FD4000863F1 /* TZImageManager.m */,
+				B89E047B1ED03FD4000863F1 /* TZImagePickerController.bundle */,
+				B89E047C1ED03FD4000863F1 /* TZImagePickerController.h */,
+				B89E047D1ED03FD4000863F1 /* TZImagePickerController.m */,
+				B89E047E1ED03FD4000863F1 /* TZPhotoPickerController.h */,
+				B89E047F1ED03FD4000863F1 /* TZPhotoPickerController.m */,
+				B89E04801ED03FD4000863F1 /* TZPhotoPreviewCell.h */,
+				B89E04811ED03FD4000863F1 /* TZPhotoPreviewCell.m */,
+				B89E04821ED03FD4000863F1 /* TZPhotoPreviewController.h */,
+				B89E04831ED03FD4000863F1 /* TZPhotoPreviewController.m */,
+				B89E04841ED03FD4000863F1 /* TZProgressView.h */,
+				B89E04851ED03FD4000863F1 /* TZProgressView.m */,
+				B89E04861ED03FD4000863F1 /* TZVideoPlayerController.h */,
+				B89E04871ED03FD4000863F1 /* TZVideoPlayerController.m */,
+				B89E04881ED03FD4000863F1 /* UIView+Layout.h */,
+				B89E04891ED03FD4000863F1 /* UIView+Layout.m */,
+			);
+			path = TZImagePickerController;
+			sourceTree = "<group>";
+		};
 		CBB7B1986CB029097EB5B82F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -701,6 +795,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B85F39CD1EC9C95100B2EA9E /* LaunchScreen.storyboard in Resources */,
+				B89E04911ED03FD4000863F1 /* TZImagePickerController.bundle in Resources */,
 				B85F39CA1EC9C95100B2EA9E /* Assets.xcassets in Resources */,
 				B85F3A821EC9C9DE00B2EA9E /* ChatListCell.xib in Resources */,
 				B85F3A601EC9C9C600B2EA9E /* Tabbars.plist in Resources */,
@@ -784,6 +879,7 @@
 				B85F39F61EC9C9BD00B2EA9E /* AppDelegate.m in Sources */,
 				B85F3A8D1EC9C9E400B2EA9E /* ChatUtil.m in Sources */,
 				B85F3A4F1EC9C9C600B2EA9E /* MYSubCoretextResult.m in Sources */,
+				B89E048D1ED03FD4000863F1 /* TZAssetModel.m in Sources */,
 				B85F3A4B1EC9C9C600B2EA9E /* UIImage+colorImage.m in Sources */,
 				B85F39F51EC9C9BD00B2EA9E /* AppDelegate+main.m in Sources */,
 				B85F3A8C1EC9C9E400B2EA9E /* ChatHandler.m in Sources */,
@@ -793,16 +889,25 @@
 				B85F3A651EC9C9C600B2EA9E /* ThirdViewController.m in Sources */,
 				B85F3A4C1EC9C9C600B2EA9E /* UIImageView+SDWebImage.m in Sources */,
 				B8661AA31ECD7D120022753D /* Mp3Recorder.m in Sources */,
+				B89E04901ED03FD4000863F1 /* TZImageManager.m in Sources */,
+				B89E04931ED03FD4000863F1 /* TZPhotoPickerController.m in Sources */,
+				B89E04921ED03FD4000863F1 /* TZImagePickerController.m in Sources */,
+				B89E04971ED03FD4000863F1 /* TZVideoPlayerController.m in Sources */,
 				B85F3A641EC9C9C600B2EA9E /* MainViewController.m in Sources */,
 				B85F3A8E1EC9C9E400B2EA9E /* ChatModel.m in Sources */,
 				B85F3A581EC9C9C600B2EA9E /* ReachStateWIFI.m in Sources */,
 				B85F3A461EC9C9C600B2EA9E /* Account.m in Sources */,
+				B89E048C1ED03FD4000863F1 /* TZAssetCell.m in Sources */,
 				B85F3A511EC9C9C600B2EA9E /* LocalConnection.m in Sources */,
+				B89E04961ED03FD4000863F1 /* TZProgressView.m in Sources */,
 				B85F3A5F1EC9C9C600B2EA9E /* ChatTabbarController.m in Sources */,
 				B85F3A611EC9C9C600B2EA9E /* ChatListViewController.m in Sources */,
 				B85F3A7E1EC9C9DE00B2EA9E /* ChatTextCell.m in Sources */,
 				B85F3A571EC9C9C600B2EA9E /* ReachStateUnReachable.m in Sources */,
 				B8661AA71ECD95680022753D /* ChatRecordTool.m in Sources */,
+				B89E048E1ED03FD4000863F1 /* TZGifPhotoPreviewController.m in Sources */,
+				B89E04981ED03FD4000863F1 /* UIView+Layout.m in Sources */,
+				B89E048B1ED03FD4000863F1 /* NSBundle+TZImagePicker.m in Sources */,
 				B85F3A551EC9C9C600B2EA9E /* ReachStateLoading.m in Sources */,
 				B8661AAA1ECD998E0022753D /* UIImageView+GIF.m in Sources */,
 				B85F3A491EC9C9C600B2EA9E /* NSDate+extension.m in Sources */,
@@ -815,6 +920,8 @@
 				B85F3A811EC9C9DE00B2EA9E /* ChatListCell.m in Sources */,
 				B85F3A7D1EC9C9DE00B2EA9E /* ChatImageCell.m in Sources */,
 				B85F3A5C1EC9C9C600B2EA9E /* README.md in Sources */,
+				B89E04951ED03FD4000863F1 /* TZPhotoPreviewController.m in Sources */,
+				B89E04941ED03FD4000863F1 /* TZPhotoPreviewCell.m in Sources */,
 				B85F3A531EC9C9C600B2EA9E /* FSMStateUtil.m in Sources */,
 				B85F39BF1EC9C95100B2EA9E /* main.m in Sources */,
 				B85F3A4D1EC9C9C600B2EA9E /* MYCoreTextLabel.m in Sources */,
@@ -824,7 +931,10 @@
 				B85F3A591EC9C9C600B2EA9E /* ReachStateWWAN.m in Sources */,
 				B85F3A481EC9C9C600B2EA9E /* BaseViewController.m in Sources */,
 				B85F3A5B1EC9C9C600B2EA9E /* PingHelper.m in Sources */,
+				B89E046A1ED03F23000863F1 /* UIImage+photoPicker.m in Sources */,
+				B89E048A1ED03FD4000863F1 /* JYImagePickerManager.m in Sources */,
 				B85F3A7F1EC9C9DE00B2EA9E /* ChatTipCell.m in Sources */,
+				B89E048F1ED03FD4000863F1 /* TZImageCropManager.m in Sources */,
 				B85F3A471EC9C9C600B2EA9E /* AccountTool.m in Sources */,
 				B85F3A521EC9C9C600B2EA9E /* FSMEngine.m in Sources */,
 			);
