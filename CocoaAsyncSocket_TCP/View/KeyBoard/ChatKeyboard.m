@@ -326,7 +326,7 @@ static CGFloat keyboardHeight = 0;
     self.msgTextView.frame = self.audioLpButton.frame;  //输入框
     self.swtFaceButton.frame  = Frame(MaxX(self.msgTextView.frame)+15, (Height(self.messageBar.frame)-30)*0.5,30, 30); //表情键盘切换按钮
     self.swtHandleButton.frame = Frame(MaxX(self.swtFaceButton.frame)+15, (Height(self.messageBar.frame)-30)*0.5, 30, 30); //加号按钮切换操作键盘
-     self.keyBoardContainer.frame = Frame(0,Height(self.messageBar.frame), SCREEN_WITDTH,CTKEYBOARD_DEFAULTHEIGHT - Height(self.messageBar.frame)); //自定义键盘容器
+     self.keyBoardContainer.frame = Frame(0,Height(self.messageBar.frame)+1, SCREEN_WITDTH,CTKEYBOARD_DEFAULTHEIGHT - Height(self.messageBar.frame)); //自定义键盘容器
     self.handleKeyboard.frame = self.keyBoardContainer.bounds ;//键盘操作栏
     self.facesKeyboard.frame = self.keyBoardContainer.bounds ; //表情键盘部分
     
@@ -461,7 +461,6 @@ static CGFloat keyboardHeight = 0;
 #pragma mark - 监听输入框
 - (void)textViewDidChange:(UITextView *)textView
 {
-    
 }
 
 #pragma mark - 监听输入框变化 (这里如果放到layout里自动让他布局 , 会稍显麻烦一些 , 所以自动手动控制一下)
