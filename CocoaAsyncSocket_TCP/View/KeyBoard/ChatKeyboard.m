@@ -482,6 +482,11 @@ static CGFloat keyboardHeight = 0;
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
 {
+    //删除键监听
+    if ([text isEqualToString:@""""]) {
+        
+        NSLog(@"----------------点击了系统键盘删除键");
+    }
     return YES;
 }
 
@@ -533,40 +538,19 @@ static CGFloat keyboardHeight = 0;
     //获取点击的表情
     NSString *emotionKey = [NSString stringWithFormat:@"ChatEmotion_%li",emotionBtn.tag - 999];
     NSString *emotionName = [self.emotionDict objectForKey:emotionKey];
-    //获取光标所在位置
-    NSInteger location = self.msgTextView.selectedRange.location;
-    //变为可变字符串
-    NSMutableString *txtStrM = [[NSMutableString alloc]initWithString:self.msgTextView.text];
     
     //判断是删除 ， 还是点击了正常的emotion表情
     if ([emotionName isEqualToString:@"[del_]"]) {
         
-        if (!txtStrM.length) return;
+        //表情键盘删除
+        [self keyboardDelete];
         
-        //正则检测是否存在表情
-        NSRegularExpression *pression = [NSRegularExpression regularExpressionWithPattern:@"\\[[^\\[\\]]*\\]" options:NSRegularExpressionCaseInsensitive error:NULL];
-        NSArray *results = [pression matchesInString:self.msgTextView.text options:NSMatchingReportProgress range:NSMakeRange(0, self.msgTextView.text.length)];
-        //检测光标前是否有表情
-        __block BOOL deleteEmotion = NO;
-        [results enumerateObjectsUsingBlock:^(NSTextCheckingResult  *_Nonnull checkResult, NSUInteger idx, BOOL * _Nonnull stop) {
-            //光标前面有表情
-            if (checkResult.range.location + checkResult.range.length == location) {
-                
-                NSLog(@"-------光标前是表情------------");
-                [txtStrM replaceCharactersInRange:checkResult.range withString:@""];
-                self.msgTextView.text = txtStrM;
-                deleteEmotion = YES;
-                *stop = YES;
-            }
-        }];
+    }else{ //点击表情
         
-        //如果光标前没有表情
-        if (!deleteEmotion) {
-            [txtStrM replaceCharactersInRange:NSMakeRange(txtStrM.length-1, 1) withString:@""];
-            self.msgTextView.text = txtStrM;
-        }
-        
-    }else{
+        //获取光标所在位置
+        NSInteger location = self.msgTextView.selectedRange.location;
+        //变为可变字符串
+        NSMutableString *txtStrM = [[NSMutableString alloc]initWithString:self.msgTextView.text];
         [txtStrM insertString:emotionName atIndex:location];
         self.msgTextView.text = txtStrM;
         //光标后移
@@ -587,6 +571,42 @@ static CGFloat keyboardHeight = 0;
     
 }
 
+#pragma mark - 键盘删除内容
+- (void)keyboardDelete
+{
+    
+    NSMutableString *txtStrM = [[NSMutableString alloc]initWithString:self.msgTextView.text];
+    //当前光标位置
+    NSInteger location = self.msgTextView.selectedRange.location;
+    if (!txtStrM.length) return;
+    
+    //正则检测是否存在表情
+    NSRegularExpression *pression = [NSRegularExpression regularExpressionWithPattern:@"\\[[^\\[\\]]*\\]" options:NSRegularExpressionCaseInsensitive error:NULL];
+    NSArray *results = [pression matchesInString:self.msgTextView.text options:NSMatchingReportProgress range:NSMakeRange(0, self.msgTextView.text.length)];
+    //检测光标前是否有表情
+    __block BOOL deleteEmotion = NO;
+    [results enumerateObjectsUsingBlock:^(NSTextCheckingResult  *_Nonnull checkResult, NSUInteger idx, BOOL * _Nonnull stop) {
+        //光标前面有表情
+        if (checkResult.range.location + checkResult.range.length == location) {
+            
+            NSLog(@"-------光标前是表情------------");
+            [txtStrM replaceCharactersInRange:checkResult.range withString:@""];
+            self.msgTextView.text = txtStrM;
+            //光标前移
+            self.msgTextView.selectedRange = NSMakeRange(location - checkResult.range.length, 0);
+            deleteEmotion = YES;
+            *stop = YES;
+        }
+    }];
+    
+    //如果光标前没有表情
+    if (!deleteEmotion) {
+        [txtStrM replaceCharactersInRange:NSMakeRange(txtStrM.length-1, 1) withString:@""];
+        self.msgTextView.text = txtStrM;
+        //光标前移
+        self.msgTextView.selectedRange = NSMakeRange(location - 1, 0);
+    }
+}
 
 - (void)dealloc
 {
