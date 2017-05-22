@@ -47,7 +47,7 @@
 - (void)configContent
 {
     [_iconView downloadImage:nil placeholder:defaulUserIcon];
-    _nameLabel.text              = _chatModel.nickName;
+    _nameLabel.text              = _chatModel.toNickName;
     _timeLabel.text               = _chatModel.lastTimeString;
     _lastMessageLabel.text   = _chatModel.lastMessage;
     _lastMessageLabel.attributedText = [[NSAttributedString alloc]initWithString:_chatModel.lastMessage attributes:@{NSFontAttributeName:FontSet(13),NSForegroundColorAttributeName:[UIColor redColor]}];

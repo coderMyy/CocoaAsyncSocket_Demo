@@ -38,10 +38,12 @@
 
 @property (nonatomic ,copy) NSString *lastLoginTime; //最后登录时间
 
+@property (nonatomic, copy) NSString *portrait;  //头像url
+
 /*
  这里仅仅是一个模拟 , 真正的关于当前用户的资料可能还会有很多
  */
 
-+ (instancetype)shareInstance;
++ (instancetype)account;
 
 @end

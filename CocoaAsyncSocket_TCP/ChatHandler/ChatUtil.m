@@ -8,6 +8,7 @@
 
 #import "ChatUtil.h"
 #import "ChatModel.h"
+#import "MYCoreTextLabel.h"
 
 @implementation ChatUtil
 
@@ -36,29 +37,68 @@
     CGFloat height = 0.f;
     //文本,表情
     if (hashEqual(currentChatmodel.contenType, Content_Text)) {
-        
-        return currentChatmodel.messageHeight = currentChatmodel.shouldShowTime ? height + 40 : height;
+        MYCoreTextLabel *coreLabel = [[MYCoreTextLabel alloc]init];
+        coreLabel.textFont = FontSet(14);
+        coreLabel.lineSpacing = 6;
+        coreLabel.imageSize =CGSizeMake(24, 24);
+        [coreLabel setText:currentChatmodel.content.text customLinks:nil keywords:nil];
+        CGSize labelSize = [coreLabel sizeThatFits:CGSizeMake(SCREEN_WITDTH - 145, MAXFLOAT)];
+        height = 5 + 10 + labelSize.height + 10;
+        //验证是否群聊
+        [self groupChatConfig:currentChatmodel];
+        return currentChatmodel.messageHeight += currentChatmodel.shouldShowTime ? height + 50 : height + 15;
         //语音
     }else if (hashEqual(currentChatmodel.contenType, Content_Audio)){
         
-        return currentChatmodel.messageHeight = currentChatmodel.shouldShowTime ? height + 40 : height;
+        return currentChatmodel.messageHeight += currentChatmodel.shouldShowTime ? height + 50 : height + 15;
         //图片
     }else if (hashEqual(currentChatmodel.contenType, Content_Picture)){
         
-        return currentChatmodel.messageHeight = currentChatmodel.shouldShowTime ? height + 40 : height;
+        return currentChatmodel.messageHeight += currentChatmodel.shouldShowTime ? height + 50 : height + 15;
         //视频
     }else if (hashEqual(currentChatmodel.contenType, Content_Video)){
         
-        return currentChatmodel.messageHeight = currentChatmodel.shouldShowTime ? height + 40 : height;
+        return currentChatmodel.messageHeight += currentChatmodel.shouldShowTime ? height + 50 : height + 15;
         //文件
     }else if (hashEqual(currentChatmodel.contenType, Content_File)){
         
-        return currentChatmodel.messageHeight = currentChatmodel.shouldShowTime ? height + 40 : height;
+        return currentChatmodel.messageHeight += currentChatmodel.shouldShowTime ? height + 50 : height + 15;
         //提示语
     }else{
         
-        return currentChatmodel.messageHeight = currentChatmodel.shouldShowTime ? height + 40 : height;;
+        return currentChatmodel.messageHeight += currentChatmodel.shouldShowTime ? height + 50 : height + 15;
     }
+}
+
+//群聊特殊布局
++ (void)groupChatConfig:(ChatModel *)chatModel
+{
+    if (hashEqual(chatModel.chatType, @"groupChat")&&!chatModel.byMyself.integerValue) {
+        chatModel.messageHeight += 16;
+    }
+}
+
+
+#pragma marl - 创建发送消息模型
++ (ChatModel *)creatMessageModel
+{
+    ChatModel *messageModel = [[ChatModel alloc]init];
+    ChatContentModel *content = [[ChatContentModel alloc]init];
+    messageModel.content = content;
+    messageModel.fromUserID = [Account account].myUserID;
+    messageModel.toUserID     = nil;
+    messageModel.messageType = @"normal";
+    messageModel.deviceType = @"iOS";
+    messageModel.versionCode = TCP_VersionCode;
+    messageModel.byMyself    = @1;
+    messageModel.isSend       = @1;
+    messageModel.isRead       = @0;
+    messageModel.beatID       = TCP_beatBody;
+    messageModel.fromPortrait   = [Account account].portrait;
+    messageModel.toNickName = nil;
+    messageModel.noDisturb  = nil;
+    
+    return messageModel;
 }
 
 

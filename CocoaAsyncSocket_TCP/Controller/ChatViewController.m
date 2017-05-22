@@ -39,7 +39,24 @@
     if (!_customKeyboard) {
         _customKeyboard = [[ChatKeyboard alloc]init];
         //传入当前控制器 ，方便打开相册（如放到控制器 ， 后期的逻辑过多，控制器会更加臃肿）
-        _customKeyboard.target = self;
+        __weak typeof(self) weakself = self;
+        //普通文本消息
+        [_customKeyboard textCallback:^(ChatModel *textModel) {
+            
+            [weakself sendTextMessage:textModel];
+        //语音消息
+        } audioCallback:^(ChatModel *audioModel) {
+            
+            [weakself sendAudioMessage:audioModel];
+        //图片消息
+        } picCallback:^(ChatModel *picModel) {
+            
+            [weakself sendPictureMessage:picModel];
+        //视频消息
+        } videoCallback:^(ChatModel *videoModel) {
+            
+            [weakself sendVideoMessage:videoModel];
+        } target:self];
     }
     return _customKeyboard;
 }
@@ -77,6 +94,8 @@
 {
     if (!_chatTableView) {
         _chatTableView = [[UITableView alloc]initWithFrame:Frame(0, 0, SCREEN_WITDTH, Height(self.view.bounds)-49) style:UITableViewStylePlain];
+        _chatTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        _chatTableView.allowsSelection = NO;
         _chatTableView.delegate     = self;
         _chatTableView.dataSource = self;
         //普通文本,表情消息类型
@@ -104,6 +123,15 @@
     [self getHistoryMessages];
 }
 
+#pragma mark - 注册通知
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    //键盘弹起通知
+    [[NSNotificationCenter defaultCenter]addObserver:self.customKeyboard selector:@selector(systemKeyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    
+}
+
 #pragma mark - dataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -114,12 +142,11 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     ChatModel *chatModel = self.talkMessages[indexPath.row];
-    
     //文本,表情消息
     if (hashEqual(chatModel.contenType, Content_Text)) {
         
         ChatTextCell *textCell = [tableView dequeueReusableCellWithIdentifier:@"ChatTextCell"];
-        
+        textCell.textModel = chatModel;
         return textCell;
         
         //语音消息
@@ -159,18 +186,6 @@
     }
 }
 
-#pragma mark - delegate
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    ChatModel *chatmodel = self.talkMessages[indexPath.row];
-    ChatModel *premodel  = nil;
-    if (self.talkMessages.count > 1) premodel = self.talkMessages[self.talkMessages.count - 2];
-    //如果已经计算过 , 直接返回高度
-    if (chatmodel.messageHeight) return  chatmodel.messageHeight;
-    //计算消息高度
-    return [ChatUtil heightForMessage:chatmodel premodel:premodel];
-}
 
 #pragma mark - 拉取数据库消息
 - (void)getHistoryMessages
@@ -182,7 +197,7 @@
 - (void)initUI
 {
     //初始化导航
-    self.titleView.text = [_chatModel.chatType isEqualToString:@"groupChat"] ? _chatModel.groupName : _chatModel.nickName;
+    self.titleView.text = [_chatModel.chatType isEqualToString:@"groupChat"] ? _chatModel.groupName : _chatModel.toNickName;
     self.navigationItem.titleView = self.titleView;
     CGSize titleSize = [self.titleView.text sizeWithFont:self.titleView.font maxSize:CGSizeMake(200,16)];
     //正常接收消息状态
@@ -193,21 +208,38 @@
         self.titleView.bounds  = Frame(0, 0, titleSize.width + 5 + 14, 16);
         self.bellView.frame    = Frame(titleSize.width + 5, (Height(self.titleView.frame)-14)*0.5, 14, 14);
     }
-    
     //初始化聊天界面
     [self.view addSubview:self.chatTableView];
-    
     //初始化键盘
     [self.view addSubview:self.customKeyboard];
     self.customKeyboard.frame = Frame(0, SCREEN_HEIGHT - 49, SCREEN_WITDTH, CTKEYBOARD_DEFAULTHEIGHT);
 }
 
-#pragma mark - 注册通知
-- (void)viewWillAppear:(BOOL)animated
+
+#pragma mark - 发送文本/表情消息
+- (void)sendTextMessage:(ChatModel *)textModel
 {
-    [super viewWillAppear:animated];
-    //键盘弹起通知
-    [[NSNotificationCenter defaultCenter]addObserver:self.customKeyboard selector:@selector(systemKeyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    [self.talkMessages addObject:textModel];
+    [self.chatTableView reloadData];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:_talkMessages.count - 1 inSection:0];
+    [self.chatTableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionNone animated:YES];
+}
+
+#pragma mark - 发送语音消息
+- (void)sendAudioMessage:(ChatModel *)audioModel
+{
+    
+}
+
+#pragma mark - 发送图片消息
+- (void)sendPictureMessage:(ChatModel *)picModel
+{
+    
+}
+
+#pragma mark - 发送视频消息
+- (void)sendVideoMessage:(ChatModel *)videoModel
+{
     
 }
 
@@ -215,6 +247,18 @@
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
     
+}
+
+#pragma mark - delegate
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    ChatModel *chatmodel = self.talkMessages[indexPath.row];
+    ChatModel *premodel  = nil;
+    if (self.talkMessages.count > 1) premodel = self.talkMessages[self.talkMessages.count - 2];
+    //如果已经计算过 , 直接返回高度
+    if (chatmodel.messageHeight) return  chatmodel.messageHeight;
+    //计算消息高度
+    return [ChatUtil heightForMessage:chatmodel premodel:premodel];
 }
 
 @end

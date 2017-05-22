@@ -125,13 +125,13 @@
 - (void)getMessages
 {
     //暂时先模拟假数据 , 后面加上数据库结构,再修改
-    NSArray *tips = @[@"项目里IM这块因为一直都是在摸索,所以特别乱..",@"这一份相当于是进行重构,分层,尽量减少耦合性",@"还有就是把注释和大体思路尽量写下来",@"UI部分很耗时,因为所有的东西都是自己写的",@"如果有兴趣可以fork一下,有空闲时间我就会更新一些",@"如果觉得有用,麻烦star一下噢...."];
+    NSArray *tips = @[@"项目里IM这块因为一直都是在摸索,所以特别乱..",@"这一份相当于是进行重构,分层,尽量减少耦合性",@"还有就是把注释和大体思路尽量写下来",@"UI部分很耗时,因为所有的东西都是自己写的",@"如果有兴趣可以fork一下,有空闲时间我就会更新一些",@"如果觉得有用,麻烦star一下噢....",@"如果觉得有用,麻烦star一下噢....",@"具体IP端口涉及公司隐私东西已经隐藏....",@"具体IP端口涉及公司隐私东西已经隐藏...."];
     for (NSInteger index  = 0; index < 30; index ++) {
         
         ChatModel *chatModel   = [[ChatModel alloc]init];
         ChatContentModel *chatContent = [[ChatContentModel alloc]init];
         chatModel.content         = chatContent ;
-        chatModel.nickName      = @"孟遥";
+        chatModel.toNickName  = @"孟遥";
         if (index<tips.count) {
             chatModel.lastMessage = tips[index];
         }else{

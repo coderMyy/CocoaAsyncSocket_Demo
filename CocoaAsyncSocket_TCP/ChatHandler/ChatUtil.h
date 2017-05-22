@@ -15,4 +15,6 @@
 //消息高度计算
 + (CGFloat)heightForMessage:(ChatModel *)currentChatmodel premodel:(ChatModel *)premodel;
 
+//创建消息模型
++ (ChatModel *)creatMessageModel;
 @end

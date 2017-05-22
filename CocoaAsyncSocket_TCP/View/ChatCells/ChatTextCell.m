@@ -7,18 +7,178 @@
 //
 
 #import "ChatTextCell.h"
+#import "MYCoreTextLabel.h"
+#import "ChatModel.h"
+
+@interface ChatTextCell ()
+
+//头像
+@property (nonatomic, strong) UIImageView *iconView;
+//背景
+@property (nonatomic, strong) UIImageView *backButton; //背景
+//文字图文混排
+@property (nonatomic, strong) MYCoreTextLabel *coreLabel;
+//时间
+@property (nonatomic, strong) UILabel *timeLabel;
+//时间容器
+@property (nonatomic, strong) UIView *timeContainer;
+//失败按钮
+@property (nonatomic, strong) UIButton *failureButton;
+//菊花
+@property (nonatomic, strong) UIActivityIndicatorView *activiView;
+
+@end
 
 @implementation ChatTextCell
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    // Initialization code
+- (MYCoreTextLabel *)coreLabel
+{
+    if (!_coreLabel) {
+        _coreLabel = [[MYCoreTextLabel alloc]init];
+        _coreLabel.textFont = FontSet(14);
+        _coreLabel.textColor = UICOLOR_RGB_Alpha(0x333333, 1);
+        _coreLabel.hiddenNormalLink = YES;
+        _coreLabel.lineSpacing = 6;
+    }
+    return _coreLabel;
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
+//菊花
+- (UIActivityIndicatorView *)activiView
+{
+    if (!_activiView) {
+        _activiView = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+        _activiView.color = UICOLOR_RGB_Alpha(0xcdcdcd, 1);
+    }
+    return _activiView;
+}
 
-    // Configure the view for the selected state
+- (UIButton *)failureButton
+{
+    if (!_failureButton) {
+        _failureButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_failureButton setImage:LoadImage(@"发送失败") forState:UIControlStateNormal];
+        [_failureButton addTarget:self action:@selector(sendAgain) forControlEvents:UIControlEventTouchUpInside];
+        _failureButton.hidden = YES; //默认隐藏
+    }
+    return _failureButton;
+}
+
+- (UIView *)timeContainer
+{
+    if (!_timeContainer) {
+        _timeContainer = [[UIView alloc]init];
+        _timeContainer.backgroundColor = UICOLOR_RGB_Alpha(0xcecece, 1);
+        dispatch_async(dispatch_get_global_queue(0, 0), ^{
+            ViewRadius(_timeContainer, 5.f);
+        });
+        [_timeContainer addSubview:self.timeLabel];
+    }
+    return _timeContainer;
+}
+
+- (UILabel *)timeLabel
+{
+    if (!_timeLabel) {
+        _timeLabel = [[UILabel alloc]init];
+        _timeLabel.textColor = UIMainWhiteColor;
+        _timeLabel.textAlignment = NSTextAlignmentCenter;
+        _timeLabel.font = FontSet(12);
+    }
+    return _timeLabel;
+}
+
+- (UIImageView *)backButton
+{
+    if (!_backButton) {
+        _backButton = [[UIImageView alloc]init];
+        _backButton.userInteractionEnabled = YES;
+        //背景气泡
+        UIImage *backImage = LoadImage(@"我方文字气泡");
+        //拉伸
+        backImage = [backImage stretchableImageWithLeftCapWidth:backImage.size.width *0.2 topCapHeight:backImage.size.height *0.9];
+        _backButton.image = backImage;
+        //长按手势
+        UILongPressGestureRecognizer *longpress = [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(longpressHandle)];
+        [_backButton addGestureRecognizer:longpress];
+        [_backButton addSubview:self.coreLabel];
+    }
+    return _backButton;
+}
+
+
+- (UIImageView *)iconView
+{
+    if (!_iconView) {
+        _iconView = [[UIImageView alloc]init];
+        _iconView.userInteractionEnabled = YES;
+        dispatch_async(dispatch_get_global_queue(0, 0), ^{
+            ViewRadius(_iconView,25);
+        });
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(toUserInfo)];
+        [_iconView addGestureRecognizer:tap];
+    }
+    return _iconView;
+}
+
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+{
+    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
+        
+        self.backgroundColor = UIMainWhiteColor;
+        [self.contentView addSubview:self.timeContainer];
+        [self.contentView addSubview:self.iconView];
+        [self.contentView addSubview:self.backButton];
+        [self.contentView addSubview:self.activiView];
+        [self.contentView addSubview:self.failureButton];
+    }
+    return self;
+}
+
+- (void)setTextModel:(ChatModel *)textModel
+{
+    _textModel = textModel;
+    
+    //时间处理
+    self.timeContainer.frame = CGRectZero;
+    if (textModel.shouldShowTime) {
+        self.timeContainer.hidden = NO;
+        self.timeLabel.text  = [NSDate timeStringWithTimeInterval:textModel.sendTime];
+        CGSize timeTextSize  = [self.timeLabel sizeThatFits:CGSizeMake(SCREEN_WITDTH, 20)];
+        self.timeLabel.frame = Frame(5,(20 - timeTextSize.height)*0.5, timeTextSize.width, timeTextSize.height);
+        self.timeContainer.frame = Frame((SCREEN_WITDTH - timeTextSize.width-10)*0.5, 15,timeTextSize.width + 10, 20);
+    }else{
+        self.timeContainer.hidden = YES;
+    }
+    //处理转圈
+    textModel.isSending.integerValue ? [self.activiView startAnimating] : [self.activiView stopAnimating];
+    //处理红叹号
+    self.failureButton.hidden = textModel.isSend.integerValue;
+    //赋值
+    [self setContent];
+    //设置frame
+    [self setFrame];
+}
+
+- (void)setContent
+{
+    [self.iconView downloadImage:_textModel.fromPortrait placeholder:@"userhead"];
+    [self.coreLabel setText:_textModel.content.text customLinks:nil keywords:nil];
+}
+
+- (void)setFrame
+{
+    //文本宽度JYScreen_Width - 145
+    CGSize size = [_coreLabel sizeThatFits:CGSizeMake(SCREEN_WITDTH - 145, MAXFLOAT)];
+    //我方头像
+    self.iconView.frame = Frame(SCREEN_WITDTH - 65, MaxY(self.timeContainer.frame)+15, 50, 50);
+    //我方文本label
+    self.coreLabel.frame = Frame(10, 10,size.width, size.height);
+    //我方背景气泡
+    self.backButton.frame = Frame(SCREEN_WITDTH - 100 - Width(self.coreLabel.frame), MinY(self.iconView.frame)+5, Width(self.coreLabel.frame)+30, Height(self.coreLabel.frame)+20);
+    self.activiView.frame = Frame(MinX(self.backButton.frame)-34,MinY(self.backButton.frame)+((Height(self.backButton.frame)-24)*0.5), 24, 24);
+    //红叹号
+    self.failureButton.frame = self.activiView.frame;
 }
 
 @end

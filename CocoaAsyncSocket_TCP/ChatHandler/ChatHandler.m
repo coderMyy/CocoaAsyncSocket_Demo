@@ -276,7 +276,7 @@ NSInteger autoConnectCount = TCP_AutoConnectCount;
     //此版本号需和后台协商 , 便于后台进行版本控制
     loginModel.versionCode = TCP_VersionCode;
     //当前用户ID
-    loginModel.fromUserID  = [Account shareInstance].myUserID;
+    loginModel.fromUserID  = [Account account].myUserID;
     //设备类型
     loginModel.deviceType  = DeviceType;
     //发送登录验证

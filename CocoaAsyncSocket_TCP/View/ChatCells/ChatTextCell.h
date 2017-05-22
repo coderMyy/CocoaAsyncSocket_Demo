@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+@class ChatModel;
 
 @interface ChatTextCell : UITableViewCell
+
+@property (nonatomic, strong) ChatModel *textModel;
 
 @end

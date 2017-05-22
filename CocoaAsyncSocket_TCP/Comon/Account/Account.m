@@ -14,7 +14,7 @@
 {
 }
 
-+ (instancetype)shareInstance
++ (instancetype)account
 {
     static Account *account = nil;
     static dispatch_once_t onceToken;

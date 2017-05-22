@@ -63,9 +63,15 @@ typedef NS_ENUM(NSInteger){
 
 @property (nonatomic, copy) NSString *groupID; //群ID
 
-@property (nonatomic, copy) NSString *userID;  //好友ID
-
 @property (nonatomic, copy) NSString *fromUserID; //消息发送者ID
+
+@property (nonatomic, copy) NSString *toUserID;  //对方ID
+
+@property (nonatomic, copy) NSString *fromPortrait; //发送者头像url
+
+@property (nonatomic, copy) NSString *toPortrait; //对方头像url
+
+@property (nonatomic, copy) NSString *toNickName; //我对好友命名的昵称
 
 @property (nonatomic, copy) NSArray<NSString *> *atToUserIDs; // @目标ID
 
@@ -91,16 +97,13 @@ typedef NS_ENUM(NSInteger){
 
 @property (nonatomic, copy) NSString *beatID; //心跳标识
 
-@property (nonatomic, copy) NSString *portrait; //头像url
-
 @property (nonatomic, copy) NSString *groupName; //群名称
-
-@property (nonatomic, copy) NSString *nickName; //好友昵称
 
 @property (nonatomic, strong) NSNumber *noDisturb; //免打扰状态  , 1为正常接收  , 2为免打扰状态 , 3为屏蔽状态
 
 @property (nonatomic, strong) ChatContentModel *content; //内容
 
+@property (nonatomic, strong) NSNumber *isSending; //是否正在发送中
 
 #pragma mark - chatlist独有部分
 @property (nonatomic, strong) NSNumber *unreadCount; //未读数
