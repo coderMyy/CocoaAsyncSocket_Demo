@@ -103,7 +103,9 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     ChatModel *seletedChatModel = self.messagesArray[indexPath.row];
     ChatViewController *chatVc = [[ChatViewController alloc]init];
-    chatVc.chatModel = seletedChatModel;
+    seletedChatModel.toUserID = @"123456";
+    seletedChatModel.chatType = @"userChat";
+    chatVc.config = seletedChatModel;
     [self.navigationController pushViewController:chatVc animated:YES];
 }
 

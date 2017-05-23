@@ -11,7 +11,7 @@
 @class  ChatModel;
 
 @interface ChatViewController : BaseViewController
-
-@property (nonatomic, strong) ChatModel *chatModel;
+//必传
+@property (nonatomic, strong) ChatModel *config;
 
 @end

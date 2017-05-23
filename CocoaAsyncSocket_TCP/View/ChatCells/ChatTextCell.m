@@ -125,7 +125,7 @@
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         
-        self.backgroundColor = UIMainWhiteColor;
+        self.backgroundColor = UIMainBackColor;
         [self.contentView addSubview:self.timeContainer];
         [self.contentView addSubview:self.iconView];
         [self.contentView addSubview:self.backButton];

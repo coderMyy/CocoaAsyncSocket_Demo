@@ -54,13 +54,17 @@ View.layer.borderWidth = BorderWidth;
 #define UICOLOR_RGB_Alpha(_color,_alpha) [UIColor colorWithRed:((_color>>16)&0xff)/255.0f green:((_color>>8)&0xff)/255.0f blue:(_color&0xff)/255.0f alpha:_alpha]
 //分割线
 #define  UILineColor           UICOLOR_RGB_Alpha(0xe6e6e6,1)
+//主白色
 #define  UIMainWhiteColor  [UIColor whiteColor]
+//主背景色
+#define UIMainBackColor UICOLOR_RGB_Alpha(0xf0f0f0,1)
 //加载本地图片
 #define LoadImage(imageName) [UIImage imageNamed:imageName]
 //加载不缓存图片
 #define LoadImage_NotCache(imageName,imageType) [UIImage imageWithContentsOfFile:[[NSBundle mainBundle]pathForResource:imageName ofType:imageType]]
 //设置字体
 #define FontSet(fontSize)  [UIFont systemFontOfSize:fontSize]
-
+//聊天缓存基本地址 (根据当前用户来创建缓存目录 , 每个登录用户创建单独资源文件夹,每个会话创建单独的文件夹 , 便于管理)
+#define ChatCache_Path   [NSHomeDirectory() stringByAppendingString:[NSString stringWithFormat:@"/Library/Caches/ChatSource/%@",[Account account].myUserID]]
 
 #endif /* Config_h */

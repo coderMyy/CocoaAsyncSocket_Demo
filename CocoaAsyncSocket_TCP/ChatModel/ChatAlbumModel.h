@@ -20,6 +20,8 @@
 @property (nonatomic, strong) NSData *normalData;
 //图片无压缩data
 @property (nonatomic, strong) NSData *orignalData;
+//图片尺寸
+@property (nonatomic, assign) CGSize  picSize;
 //视频缓存地址
 @property (nonatomic, copy) NSString *videoCachePath;
 //视频缩略图

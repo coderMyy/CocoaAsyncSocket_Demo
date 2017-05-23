@@ -24,6 +24,9 @@
     //开启网络监听
     [GLobalRealReachability startNotifier];
     
+    //测试数据
+    [Account account].myUserID = @"19910805";
+    
     return YES;
 }
 

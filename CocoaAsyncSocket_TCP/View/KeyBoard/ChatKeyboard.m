@@ -10,6 +10,7 @@
 #import "ChatKeyboard.h"
 #import "ChatRecordTool.h"
 #import "UIImage+photoPicker.h"
+#import "ChatAlbumModel.h"
 #import "ChatModel.h"
 #import "ChatUtil.h"
 
@@ -36,6 +37,7 @@ static CGFloat keyboardHeight = 0;
 @property (nonatomic, copy) ChatPictureMessageSendBlock pictureCallback;
 @property (nonatomic, copy) ChatVideoMessageSendBlock videoCallback;
 @property (nonatomic, strong) id target;
+@property (nonatomic, strong) ChatModel *config;
 
  //表情键盘
 @property (nonatomic, strong) UIView *facesKeyboard;
@@ -533,9 +535,28 @@ static CGFloat keyboardHeight = 0;
     switch (button.tag - 9999) {
         case 0:
         {
-            // 这里用到了TZImagerPicker 相册选择器 写得挺好的 ，我对它进行了封装和修改了里面一些代码 。 后期有时间会自己写一个相册的选择器
+            // 这里用到了阿里巴巴TZImagerPicker 相册选择器 写得挺好的 ，我对它进行了封装和修改了里面一些代码 。 后期有时间会自己写一个相册的选择器
             [UIImage openPhotoPickerGetImages:^(NSArray<ChatAlbumModel *> *images) {
                 
+                //创建消息模型数组
+                NSMutableArray *imageMessages = [NSMutableArray array];
+                [images enumerateObjectsUsingBlock:^(ChatAlbumModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                   
+                    //创建图片消息模型
+                    ChatModel *imageModel = [ChatUtil creatMessageModel:_config];
+                    imageModel.content.picSize = obj.picSize;
+                    imageModel.content.fileName = obj.name;
+                    imageModel.contenType      = Content_Picture;
+                    
+                    //创建本地资源缓存
+                    [ChatUtil creatLocalCacheSource:obj chat:imageModel];
+                    [imageMessages addObject:imageModel];
+                }];
+                
+                //回调发送
+                if (_pictureCallback) {
+                    _pictureCallback(imageMessages);
+                }
             } target:self.target maxCount:9];
             NSLog(@"-------------点击了相册");
         }
@@ -639,7 +660,7 @@ static CGFloat keyboardHeight = 0;
 - (void)sendTextMessage
 {
     //创建普通消息模型
-    ChatModel *textModel = [ChatUtil creatMessageModel];
+    ChatModel *textModel = [ChatUtil creatMessageModel:_config];
     textModel.contenType  = Content_Text;
     textModel.content.text = self.msgTextView.text;
     self.msgTextView.text = @"";
@@ -652,13 +673,14 @@ static CGFloat keyboardHeight = 0;
 }
 
 #pragma mark - 消息回调
-- (void)textCallback:(ChatTextMessageSendBlock)textCallback audioCallback:(ChatAudioMesssageSendBlock)audioCallback picCallback:(ChatPictureMessageSendBlock)picCallback videoCallback:(ChatVideoMessageSendBlock)videoCallback target:(id)target
+- (void)textCallback:(ChatTextMessageSendBlock)textCallback audioCallback:(ChatAudioMesssageSendBlock)audioCallback picCallback:(ChatPictureMessageSendBlock)picCallback videoCallback:(ChatVideoMessageSendBlock)videoCallback target:(id)target config:(ChatModel *)config
 {
     _textCallback     = textCallback;
     _audioCallback   = audioCallback;
     _pictureCallback = picCallback;
     _videoCallback   = videoCallback;
     _target              = target;
+    _config             = config;
 }
 
 - (void)dealloc

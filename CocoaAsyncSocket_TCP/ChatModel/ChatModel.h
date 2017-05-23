@@ -105,6 +105,8 @@ typedef NS_ENUM(NSInteger){
 
 @property (nonatomic, strong) NSNumber *isSending; //是否正在发送中
 
+@property (nonatomic, strong) NSNumber *progress; //进度
+
 #pragma mark - chatlist独有部分
 @property (nonatomic, strong) NSNumber *unreadCount; //未读数
 @property (nonatomic, copy) NSString *lastMessage; //最后一条消息
@@ -123,6 +125,10 @@ typedef NS_ENUM(NSInteger){
 @interface ChatContentModel :NSObject
 
 @property (nonatomic, copy) NSString *text; //文本
+
+@property (nonatomic, assign) CGSize picSize; //图片尺寸
+
+@property (nonatomic, copy) NSString *fileName; //文件名
 
 @property (nonatomic, strong) NSNumber *videoDuration; //语音时长
 

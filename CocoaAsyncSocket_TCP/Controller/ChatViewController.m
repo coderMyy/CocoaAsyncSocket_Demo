@@ -49,14 +49,14 @@
             
             [weakself sendAudioMessage:audioModel];
         //图片消息
-        } picCallback:^(ChatModel *picModel) {
+        } picCallback:^(NSArray<ChatModel *>*images) {
             
-            [weakself sendPictureMessage:picModel];
+            [weakself sendPictureMessage:images];
         //视频消息
         } videoCallback:^(ChatModel *videoModel) {
             
             [weakself sendVideoMessage:videoModel];
-        } target:self];
+        } target:self config:_config];
     }
     return _customKeyboard;
 }
@@ -95,6 +95,7 @@
     if (!_chatTableView) {
         _chatTableView = [[UITableView alloc]initWithFrame:Frame(0, 0, SCREEN_WITDTH, Height(self.view.bounds)-49) style:UITableViewStylePlain];
         _chatTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        _chatTableView.backgroundColor = UIMainBackColor;
         _chatTableView.allowsSelection = NO;
         _chatTableView.delegate     = self;
         _chatTableView.dataSource = self;
@@ -160,7 +161,7 @@
     }else if (hashEqual(chatModel.contenType, Content_Picture)){
         
         ChatImageCell *imageCell = [tableView dequeueReusableCellWithIdentifier:@"ChatImageCell"];
-        
+        imageCell.imageModel = chatModel;
         return imageCell;
         
         //视频消息
@@ -197,11 +198,11 @@
 - (void)initUI
 {
     //初始化导航
-    self.titleView.text = [_chatModel.chatType isEqualToString:@"groupChat"] ? _chatModel.groupName : _chatModel.toNickName;
+    self.titleView.text = [_config.chatType isEqualToString:@"groupChat"] ? _config.groupName : _config.toNickName;
     self.navigationItem.titleView = self.titleView;
     CGSize titleSize = [self.titleView.text sizeWithFont:self.titleView.font maxSize:CGSizeMake(200,16)];
     //正常接收消息状态
-    if (_chatModel.noDisturb.integerValue == 1) {
+    if (_config.noDisturb.integerValue == 1) {
         self.titleView.bounds = Frame(0, 0, titleSize.width, 16);
         self.bellView.hidden  = YES;
     }else{
@@ -221,8 +222,7 @@
 {
     [self.talkMessages addObject:textModel];
     [self.chatTableView reloadData];
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:_talkMessages.count - 1 inSection:0];
-    [self.chatTableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionNone animated:YES];
+    [self scrollToBottom];
 }
 
 #pragma mark - 发送语音消息
@@ -232,9 +232,11 @@
 }
 
 #pragma mark - 发送图片消息
-- (void)sendPictureMessage:(ChatModel *)picModel
+- (void)sendPictureMessage:(NSArray<ChatModel *> *)picModels
 {
-    
+    [self.talkMessages addObjectsFromArray:picModels];
+    [self.chatTableView reloadData];
+    [self scrollToBottom];
 }
 
 #pragma mark - 发送视频消息
@@ -259,6 +261,13 @@
     if (chatmodel.messageHeight) return  chatmodel.messageHeight;
     //计算消息高度
     return [ChatUtil heightForMessage:chatmodel premodel:premodel];
+}
+
+#pragma mark - 滚动到底部
+- (void)scrollToBottom
+{
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:_talkMessages.count - 1 inSection:0];
+    [self.chatTableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:NO];
 }
 
 @end

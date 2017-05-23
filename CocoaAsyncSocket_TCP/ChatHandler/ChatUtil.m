@@ -8,6 +8,7 @@
 
 #import "ChatUtil.h"
 #import "ChatModel.h"
+#import "ChatAlbumModel.h"
 #import "MYCoreTextLabel.h"
 
 @implementation ChatUtil
@@ -54,6 +55,25 @@
         //图片
     }else if (hashEqual(currentChatmodel.contenType, Content_Picture)){
         
+        CGFloat picHeight = currentChatmodel.content.picSize.height;
+        CGFloat picWidth  = currentChatmodel.content.picSize.width;
+        //宽大于高
+        if (picWidth > picHeight) {
+        
+            //极宽极低固定50高
+            if (100*(picHeight/picWidth)<=50) {
+                height = 50;
+            }else{
+                height = 135 *(picHeight/picWidth);
+            }
+        //宽小于高
+        }else if (picWidth < picHeight){
+            
+            height = 130;
+        //宽高相等
+        }else{
+            height = 120;
+        }
         return currentChatmodel.messageHeight += currentChatmodel.shouldShowTime ? height + 50 : height + 15;
         //视频
     }else if (hashEqual(currentChatmodel.contenType, Content_Video)){
@@ -80,26 +100,92 @@
 
 
 #pragma marl - 创建发送消息模型
-+ (ChatModel *)creatMessageModel
++ (ChatModel *)creatMessageModel:(ChatModel *)config
 {
-    ChatModel *messageModel = [[ChatModel alloc]init];
-    ChatContentModel *content = [[ChatContentModel alloc]init];
-    messageModel.content = content;
-    messageModel.fromUserID = [Account account].myUserID;
-    messageModel.toUserID     = nil;
-    messageModel.messageType = @"normal";
-    messageModel.deviceType = @"iOS";
-    messageModel.versionCode = TCP_VersionCode;
-    messageModel.byMyself    = @1;
-    messageModel.isSend       = @1;
-    messageModel.isRead       = @0;
-    messageModel.beatID       = TCP_beatBody;
-    messageModel.fromPortrait   = [Account account].portrait;
-    messageModel.toNickName = nil;
-    messageModel.noDisturb  = nil;
-    
+    ChatModel *messageModel    = [[ChatModel alloc]init];
+    ChatContentModel *content   = [[ChatContentModel alloc]init];
+    messageModel.content          = content;
+    messageModel.fromUserID     = [Account account].myUserID;
+    messageModel.toUserID         = config.toUserID;
+    messageModel.messageType  = @"normal";
+    messageModel.chatType        = config.chatType;
+    messageModel.deviceType     = @"iOS";
+    messageModel.versionCode   = TCP_VersionCode;
+    messageModel.byMyself        = @1;
+    messageModel.isSend           = @0;
+    messageModel.isRead           = @0;
+    messageModel.beatID            = TCP_beatBody;
+    messageModel.fromPortrait    = [Account account].portrait;
+    messageModel.toNickName    = config.toNickName;
+    messageModel.groupID          = config.groupID;
+    messageModel.noDisturb       = config.noDisturb;
     return messageModel;
 }
 
+#pragma mark - 创建聊天资源缓存
++ (void)creatLocalCacheSource:(ChatAlbumModel *)albumModel chat:(ChatModel *)chatModel
+{
+    NSString *basePath = nil;
+    if (hashEqual(chatModel.chatType, @"userChat")) {
+        basePath = [ChatCache_Path stringByAppendingPathComponent:chatModel.toUserID];
+    }else{
+        basePath = [ChatCache_Path stringByAppendingPathComponent:chatModel.groupID];
+    }
+    
+    NSFileManager *manager = [NSFileManager defaultManager];
+    BOOL exist = [manager fileExistsAtPath:basePath];
+    if (!exist) {
+        [manager createDirectoryAtPath:basePath withIntermediateDirectories:YES attributes:nil error:NULL];
+    }
+    
+    //////////////////资源缓存
+    //压缩比
+    CGFloat compressScale = 1;
+    NSData *smallAlbumData = nil;
+    NSData *albumData = nil;
+    //用户选择了原图
+    if (albumModel.isOrignal) {
+        
+        //压缩过的小图缓存 (用户界面展示,节省资源)
+        if (albumModel.orignalData.length/1024.0) { //小于3M的
+            
+            compressScale = 0.1;  //压缩10倍
+        }else{  //大于3M
+            
+            compressScale = 0.05; //压缩20倍
+        }
+        UIImage *image = [UIImage imageWithData:albumModel.orignalData];
+        //小图data
+        smallAlbumData = UIImageJPEGRepresentation(image, compressScale);
+        //原图data
+        albumData        = albumModel.orignalData;
+        
+    //默认选择,未选择原图
+    }else{
+        
+        //压缩过的小图缓存 (用户界面展示,节省资源)
+        if (albumModel.normalData.length/1024.0) { //小于3M的
+            
+            compressScale = 0.1;  //压缩10倍
+        }else{  //大于3M
+            
+            compressScale = 0.05; //压缩20倍
+        }
+        
+        UIImage *image = [UIImage imageWithData:albumModel.normalData];
+        //小图data
+        smallAlbumData = UIImageJPEGRepresentation(image, compressScale);
+        //原图data
+        albumData        = albumModel.normalData;
+    }
+    //小图缓存路径
+    NSString *smallDetailPath = [basePath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@_%@",@"small",albumModel.name]];
+    //原图缓存路径
+    NSString *detailPath = [basePath stringByAppendingPathComponent:albumModel.name];
+    //小图写入缓存
+    [smallAlbumData writeToFile:smallDetailPath atomically:YES];
+    //原图写入缓存
+    [albumData writeToFile:detailPath atomically:YES];
+}
 
 @end

@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@class ChatModel;
+@class ChatModel,ChatAlbumModel;
 
 @interface ChatUtil : NSObject
 
@@ -16,5 +16,9 @@
 + (CGFloat)heightForMessage:(ChatModel *)currentChatmodel premodel:(ChatModel *)premodel;
 
 //创建消息模型
-+ (ChatModel *)creatMessageModel;
++ (ChatModel *)creatMessageModel:(ChatModel *)config;
+
+//创建本地资源缓存 , 图片写入本地
++ (void)creatLocalCacheSource:(ChatAlbumModel *)albumModel chat:(ChatModel *)chatModel;
+
 @end

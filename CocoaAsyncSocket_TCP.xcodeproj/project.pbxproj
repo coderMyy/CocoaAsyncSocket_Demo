@@ -81,6 +81,7 @@
 		B8661AA71ECD95680022753D /* ChatRecordTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B8661AA61ECD95680022753D /* ChatRecordTool.m */; };
 		B8661AAA1ECD998E0022753D /* UIImageView+GIF.m in Sources */ = {isa = PBXBuildFile; fileRef = B8661AA91ECD998E0022753D /* UIImageView+GIF.m */; };
 		B89E046A1ED03F23000863F1 /* UIImage+photoPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = B89E04691ED03F23000863F1 /* UIImage+photoPicker.m */; };
+		B8EEC0C91ED47E2800F52E79 /* ChatConfigModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B8EEC0C81ED47E2800F52E79 /* ChatConfigModel.m */; };
 		E1527204E4A6C66E20ABAB19 /* Pods_CocoaAsyncSocket_TCP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24AA3076491D2596209CE424 /* Pods_CocoaAsyncSocket_TCP.framework */; };
 /* End PBXBuildFile section */
 
@@ -252,6 +253,8 @@
 		B8661AA91ECD998E0022753D /* UIImageView+GIF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+GIF.m"; sourceTree = "<group>"; };
 		B89E04681ED03F23000863F1 /* UIImage+photoPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+photoPicker.h"; sourceTree = "<group>"; };
 		B89E04691ED03F23000863F1 /* UIImage+photoPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+photoPicker.m"; sourceTree = "<group>"; };
+		B8EEC0C71ED47E2800F52E79 /* ChatConfigModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatConfigModel.h; sourceTree = "<group>"; };
+		B8EEC0C81ED47E2800F52E79 /* ChatConfigModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatConfigModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -643,6 +646,8 @@
 				B85F3A8B1EC9C9E400B2EA9E /* ChatModel.m */,
 				B816A1E61ED056070024859F /* ChatAlbumModel.h */,
 				B816A1E71ED056070024859F /* ChatAlbumModel.m */,
+				B8EEC0C71ED47E2800F52E79 /* ChatConfigModel.h */,
+				B8EEC0C81ED47E2800F52E79 /* ChatConfigModel.m */,
 			);
 			path = ChatModel;
 			sourceTree = "<group>";
@@ -917,6 +922,7 @@
 				B816A1DA1ED040A20024859F /* TZImageManager.m in Sources */,
 				B85F3A501EC9C9C600B2EA9E /* ChatNavigationController.m in Sources */,
 				B816A1DE1ED040A20024859F /* TZPhotoPreviewCell.m in Sources */,
+				B8EEC0C91ED47E2800F52E79 /* ChatConfigModel.m in Sources */,
 				B85F3A4A1EC9C9C600B2EA9E /* NSString+extension.m in Sources */,
 				B85F3A541EC9C9C600B2EA9E /* ReachState.m in Sources */,
 				B816A1DC1ED040A20024859F /* TZImagePickerController.m in Sources */,

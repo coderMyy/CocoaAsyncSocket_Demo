@@ -240,7 +240,7 @@ typedef void(^albumAuthorizationCallBack)();
                             NSString *name = [[info[@"PHImageFileSandboxExtensionTokenKey"]componentsSeparatedByString:@"/"]lastObject];
                             imageModel.name = [NSString stringWithFormat:@"chatPicture_%@%@",getCurrentTime(),name];
                             imageModel.orignalData = data;
-//                            imageModel.orignalImage = photo;
+                            imageModel.picSize = photo.size;
                             imageModel.size = [@(data.length)stringValue];
                             
                             if (index == assets.count - 1) {
@@ -257,19 +257,7 @@ typedef void(^albumAuthorizationCallBack)();
         }else{
             
             __block int index = 0;
-            
-            // ===============================================压缩新增
             NSArray *orignalImageArray = images;
-            NSMutableArray *newSmallImagesArray = [NSMutableArray array];
-            [orignalImageArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-                
-                //默认相册的照片压缩10倍 。iphone一张图压缩10倍一般也有几百K 基本上够用 ，
-                UIImage *orignalImage = (UIImage *)obj;
-                NSData *smallData = UIImageJPEGRepresentation(orignalImage, 0.1);
-                UIImage *newSmallImage = [UIImage imageWithData:smallData];
-                [newSmallImagesArray addObject:newSmallImage];
-            }];
-            // ================================================
             
             NSMutableArray *imagesArray = [NSMutableArray array];
             [assets enumerateObjectsUsingBlock:^(PHAsset  *_Nonnull asset, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -284,13 +272,14 @@ typedef void(^albumAuthorizationCallBack)();
                 
                 [[PHImageManager defaultManager]requestImageDataForAsset:asset options:option resultHandler:^(NSData * _Nullable imageData, NSString * _Nullable dataUTI, UIImageOrientation orientation, NSDictionary * _Nullable info) {
                     
-                    // ============================压缩新增
+                    // ============================压缩
                     NSData *normalData = UIImageJPEGRepresentation([UIImage imageWithData:imageData], 0.1);
                     // ============================
-                    
+                    UIImage *orignalImg = orignalImageArray[idx];
                     NSString *name = [[info[@"PHImageFileSandboxExtensionTokenKey"]componentsSeparatedByString:@"/"]lastObject];
                     imageModel.name = [NSString stringWithFormat:@"chatPicture_%@%@",getCurrentTime(),name];
                     imageModel.normalData = normalData;
+                    imageModel.picSize = orignalImg.size;
                     imageModel.size = [@(normalData.length)stringValue];
                     //回调数据 2
                     if (index == assets.count -1) {
