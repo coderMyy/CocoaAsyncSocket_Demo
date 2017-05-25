@@ -23,7 +23,8 @@
 @property (nonatomic, strong) Mp3Recorder *recorder;
 //录制的秒数
 @property (nonatomic, assign) NSUInteger recordSeconds;
-
+//callback
+@property (nonatomic, copy) audioInfoCallback infoCallback;
 @end
 
 @implementation ChatRecordTool
@@ -89,6 +90,8 @@
 //开始录音
 - (void)beginRecord
 {
+    //开始录制
+    [self.recorder startRecord];
     //蒙板展示
     UIWindow *keyWindow = [UIApplication sharedApplication].keyWindow;
     [keyWindow addSubview:self.recordCoverView];
@@ -107,12 +110,18 @@
 //取消录音
 - (void)cancelRecord
 {
+    //取消录制
+    [self.recorder cancelRecord];
+    
     [self clearRecord];
 }
 
 //录音结束
-- (void)stopRecord
+- (void)stopRecord:(audioInfoCallback)infoCallback
 {
+    _infoCallback = infoCallback;
+    //结束录制
+    [self.recorder stopRecord];
     [self clearRecord];
 }
 
@@ -141,6 +150,9 @@
 #pragma mark - delegate
 - (void)endConvertWithData:(NSData *)voiceData seconds:(NSTimeInterval)time
 {
+    if (_infoCallback) {
+        _infoCallback(voiceData,(NSInteger)time);
+    }
 }
 
 
@@ -158,13 +170,6 @@
     }];
 }
 
-- (instancetype)init
-{
-    if (self = [super init]) {
-        
-    }
-    return self;
-}
 
 - (void)dealloc
 {

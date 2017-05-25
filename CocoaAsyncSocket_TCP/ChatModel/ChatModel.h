@@ -128,6 +128,8 @@ typedef NS_ENUM(NSInteger){
 
 @property (nonatomic, assign) CGSize picSize; //图片尺寸
 
+@property (nonatomic, strong) NSString *seconds; //时长
+
 @property (nonatomic, copy) NSString *fileName; //文件名
 
 @property (nonatomic, strong) NSNumber *videoDuration; //语音时长

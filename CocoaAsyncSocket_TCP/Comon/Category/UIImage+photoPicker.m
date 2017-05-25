@@ -81,7 +81,7 @@ typedef void(^albumAuthorizationCallBack)();
     //缓存路径
     videoModel.videoCachePath = PATH_MOVIE_FILE;
     //视频时长
-    videoModel.videoDuration = [@(asset.duration)stringValue];
+    videoModel.duration = [@(asset.duration)stringValue];
     
     //异步存储
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
@@ -239,7 +239,7 @@ typedef void(^albumAuthorizationCallBack)();
                             
                             NSString *name = [[info[@"PHImageFileSandboxExtensionTokenKey"]componentsSeparatedByString:@"/"]lastObject];
                             imageModel.name = [NSString stringWithFormat:@"chatPicture_%@%@",getCurrentTime(),name];
-                            imageModel.orignalData = data;
+                            imageModel.orignalPicData = data;
                             imageModel.picSize = photo.size;
                             imageModel.size = [@(data.length)stringValue];
                             
@@ -278,7 +278,7 @@ typedef void(^albumAuthorizationCallBack)();
                     UIImage *orignalImg = orignalImageArray[idx];
                     NSString *name = [[info[@"PHImageFileSandboxExtensionTokenKey"]componentsSeparatedByString:@"/"]lastObject];
                     imageModel.name = [NSString stringWithFormat:@"chatPicture_%@%@",getCurrentTime(),name];
-                    imageModel.normalData = normalData;
+                    imageModel.normalPicData = normalData;
                     imageModel.picSize = orignalImg.size;
                     imageModel.size = [@(normalData.length)stringValue];
                     //回调数据 2

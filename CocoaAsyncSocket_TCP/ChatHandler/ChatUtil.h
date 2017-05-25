@@ -15,10 +15,13 @@
 //消息高度计算
 + (CGFloat)heightForMessage:(ChatModel *)currentChatmodel premodel:(ChatModel *)premodel;
 
-//创建消息模型
-+ (ChatModel *)creatMessageModel:(ChatModel *)config;
-
-//创建本地资源缓存 , 图片写入本地
-+ (void)creatLocalCacheSource:(ChatAlbumModel *)albumModel chat:(ChatModel *)chatModel;
+//初始化文本消息模型
++ (ChatModel *)initTextMessage:(NSString *)text config:(ChatModel *)config;
+//初始化语音消息模型
++ (ChatModel *)initAudioMessage:(ChatAlbumModel *)audio config:(ChatModel *)config;
+//初始化图片消息模型
++ (NSArray<ChatModel *> *)initPicMessage:(NSArray<ChatAlbumModel *> *)pics config:(ChatModel *)config;
+//初始化视频消息模型
++ (ChatModel *)initVideoMessage:(ChatAlbumModel *)video config:(ChatModel *)config;
 
 @end

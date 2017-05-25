@@ -25,7 +25,7 @@
 //时间容器
 @property (nonatomic, strong) UIView *timeContainer;
 //昵称
-@property (nonatomic, strong) UILabel *nickNameLabel;//昵称
+@property (nonatomic, strong) UILabel *nickNameLabel;
 
 @end
 
@@ -169,13 +169,12 @@
         self.timeContainer.frame = Frame((SCREEN_WITDTH - timeTextSize.width-10)*0.5, 15,timeTextSize.width + 10, 20);
     }
     self.timeContainer.hidden = !imageModel.shouldShowTime;
-    //处理失败按钮
+    //处理失败按钮 , 处理进度按钮 ,昵称隐藏处理
     BOOL isSend   = [imageModel.isSend integerValue];
-    self.failureButton.hidden   = isSend||imageModel.isSending.integerValue;
-    //处理进度按钮
-    self.progressLabel.hidden = !imageModel.isSending.integerValue;
-    //昵称隐藏处理
-    self.nickNameLabel.hidden = imageModel.byMyself.integerValue;
+    self.failureButton.hidden    = !imageModel.byMyself.integerValue || isSend || imageModel.isSending.integerValue;
+    self.progressLabel.hidden  = !imageModel.byMyself.integerValue || imageModel.isSending.integerValue;
+    self.nickNameLabel.hidden = imageModel.byMyself.integerValue || hashEqual(imageModel.chatType, @"userChat");
+        
     //赋值
     [self setContent];
     //frame

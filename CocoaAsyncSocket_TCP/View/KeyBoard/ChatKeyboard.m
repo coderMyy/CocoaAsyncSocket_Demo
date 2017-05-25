@@ -27,7 +27,9 @@
 @end
 
 //记录当前键盘的高度 ，键盘除了系统的键盘还有咱们自定义的键盘，互相来回切换
-static CGFloat keyboardHeight = 0;
+static CGFloat keyboardHeight         = 0;
+static const CGFloat defaultMsgBarHeight = 49;  //模态输入框容器 49
+static const CGFloat defaultInputHeight     = 35; //默认输入框 35
 
 @interface ChatKeyboard ()<UITextViewDelegate,UIScrollViewDelegate>
 
@@ -37,7 +39,6 @@ static CGFloat keyboardHeight = 0;
 @property (nonatomic, copy) ChatPictureMessageSendBlock pictureCallback;
 @property (nonatomic, copy) ChatVideoMessageSendBlock videoCallback;
 @property (nonatomic, strong) id target;
-@property (nonatomic, strong) ChatModel *config;
 
  //表情键盘
 @property (nonatomic, strong) UIView *facesKeyboard;
@@ -323,7 +324,6 @@ static CGFloat keyboardHeight = 0;
     if (self = [super initWithFrame:frame]) {
         [self addSubview:self.messageBar];
         [self addSubview:self.keyBoardContainer];
-        
         //布局
         [self configUIFrame];
     }
@@ -333,9 +333,9 @@ static CGFloat keyboardHeight = 0;
 #pragma mark - 初始化布局
 - (void)configUIFrame
 {
-    self.messageBar.frame = Frame(0, 0, SCREEN_WITDTH, 49);  //消息栏
+    self.messageBar.frame = Frame(0, 0, SCREEN_WITDTH, defaultMsgBarHeight);  //消息栏
     self.audioButton.frame = Frame(10, (Height(self.messageBar.frame) - 30)*0.5, 30, 30); //语音按钮
-    self.audioLpButton.frame = Frame(MaxX(self.audioButton.frame)+15,(Height(self.messageBar.frame)-35)*0.5, SCREEN_WITDTH - 155, 35); //长按录音按钮
+    self.audioLpButton.frame = Frame(MaxX(self.audioButton.frame)+15,(Height(self.messageBar.frame)-defaultInputHeight)*0.5, SCREEN_WITDTH - 155, defaultInputHeight); //长按录音按钮
     self.msgTextView.frame = self.audioLpButton.frame;  //输入框
     self.swtFaceButton.frame  = Frame(MaxX(self.msgTextView.frame)+15, (Height(self.messageBar.frame)-30)*0.5,30, 30); //表情键盘切换按钮
     self.swtHandleButton.frame = Frame(MaxX(self.swtFaceButton.frame)+15, (Height(self.messageBar.frame)-30)*0.5, 30, 30); //加号按钮切换操作键盘
@@ -394,7 +394,14 @@ static CGFloat keyboardHeight = 0;
 #pragma mark - 手指回到录音按钮 , 松开
 - (void)audioLpButtonTouchUpInside:(UIButton *)audioLpButton
 {
-    [self.recordTool stopRecord];
+    [self.recordTool stopRecord:^(NSData *audioData, NSInteger seconds) {
+        
+        //回调语音消息
+        ChatAlbumModel *audio = [[ChatAlbumModel alloc]init];
+        audio.audioData = audioData;
+        audio.duration   = [@(seconds)stringValue];
+        _audioCallback(audio);
+    }];
     //手动释放一下,每次录音创建新的蒙板,避免过多处理 定时器和子控件逻辑
     self.recordTool = nil;
 }
@@ -454,7 +461,7 @@ static CGFloat keyboardHeight = 0;
         [_msgTextView resignFirstResponder];
         self.msgTextView.hidden = YES;
         self.audioLpButton.hidden = NO;
-        [self customKeyboardMove:SCREEN_HEIGHT - 49]; //默认高度 输入栏 49
+        [self customKeyboardMove:SCREEN_HEIGHT - defaultMsgBarHeight]; //默认高度 输入栏 49
     }else{
         self.msgTextView.hidden = NO;
         self.audioLpButton.hidden = YES;
@@ -471,11 +478,6 @@ static CGFloat keyboardHeight = 0;
     }];
 }
 
-#pragma mark - 监听输入框
-- (void)textViewDidChange:(UITextView *)textView
-{
-}
-
 #pragma mark - 监听输入框变化 (这里如果放到layout里自动让他布局 , 会稍显麻烦一些 , 所以自动手动控制一下)
 //这里用contentSize计算较为简单和精确 , 如果计算文字高度 ,  还需要加上textView的内间距.
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context
@@ -485,10 +487,11 @@ static CGFloat keyboardHeight = 0;
     if (oldHeight <=0 || newHeight <=0) return;
     NSLog(@"------new ----%@",change[@"new"]);
     NSLog(@"-------old ---%@",change[@"old"]);
-    if (change[@"new"] != change[@"old"]) {
+    if (newHeight != oldHeight) {
         NSLog(@"高度变化");
         //根据实时的键盘高度进行布局
-        [self msgTextViewHeightFit];
+        CGFloat inputHeight = newHeight > defaultInputHeight ? newHeight : defaultInputHeight;
+        [self msgTextViewHeightFit:inputHeight];
     }
 }
 
@@ -521,10 +524,10 @@ static CGFloat keyboardHeight = 0;
 }
 
 #pragma mark - 输入框高度调整
-- (void)msgTextViewHeightFit
+- (void)msgTextViewHeightFit:(CGFloat)msgViewHeight
 {
-    self.messageBar.frame = Frame(0, 0, SCREEN_WITDTH, self.msgTextView.contentSize.height +MinY(self.msgTextView.frame)*2);
-    self.msgTextView.frame = Frame(MinX(self.msgTextView.frame),(Height(self.messageBar.frame)-self.msgTextView.contentSize.height)*0.5, Width(self.msgTextView.frame), self.msgTextView.contentSize.height);
+    self.messageBar.frame = Frame(0, 0, SCREEN_WITDTH, msgViewHeight +MinY(self.msgTextView.frame)*2);
+    self.msgTextView.frame = Frame(MinX(self.msgTextView.frame),(Height(self.messageBar.frame)-msgViewHeight)*0.5, Width(self.msgTextView.frame), msgViewHeight);
     self.keyBoardContainer.frame = Frame(0, MaxY(self.messageBar.frame), SCREEN_WITDTH, Height(self.keyBoardContainer.frame));
     self.frame = Frame(0,SCREEN_HEIGHT - keyboardHeight-Height(self.messageBar.frame), SCREEN_WITDTH,Height(self.keyBoardContainer.frame) + Height(self.messageBar.frame));
 }
@@ -538,24 +541,9 @@ static CGFloat keyboardHeight = 0;
             // 这里用到了阿里巴巴TZImagerPicker 相册选择器 写得挺好的 ，我对它进行了封装和修改了里面一些代码 。 后期有时间会自己写一个相册的选择器
             [UIImage openPhotoPickerGetImages:^(NSArray<ChatAlbumModel *> *images) {
                 
-                //创建消息模型数组
-                NSMutableArray *imageMessages = [NSMutableArray array];
-                [images enumerateObjectsUsingBlock:^(ChatAlbumModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-                   
-                    //创建图片消息模型
-                    ChatModel *imageModel = [ChatUtil creatMessageModel:_config];
-                    imageModel.content.picSize = obj.picSize;
-                    imageModel.content.fileName = obj.name;
-                    imageModel.contenType      = Content_Picture;
-                    
-                    //创建本地资源缓存
-                    [ChatUtil creatLocalCacheSource:obj chat:imageModel];
-                    [imageMessages addObject:imageModel];
-                }];
-                
                 //回调发送
                 if (_pictureCallback) {
-                    _pictureCallback(imageMessages);
+                    _pictureCallback(images);
                 }
             } target:self.target maxCount:9];
             NSLog(@"-------------点击了相册");
@@ -570,6 +558,14 @@ static CGFloat keyboardHeight = 0;
         {
             [UIImage openPhotoPickerGetVideo:^(ChatAlbumModel *videoModel) {
                 
+                ChatModel *videoChatModel = [[ChatModel alloc]init];
+                ChatContentModel *content = [[ChatContentModel alloc]init];
+                videoChatModel.content = content;
+                videoChatModel.content.picSize = videoModel.videoCoverImg.size;
+                videoChatModel.content.fileName = videoModel.name;
+                videoChatModel.contenType      = Content_Video;
+
+                
             } target:self.target cacheDirectory:nil];
             NSLog(@"-------------点击了视频相册");
         }
@@ -582,7 +578,6 @@ static CGFloat keyboardHeight = 0;
 #pragma mark - 点击表情
 - (void)emotionClick:(UIButton *)emotionBtn
 {
-    
     //获取点击的表情
     NSString *emotionKey = [NSString stringWithFormat:@"ChatEmotion_%li",emotionBtn.tag - 999];
     NSString *emotionName = [self.emotionDict objectForKey:emotionKey];
@@ -659,28 +654,23 @@ static CGFloat keyboardHeight = 0;
 #pragma mark - 发送文本/表情消息
 - (void)sendTextMessage
 {
-    //创建普通消息模型
-    ChatModel *textModel = [ChatUtil creatMessageModel:_config];
-    textModel.contenType  = Content_Text;
-    textModel.content.text = self.msgTextView.text;
-    self.msgTextView.text = @"";
-    //更新输入框
-    [self msgTextViewHeightFit];
     //回调
     if (_textCallback) {
-        _textCallback(textModel);
+        _textCallback(self.msgTextView.text);
+         self.msgTextView.text = @"";
+        //更新输入框
+        [self msgTextViewHeightFit:defaultInputHeight];
     }
 }
 
 #pragma mark - 消息回调
-- (void)textCallback:(ChatTextMessageSendBlock)textCallback audioCallback:(ChatAudioMesssageSendBlock)audioCallback picCallback:(ChatPictureMessageSendBlock)picCallback videoCallback:(ChatVideoMessageSendBlock)videoCallback target:(id)target config:(ChatModel *)config
+- (void)textCallback:(ChatTextMessageSendBlock)textCallback audioCallback:(ChatAudioMesssageSendBlock)audioCallback picCallback:(ChatPictureMessageSendBlock)picCallback videoCallback:(ChatVideoMessageSendBlock)videoCallback target:(id)target
 {
     _textCallback     = textCallback;
     _audioCallback   = audioCallback;
     _pictureCallback = picCallback;
     _videoCallback   = videoCallback;
     _target              = target;
-    _config             = config;
 }
 
 - (void)dealloc
@@ -688,6 +678,11 @@ static CGFloat keyboardHeight = 0;
     [self.msgTextView removeObserver:self forKeyPath:@"contentSize"];
 }
 
-
+#pragma mark - 键盘降落
+- (void)keyboardResignFirstResponder:(NSNotification *)note
+{
+    [self.msgTextView resignFirstResponder];
+    [self customKeyboardMove:SCREEN_HEIGHT - Height(self.messageBar.frame)];
+}
 
 @end

@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class ChatModel;
+
 @interface ChatAudioCell : UITableViewCell
+
+@property (nonatomic, strong) ChatModel *audioModel;
 
 @end

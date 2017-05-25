@@ -139,6 +139,7 @@
 #pragma mark - 添加链接,公共接口
 - (void)setText:(NSString *)text customLinks:(NSArray<NSString *> *)customLinks keywords:(NSArray<NSString *> *)keywords
 {
+    if (!text.length) text = @" ";
     _text        = text;
     _customLinks = customLinks;
     _keywords    = keywords;

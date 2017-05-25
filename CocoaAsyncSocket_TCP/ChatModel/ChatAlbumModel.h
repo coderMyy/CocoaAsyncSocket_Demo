@@ -17,16 +17,18 @@
 //大小
 @property (nonatomic, copy) NSString *size;
 //图片压缩过的data
-@property (nonatomic, strong) NSData *normalData;
+@property (nonatomic, strong) NSData *normalPicData;
 //图片无压缩data
-@property (nonatomic, strong) NSData *orignalData;
+@property (nonatomic, strong) NSData *orignalPicData;
+//音频data
+@property (nonatomic, strong) NSData *audioData;
 //图片尺寸
 @property (nonatomic, assign) CGSize  picSize;
 //视频缓存地址
 @property (nonatomic, copy) NSString *videoCachePath;
 //视频缩略图
 @property (nonatomic, strong) UIImage *videoCoverImg;
-//视频时长
-@property (nonatomic, copy) NSString *videoDuration;
+//视频 , 语音时长
+@property (nonatomic, copy) NSString *duration;
 
 @end

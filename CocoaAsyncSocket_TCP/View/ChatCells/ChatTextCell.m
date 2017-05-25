@@ -151,9 +151,9 @@
         self.timeContainer.hidden = YES;
     }
     //处理转圈
-    textModel.isSending.integerValue ? [self.activiView startAnimating] : [self.activiView stopAnimating];
+    textModel.isSending.integerValue &&textModel.byMyself.integerValue ? [self.activiView startAnimating] : [self.activiView stopAnimating];
     //处理红叹号
-    self.failureButton.hidden = textModel.isSend.integerValue;
+    self.failureButton.hidden = textModel.isSend.integerValue || textModel.isSending.integerValue;
     //赋值
     [self setContent];
     //设置frame

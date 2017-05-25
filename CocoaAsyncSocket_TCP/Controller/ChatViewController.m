@@ -41,22 +41,20 @@
         //传入当前控制器 ，方便打开相册（如放到控制器 ， 后期的逻辑过多，控制器会更加臃肿）
         __weak typeof(self) weakself = self;
         //普通文本消息
-        [_customKeyboard textCallback:^(ChatModel *textModel) {
+            [_customKeyboard textCallback:^(NSString *text) {
+                //发送文本
+                [weakself sendTextMessage:text];
+
+        } audioCallback:^(ChatAlbumModel *audio) {
             
-            [weakself sendTextMessage:textModel];
-        //语音消息
-        } audioCallback:^(ChatModel *audioModel) {
-            
-            [weakself sendAudioMessage:audioModel];
-        //图片消息
-        } picCallback:^(NSArray<ChatModel *>*images) {
+             [weakself sendAudioMessage:audio];
+        } picCallback:^(NSArray<ChatAlbumModel *> *images) {
             
             [weakself sendPictureMessage:images];
-        //视频消息
-        } videoCallback:^(ChatModel *videoModel) {
+        } videoCallback:^(ChatAlbumModel *videoModel) {
             
             [weakself sendVideoMessage:videoModel];
-        } target:self config:_config];
+        } target:self];
     }
     return _customKeyboard;
 }
@@ -128,9 +126,10 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    //键盘弹起通知
+    //系统键盘弹起通知
     [[NSNotificationCenter defaultCenter]addObserver:self.customKeyboard selector:@selector(systemKeyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
-    
+    //自定义键盘系统键盘降落
+    [[NSNotificationCenter defaultCenter]addObserver:self.customKeyboard selector:@selector(keyboardResignFirstResponder:) name:ChatKeyboardResign object:nil];
 }
 
 #pragma mark - dataSource
@@ -154,7 +153,7 @@
     }else if (hashEqual(chatModel.contenType, Content_Audio)){
         
         ChatAudioCell *audioCell = [tableView dequeueReusableCellWithIdentifier:@"ChatAudioCell"];
-        
+        audioCell.audioModel      = chatModel;
         return audioCell;
         
         //图片消息
@@ -218,29 +217,36 @@
 
 
 #pragma mark - 发送文本/表情消息
-- (void)sendTextMessage:(ChatModel *)textModel
+- (void)sendTextMessage:(NSString *)text
 {
+    //创建文本消息
+    ChatModel *textModel = [ChatUtil initTextMessage:text config:_config];
     [self.talkMessages addObject:textModel];
     [self.chatTableView reloadData];
     [self scrollToBottom];
 }
 
 #pragma mark - 发送语音消息
-- (void)sendAudioMessage:(ChatModel *)audioModel
+- (void)sendAudioMessage:(ChatAlbumModel *)audio
 {
-    
+    ChatModel *audioModel = [ChatUtil initAudioMessage:audio config:_config];
+    [self.talkMessages addObject:audioModel];
+    [self.chatTableView reloadData];
+    [self scrollToBottom];
 }
 
 #pragma mark - 发送图片消息
-- (void)sendPictureMessage:(NSArray<ChatModel *> *)picModels
+- (void)sendPictureMessage:(NSArray<ChatAlbumModel *> *)picModels
 {
-    [self.talkMessages addObjectsFromArray:picModels];
+    //消息基本信息配置
+    NSArray *picMessages = [ChatUtil initPicMessage:picModels config:_config];
+    [self.talkMessages addObjectsFromArray:picMessages];
     [self.chatTableView reloadData];
     [self scrollToBottom];
 }
 
 #pragma mark - 发送视频消息
-- (void)sendVideoMessage:(ChatModel *)videoModel
+- (void)sendVideoMessage:(ChatAlbumModel *)videoModel
 {
     
 }
@@ -248,7 +254,7 @@
 #pragma mark - 滚动,点击等相关处理
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
-    
+    [[NSNotificationCenter defaultCenter]postNotificationName:ChatKeyboardResign object:nil];
 }
 
 #pragma mark - delegate

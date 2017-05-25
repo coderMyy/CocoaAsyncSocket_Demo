@@ -51,6 +51,9 @@
         //语音
     }else if (hashEqual(currentChatmodel.contenType, Content_Audio)){
         
+        height = 50;
+        //验证是否群聊
+        [self groupChatConfig:currentChatmodel];
         return currentChatmodel.messageHeight += currentChatmodel.shouldShowTime ? height + 50 : height + 15;
         //图片
     }else if (hashEqual(currentChatmodel.contenType, Content_Picture)){
@@ -74,6 +77,8 @@
         }else{
             height = 120;
         }
+        //验证是否群聊
+        [self groupChatConfig:currentChatmodel];
         return currentChatmodel.messageHeight += currentChatmodel.shouldShowTime ? height + 50 : height + 15;
         //视频
     }else if (hashEqual(currentChatmodel.contenType, Content_Video)){
@@ -102,34 +107,50 @@
 #pragma marl - 创建发送消息模型
 + (ChatModel *)creatMessageModel:(ChatModel *)config
 {
-    ChatModel *messageModel    = [[ChatModel alloc]init];
-    ChatContentModel *content   = [[ChatContentModel alloc]init];
-    messageModel.content          = content;
-    messageModel.fromUserID     = [Account account].myUserID;
-    messageModel.toUserID         = config.toUserID;
-    messageModel.messageType  = @"normal";
-    messageModel.chatType        = config.chatType;
-    messageModel.deviceType     = @"iOS";
-    messageModel.versionCode   = TCP_VersionCode;
-    messageModel.byMyself        = @1;
-    messageModel.isSend           = @0;
-    messageModel.isRead           = @0;
-    messageModel.beatID            = TCP_beatBody;
-    messageModel.fromPortrait    = [Account account].portrait;
-    messageModel.toNickName    = config.toNickName;
-    messageModel.groupID          = config.groupID;
-    messageModel.noDisturb       = config.noDisturb;
-    return messageModel;
+    ChatModel * chatModel = [[ChatModel alloc]init];
+    ChatContentModel *content = [[ChatContentModel alloc]init];
+    chatModel.content          = content;
+    chatModel.fromUserID     = [Account account].myUserID;
+    chatModel.toUserID         = config.toUserID;
+    chatModel.messageType  = @"normal";
+    chatModel.chatType        = config.chatType;
+    chatModel.deviceType     = @"iOS";
+    chatModel.versionCode   = TCP_VersionCode;
+    chatModel.byMyself        = @1;
+    chatModel.isSend           = @0;
+    chatModel.isRead           = @0;
+    chatModel.isSending       = @1;
+    chatModel.beatID            = TCP_beatBody;
+    chatModel.fromPortrait    = [Account account].portrait;
+    chatModel.toPortrait        = config.toPortrait;
+    chatModel.toNickName    = config.toNickName;
+    chatModel.groupID          = config.groupID;
+    chatModel.groupName    = config.groupName;
+    chatModel.noDisturb       = config.noDisturb;
+    
+    return chatModel;
 }
 
-#pragma mark - 创建聊天资源缓存
-+ (void)creatLocalCacheSource:(ChatAlbumModel *)albumModel chat:(ChatModel *)chatModel
+//初始化文本消息模型
++ (ChatModel *)initTextMessage:(NSString *)text config:(ChatModel *)config
 {
+    ChatModel *textModel = [self creatMessageModel:config];
+    textModel.contenType  = Content_Text;
+    textModel.content.text  = text;
+    return textModel;
+}
+//初始化语音消息模型
++ (ChatModel *)initAudioMessage:(ChatAlbumModel *)audio config:(ChatModel *)config
+{
+    ChatModel *audioModel = [self creatMessageModel:config];
+    audioModel.contenType = Content_Audio;
+    audioModel.content.seconds = audio.duration;
+    
     NSString *basePath = nil;
-    if (hashEqual(chatModel.chatType, @"userChat")) {
-        basePath = [ChatCache_Path stringByAppendingPathComponent:chatModel.toUserID];
+    if (hashEqual(config.chatType, @"userChat")) {
+        basePath = [ChatCache_Path stringByAppendingPathComponent:config.toUserID];
     }else{
-        basePath = [ChatCache_Path stringByAppendingPathComponent:chatModel.groupID];
+        basePath = [ChatCache_Path stringByAppendingPathComponent:config.groupID];
     }
     
     NSFileManager *manager = [NSFileManager defaultManager];
@@ -137,55 +158,99 @@
     if (!exist) {
         [manager createDirectoryAtPath:basePath withIntermediateDirectories:YES attributes:nil error:NULL];
     }
-    
-    //////////////////资源缓存
-    //压缩比
-    CGFloat compressScale = 1;
-    NSData *smallAlbumData = nil;
-    NSData *albumData = nil;
-    //用户选择了原图
-    if (albumModel.isOrignal) {
-        
-        //压缩过的小图缓存 (用户界面展示,节省资源)
-        if (albumModel.orignalData.length/1024.0) { //小于3M的
-            
-            compressScale = 0.1;  //压缩10倍
-        }else{  //大于3M
-            
-            compressScale = 0.05; //压缩20倍
-        }
-        UIImage *image = [UIImage imageWithData:albumModel.orignalData];
-        //小图data
-        smallAlbumData = UIImageJPEGRepresentation(image, compressScale);
-        //原图data
-        albumData        = albumModel.orignalData;
-        
-    //默认选择,未选择原图
-    }else{
-        
-        //压缩过的小图缓存 (用户界面展示,节省资源)
-        if (albumModel.normalData.length/1024.0) { //小于3M的
-            
-            compressScale = 0.1;  //压缩10倍
-        }else{  //大于3M
-            
-            compressScale = 0.05; //压缩20倍
-        }
-        
-        UIImage *image = [UIImage imageWithData:albumModel.normalData];
-        //小图data
-        smallAlbumData = UIImageJPEGRepresentation(image, compressScale);
-        //原图data
-        albumData        = albumModel.normalData;
-    }
-    //小图缓存路径
-    NSString *smallDetailPath = [basePath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@_%@",@"small",albumModel.name]];
-    //原图缓存路径
-    NSString *detailPath = [basePath stringByAppendingPathComponent:albumModel.name];
-    //小图写入缓存
-    [smallAlbumData writeToFile:smallDetailPath atomically:YES];
-    //原图写入缓存
-    [albumData writeToFile:detailPath atomically:YES];
+    //语音写入缓存
+    NSString *name = [NSString stringWithFormat:@"ChatAudio_%@.mp3",audioModel.sendTime];
+    [audio.audioData writeToFile:[basePath stringByAppendingPathComponent:name] atomically:YES];
+    return audioModel;
 }
+//初始化图片消息模型
++ (NSArray<ChatModel *> *)initPicMessage:(NSArray<ChatAlbumModel *> *)pics config:(ChatModel *)config
+{
+    NSMutableArray *tmpArray = [NSMutableArray array];
+    for (ChatAlbumModel *pic in pics) {
+        
+        //创建图片模型
+        ChatModel *picModel = [self creatMessageModel:config];
+        picModel.contenType = Content_Picture;
+        picModel.content.picSize = pic.picSize;
+        picModel.content.fileName = pic.name;
+        [tmpArray addObject:picModel];
+        
+        NSString *basePath = nil;
+        if (hashEqual(config.chatType, @"userChat")) {
+            basePath = [ChatCache_Path stringByAppendingPathComponent:config.toUserID];
+        }else{
+            basePath = [ChatCache_Path stringByAppendingPathComponent:config.groupID];
+        }
+        
+        NSFileManager *manager = [NSFileManager defaultManager];
+        BOOL exist = [manager fileExistsAtPath:basePath];
+        if (!exist) {
+            [manager createDirectoryAtPath:basePath withIntermediateDirectories:YES attributes:nil error:NULL];
+        }
+        
+        //////////////////资源缓存
+        //压缩比
+        CGFloat compressScale = 1;
+        NSData *smallAlbumData = nil;
+        NSData *albumData = nil;
+        //用户选择了原图
+        if (pic.isOrignal) {
+            
+            //压缩过的小图缓存 (用户界面展示,节省资源)
+            if (pic.orignalPicData.length/1024.0/1024.0 < 3) { //小于3M的
+                
+                compressScale = 0.1;  //压缩10倍
+            }else{  //大于3M
+                
+                compressScale = 0.05; //压缩20倍
+            }
+            UIImage *image = [UIImage imageWithData:pic.orignalPicData];
+            //小图data
+            smallAlbumData = UIImageJPEGRepresentation(image, compressScale);
+            //原图data
+            albumData        = pic.orignalPicData;
+            
+            //默认选择,未选择原图
+        }else{
+            
+            //压缩过的小图缓存 (用户界面展示,节省资源)
+            if (pic.normalPicData.length/1024.0/1024.0 < 3) { //小于3M的
+                
+                compressScale = 0.1;  //压缩10倍
+            }else{  //大于3M
+                
+                compressScale = 0.05; //压缩20倍
+            }
+            
+            UIImage *image = [UIImage imageWithData:pic.normalPicData];
+            //小图data
+            smallAlbumData = UIImageJPEGRepresentation(image, compressScale);
+            //原图data
+            albumData        = pic.normalPicData;
+        }
+        //小图缓存路径
+        NSString *smallDetailPath = [basePath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@_%@",@"small",pic.name]];
+        //原图缓存路径
+        NSString *detailPath = [basePath stringByAppendingPathComponent:pic.name];
+        //小图写入缓存
+        [smallAlbumData writeToFile:smallDetailPath atomically:YES];
+        //原图写入缓存
+        [albumData writeToFile:detailPath atomically:YES];
+    }
+    return tmpArray;
+}
+//初始化视频消息模型
++ (ChatModel *)initVideoMessage:(ChatAlbumModel *)video config:(ChatModel *)config
+{
+    return nil;
+}
+
+
+
+
+
+
+
 
 @end

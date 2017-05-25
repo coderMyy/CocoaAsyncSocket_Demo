@@ -51,8 +51,10 @@ static NSString *defaulUserIcon           = @"userhead";   //文本,表情消息
  */
 static NSString *ChatlistTitle           = @"聊天列表";   //聊天列表标题
 
-
-
+/*
+  聊天通知
+ */
+static NSString *ChatKeyboardResign = @"ChatKeyboardShouldResignFirstResponder"; //键盘失去第一响应者
 
 
 
