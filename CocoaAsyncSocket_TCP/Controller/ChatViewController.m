@@ -16,8 +16,10 @@
 #import "ChatTipCell.h"  //提示语cell
 #import "ChatModel.h"   //消息模型
 #import "ChatUtil.h"    //工具类
+#import "ChatAudioPlayTool.h" //语音播放器
+#import "ChatHandler.h"
 
-@interface ChatViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface ChatViewController ()<UITableViewDelegate,UITableViewDataSource,ChatHandlerDelegate>
 
 //聊天列表
 @property (nonatomic, strong) UITableView *chatTableView;
@@ -29,7 +31,8 @@
 @property (nonatomic, strong) UIImageView *bellView;
 //键盘
 @property (nonatomic, strong) ChatKeyboard *customKeyboard;
-
+//语音播放器
+@property (nonatomic, strong) ChatAudioPlayTool *audioPlayTool;
 @end
 
 @implementation ChatViewController
@@ -120,6 +123,45 @@
     [self initUI];
     //拉取数据库消息
     [self getHistoryMessages];
+    //注册成为handler代理
+    [[ChatHandler shareInstance]addDelegate:self delegateQueue:nil];
+}
+
+#pragma mark - 接收消息
+- (void)didReceiveMessage:(ChatModel *)chatModel type:(ChatMessageType)messageType
+{
+    switch (messageType) {
+        //普通消息
+        case ChatMessageType_Normal:
+        {
+            [self.talkMessages addObject:chatModel];
+            [self.chatTableView reloadData];
+            [self scrollToBottom];
+        }
+            break;
+        //普通消息成功回执
+        case ChatMessageType_NormalReceipt:
+        {
+            NSPredicate *predict = [NSPredicate predicateWithFormat:@"sendTime = %@",chatModel.sendTime];
+            ChatModel *refreshModel = [self.talkMessages filteredArrayUsingPredicate:predict].firstObject;
+            refreshModel.isSend = @1;
+            refreshModel.isSending = @0;
+            [self.chatTableView reloadData];
+        }
+            break;
+        //失败回执
+        case ChatMessageType_InvalidReceipt:
+        {
+        }
+            break;
+        //撤回消息回执
+        case ChatMessageType_RepealReceipt:
+        {
+        }
+            break;
+        default:
+            break;
+    }
 }
 
 #pragma mark - 注册通知
@@ -142,6 +184,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     ChatModel *chatModel = self.talkMessages[indexPath.row];
+    __weak typeof(self) weakself = self;
     //文本,表情消息
     if (hashEqual(chatModel.contenType, Content_Text)) {
         
@@ -154,6 +197,20 @@
         
         ChatAudioCell *audioCell = [tableView dequeueReusableCellWithIdentifier:@"ChatAudioCell"];
         audioCell.audioModel      = chatModel;
+        //重新发送
+        [audioCell sendAgain:^(ChatModel *audioModel) {
+            
+        //播放语音
+        } playAudio:^(NSString *path) {
+        
+            [weakself playAudio:path];
+        //长按操作
+        } longpress:^(LongpressSelectHandleType type, ChatModel *audioModel) {
+        
+        //用户详情
+        } toUserInfo:^(NSString *userID) {
+            
+        }];
         return audioCell;
         
         //图片消息
@@ -197,7 +254,7 @@
 - (void)initUI
 {
     //初始化导航
-    self.titleView.text = [_config.chatType isEqualToString:@"groupChat"] ? _config.groupName : _config.toNickName;
+    self.titleView.text = [_config.chatType isEqualToString:@"groupChat"] ? _config.groupName : _config.nickName;
     self.navigationItem.titleView = self.titleView;
     CGSize titleSize = [self.titleView.text sizeWithFont:self.titleView.font maxSize:CGSizeMake(200,16)];
     //正常接收消息状态
@@ -224,6 +281,8 @@
     [self.talkMessages addObject:textModel];
     [self.chatTableView reloadData];
     [self scrollToBottom];
+    //传输文本
+    [[ChatHandler shareInstance]sendTextMessage:textModel];
 }
 
 #pragma mark - 发送语音消息
@@ -233,6 +292,8 @@
     [self.talkMessages addObject:audioModel];
     [self.chatTableView reloadData];
     [self scrollToBottom];
+    //传输
+    [[ChatHandler shareInstance]sendAudioMessage:audioModel];
 }
 
 #pragma mark - 发送图片消息
@@ -274,6 +335,13 @@
 {
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:_talkMessages.count - 1 inSection:0];
     [self.chatTableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:NO];
+}
+
+#pragma mark - 播放语音
+- (void)playAudio:(NSString *)path
+{
+    self.audioPlayTool = [ChatAudioPlayTool audioPlayTool:path];
+    [self.audioPlayTool play];
 }
 
 @end

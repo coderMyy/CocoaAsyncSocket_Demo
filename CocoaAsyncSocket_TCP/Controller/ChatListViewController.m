@@ -133,7 +133,7 @@
         ChatModel *chatModel   = [[ChatModel alloc]init];
         ChatContentModel *chatContent = [[ChatContentModel alloc]init];
         chatModel.content         = chatContent ;
-        chatModel.toNickName  = @"孟遥";
+        chatModel.nickName  = @"孟遥";
         if (index<tips.count) {
             chatModel.lastMessage = tips[index];
         }else{

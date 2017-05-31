@@ -10,7 +10,7 @@
 #import "MYCoreTextLabel.h"
 #import "ChatModel.h"
 
-@interface ChatTextCell ()
+@interface ChatTextCell ()<MYCoreTextLabelDelegate>
 
 //头像
 @property (nonatomic, strong) UIImageView *iconView;
@@ -26,10 +26,21 @@
 @property (nonatomic, strong) UIButton *failureButton;
 //菊花
 @property (nonatomic, strong) UIActivityIndicatorView *activiView;
-
+//昵称
+@property (nonatomic, strong) UILabel *nickNameLabel;
 @end
 
 @implementation ChatTextCell
+
+- (UILabel *)nickNameLabel
+{
+    if (!_nickNameLabel) {
+        _nickNameLabel = [[UILabel alloc]init];
+        _nickNameLabel.font = FontSet(12.f);
+        _nickNameLabel.textColor = UICOLOR_RGB_Alpha(0x333333, 1);
+    }
+    return _nickNameLabel;
+}
 
 - (MYCoreTextLabel *)coreLabel
 {
@@ -39,6 +50,7 @@
         _coreLabel.textColor = UICOLOR_RGB_Alpha(0x333333, 1);
         _coreLabel.hiddenNormalLink = YES;
         _coreLabel.lineSpacing = 6;
+        _coreLabel.delegate = self;
     }
     return _coreLabel;
 }
@@ -153,7 +165,9 @@
     //处理转圈
     textModel.isSending.integerValue &&textModel.byMyself.integerValue ? [self.activiView startAnimating] : [self.activiView stopAnimating];
     //处理红叹号
-    self.failureButton.hidden = textModel.isSend.integerValue || textModel.isSending.integerValue;
+    self.failureButton.hidden = textModel.isSend.integerValue || textModel.isSending.integerValue || textModel.byMyself.integerValue;
+    //处理昵称显示
+    self.nickNameLabel.hidden = textModel.byMyself.integerValue || hashEqual(textModel.chatType, @"userChat");
     //赋值
     [self setContent];
     //设置frame
@@ -163,22 +177,59 @@
 - (void)setContent
 {
     [self.iconView downloadImage:_textModel.fromPortrait placeholder:@"userhead"];
-    [self.coreLabel setText:_textModel.content.text customLinks:nil keywords:nil];
+    
+    UIImage *backImage = nil;
+    //我方
+    if (_textModel.byMyself.integerValue) {
+        
+        backImage = LoadImage(@"我方文字气泡");
+        [self.coreLabel setText:_textModel.content.text customLinks:nil keywords:nil];
+    }else{
+        self.nickNameLabel.text = _textModel.nickName;
+        backImage = LoadImage(@"对方文字气泡");
+        [self.coreLabel setText:_textModel.content.text customLinks:@[@"请假",@"报销",@"申请年假",@"假期查询"] keywords:nil];
+    }
+    backImage = [backImage stretchableImageWithLeftCapWidth:backImage.size.width * 0.8 topCapHeight:backImage.size.height *0.8];
+    self.backButton.image = backImage;
+    
 }
 
 - (void)setFrame
 {
-    //文本宽度JYScreen_Width - 145
     CGSize size = [_coreLabel sizeThatFits:CGSizeMake(SCREEN_WITDTH - 145, MAXFLOAT)];
-    //我方头像
-    self.iconView.frame = Frame(SCREEN_WITDTH - 65, MaxY(self.timeContainer.frame)+15, 50, 50);
-    //我方文本label
-    self.coreLabel.frame = Frame(10, 10,size.width, size.height);
-    //我方背景气泡
-    self.backButton.frame = Frame(SCREEN_WITDTH - 100 - Width(self.coreLabel.frame), MinY(self.iconView.frame)+5, Width(self.coreLabel.frame)+30, Height(self.coreLabel.frame)+20);
-    self.activiView.frame = Frame(MinX(self.backButton.frame)-34,MinY(self.backButton.frame)+((Height(self.backButton.frame)-24)*0.5), 24, 24);
-    //红叹号
-    self.failureButton.frame = self.activiView.frame;
+    if (_textModel.byMyself.integerValue) {
+        //文本宽度JYScreen_Width - 145
+        //我方头像
+        self.iconView.frame = Frame(SCREEN_WITDTH - 65, MaxY(self.timeContainer.frame)+15, 50, 50);
+        //我方文本label
+        self.coreLabel.frame = Frame(10, 10,size.width, size.height);
+        //我方背景气泡
+        self.backButton.frame = Frame(SCREEN_WITDTH - 100 - Width(self.coreLabel.frame), MinY(self.iconView.frame)+5, Width(self.coreLabel.frame)+30, Height(self.coreLabel.frame)+20);
+        self.activiView.frame = Frame(MinX(self.backButton.frame)-34,MinY(self.backButton.frame)+((Height(self.backButton.frame)-24)*0.5), 24, 24);
+        //红叹号
+        self.failureButton.frame = self.activiView.frame;
+    }else{
+    
+        //处理是否显示昵称
+        if (hashEqual(_textModel.chatType, @"userChat")) {
+            //对方头像
+            self.iconView.frame = Frame(15, MaxY(self.timeContainer.frame)+15, 50, 50);
+        }else{
+            self.nickNameLabel.frame  = Frame(15 + 50 + 10,MaxY(self.timeContainer.frame)+15, 250, 13.f);
+            //对方头像
+            self.iconView.frame = Frame(15, MaxY(self.nickNameLabel.frame)+3, 50, 50);
+        }
+        //对方文本label
+        self.coreLabel.frame = Frame(20, 10, size.width, size.height);
+        //对方气泡
+        self.backButton.frame = Frame(MaxX(self.iconView.frame)+5,MinY(self.iconView.frame)+5, Width(self.coreLabel.frame)+30, Height(self.coreLabel.frame)+20);
+    }
 }
+
+- (void)linkText:(NSString *)clickString type:(MYLinkType)linkType
+{
+    NSLog(@"----------点击了-------%@",clickString);
+}
+
 
 @end

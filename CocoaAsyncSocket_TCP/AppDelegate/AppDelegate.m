@@ -26,6 +26,7 @@
     
     //测试数据
     [Account account].myUserID = @"19910805";
+    [Account account].nickName = @"程芳菲同学";
     
     return YES;
 }

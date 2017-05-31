@@ -38,6 +38,8 @@
 
 @property (nonatomic ,copy) NSString *lastLoginTime; //最后登录时间
 
+@property (nonatomic, copy) NSString *nickName; //我的昵称
+
 @property (nonatomic, copy) NSString *portrait;  //头像url
 
 /*

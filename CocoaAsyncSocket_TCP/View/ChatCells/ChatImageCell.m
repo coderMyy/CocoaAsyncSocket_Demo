@@ -135,7 +135,6 @@
         //头像长按
         UILongPressGestureRecognizer *iconLongPress = [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(iconLongPress:)];
         [_iconView addGestureRecognizer:iconLongPress];
-        
     }
     return _iconView;
 }
@@ -269,6 +268,31 @@
         
     }
 }
+
+#pragma mark - 头像长按
+- (void)iconLongPress:(UILongPressGestureRecognizer *)longpress
+{
+    
+}
+
+#pragma mark - 单击头像
+- (void)toUserInfo
+{
+    
+}
+
+#pragma mark - 进入大图查看
+- (void)toBigPicture
+{
+    
+}
+
+#pragma mark - 图片长按
+- (void)longpressHandle
+{
+    
+}
+
 
 
 @end

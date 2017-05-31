@@ -26,7 +26,7 @@ typedef NS_ENUM(NSInteger) {
     
     SocketConnectStatus_UnConnected       = 0<<0,//未连接状态
     SocketConnectStatus_Connected         = 1<<0,//连接状态
-    SocketConnectStatus_DisconnectByUser  = 2<<0,//主动断开连接
+//    SocketConnectStatus_DisconnectByUser  = 2<<0,//主动断开连接
     SocketConnectStatus_Unknow            = 3<<0 //未知
     
 }SocketConnectStatus;
@@ -71,7 +71,7 @@ typedef NS_ENUM(NSInteger){
 
 @property (nonatomic, copy) NSString *toPortrait; //对方头像url
 
-@property (nonatomic, copy) NSString *toNickName; //我对好友命名的昵称
+@property (nonatomic, copy) NSString *nickName; //我对好友命名的昵称
 
 @property (nonatomic, copy) NSArray<NSString *> *atToUserIDs; // @目标ID
 

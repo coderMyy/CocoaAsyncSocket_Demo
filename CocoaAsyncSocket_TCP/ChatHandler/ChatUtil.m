@@ -45,6 +45,7 @@
         [coreLabel setText:currentChatmodel.content.text customLinks:nil keywords:nil];
         CGSize labelSize = [coreLabel sizeThatFits:CGSizeMake(SCREEN_WITDTH - 145, MAXFLOAT)];
         height = 5 + 10 + labelSize.height + 10;
+        height = height < 50 ? 50 : height;
         //验证是否群聊
         [self groupChatConfig:currentChatmodel];
         return currentChatmodel.messageHeight += currentChatmodel.shouldShowTime ? height + 50 : height + 15;
@@ -123,7 +124,7 @@
     chatModel.beatID            = TCP_beatBody;
     chatModel.fromPortrait    = [Account account].portrait;
     chatModel.toPortrait        = config.toPortrait;
-    chatModel.toNickName    = config.toNickName;
+    chatModel.nickName       = config.nickName;
     chatModel.groupID          = config.groupID;
     chatModel.groupName    = config.groupName;
     chatModel.noDisturb       = config.noDisturb;
@@ -145,7 +146,8 @@
     ChatModel *audioModel = [self creatMessageModel:config];
     audioModel.contenType = Content_Audio;
     audioModel.content.seconds = audio.duration;
-    
+    NSString *name = [NSString stringWithFormat:@"ChatAudio_%@.mp3",audioModel.sendTime];
+    audioModel.content.fileName = name;
     NSString *basePath = nil;
     if (hashEqual(config.chatType, @"userChat")) {
         basePath = [ChatCache_Path stringByAppendingPathComponent:config.toUserID];
@@ -159,7 +161,6 @@
         [manager createDirectoryAtPath:basePath withIntermediateDirectories:YES attributes:nil error:NULL];
     }
     //语音写入缓存
-    NSString *name = [NSString stringWithFormat:@"ChatAudio_%@.mp3",audioModel.sendTime];
     [audio.audioData writeToFile:[basePath stringByAppendingPathComponent:name] atomically:YES];
     return audioModel;
 }

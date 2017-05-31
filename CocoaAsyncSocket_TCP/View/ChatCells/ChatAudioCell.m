@@ -30,7 +30,14 @@
 @property (nonatomic, strong) UIImageView *voiceGIFView;
 //昵称
 @property (nonatomic, strong) UILabel *nickNameLabel;//昵称
-
+//播放回调
+@property (nonatomic, copy) playAudioCallback playCallback;
+//长按回调
+@property (nonatomic, copy) longpressCallback longpressCallback;
+//用户详情回调
+@property (nonatomic, copy) userInfoCallback userInfoCallback;
+//重新发送回调
+@property (nonatomic, copy) sendAgainCallback sendAgainCallback;
 @end
 
 @implementation ChatAudioCell
@@ -134,11 +141,9 @@
         _backButton = [[UIImageView alloc]init];
         _backButton.userInteractionEnabled = YES;
         [_backButton addSubview:self.voiceGIFView];
-        //背景气泡
-        UIImage *backImage = LoadImage(@"我方文字气泡");
-        //拉伸
-        backImage = [backImage stretchableImageWithLeftCapWidth:backImage.size.width *0.2 topCapHeight:backImage.size.height *0.9];
-        _backButton.image = backImage;
+        //单击手势,播放语音
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(playAudio)];
+        [_backButton addGestureRecognizer:tap];
         //长按手势
         UILongPressGestureRecognizer *longpress = [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(longpressHandle)];
         [_backButton addGestureRecognizer:longpress];
@@ -304,5 +309,59 @@
         self.secondLabel.frame = Frame(MaxX(self.backButton.frame)+10, MinY(self.backButton.frame)+14, secondSize.width, 12);
     }
 }
+
+
+#pragma mark - 播放语音
+- (void)playAudio
+{
+    NSArray *gifs = _audioModel.byMyself.integerValue ? @[@"我方语音icon01",@"我方语音icon02",@"我方语音icon03"] : @[@"对方语音icon01",@"对方语音icon02",@"对方语音icon03"];
+    [self.voiceGIFView GIF_PrePlayWithImageNamesArray:gifs duration:_audioModel.content.seconds.integerValue];
+    NSString *audioPath = nil;
+    //单聊
+    if (hashEqual(_audioModel.chatType, @"userChat")) {
+        //本人发送
+        if (_audioModel.byMyself.integerValue) {
+            audioPath = [NSString stringWithFormat:@"%@/%@/%@",ChatCache_Path,_audioModel.toUserID,_audioModel.content.fileName];
+        }else{
+            audioPath = [NSString stringWithFormat:@"%@/%@/%@",ChatCache_Path,_audioModel.fromUserID,_audioModel.content.fileName];
+        }
+    }else{
+        audioPath = [NSString stringWithFormat:@"%@/%@/%@",ChatCache_Path,_audioModel.groupID,_audioModel.content.fileName];
+    }
+    //回调播放
+    if (_playCallback) {
+        _playCallback(audioPath);
+    }
+}
+
+#pragma mark - 回调
+- (void)sendAgain:(sendAgainCallback)sendAgain playAudio:(playAudioCallback)playAudio longpress:(longpressCallback)longpress toUserInfo:(userInfoCallback)userDetailCallback
+{
+    _sendAgainCallback = sendAgain;
+    _playCallback          = playAudio;
+    _longpressCallback  = longpress;
+    _userInfoCallback    = userDetailCallback;
+}
+
+
+#pragma mark - 重新发送
+- (void)sendAgain
+{
+    
+}
+
+#pragma mark - 语音长按
+- (void)longpressHandle
+{
+    
+}
+
+#pragma mark - 进入用户详情
+- (void)toUserInfo
+{
+    
+}
+
+
 
 @end

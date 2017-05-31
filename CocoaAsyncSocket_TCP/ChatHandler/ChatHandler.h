@@ -26,6 +26,7 @@
 @protocol ChatHandlerDelegate <NSObject>
 
 @required
+
 //接收消息代理
 - (void)didReceiveMessage:(ChatModel *)chatModel type:(ChatMessageType)messageType;
 
@@ -40,7 +41,6 @@
 //socket连接状态
 @property (nonatomic, assign) SocketConnectStatus connectStatus;
 
-
 //聊天单例
 + (instancetype)shareInstance;
 //连接服务器端口
@@ -53,5 +53,19 @@
 - (void)removeDelegate:(id<ChatHandlerDelegate>)delegate;
 //发送消息
 - (void)sendMessage:(ChatModel *)chatModel timeOut:(NSUInteger)timeOut tag:(long)tag;
+
+
+
+//发送文本消息
+- (void)sendTextMessage:(ChatModel *)textModel;
+
+//发送语音消息
+- (void)sendAudioMessage:(ChatModel *)audioModel;
+
+//发送图片消息
+- (void)sendPicMessage:(NSArray<ChatModel *>*)picModels;
+
+//发送视频消息
+- (void)sendVideoMessage:(ChatModel *)videoModel;
 
 @end

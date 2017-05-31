@@ -57,6 +57,16 @@ static NSString *ChatlistTitle           = @"聊天列表";   //聊天列表标�
 static NSString *ChatKeyboardResign = @"ChatKeyboardShouldResignFirstResponder"; //键盘失去第一响应者
 
 
+/*
+ enum
+ */
+
+//长按消息操作类型
+typedef NS_ENUM(NSInteger,LongpressSelectHandleType){
+    LongpressSelectHandleTypeBack     =  0<<0, //撤回
+    LongpressSelectHandleTypeDelete   =  1<<0, //删除
+    LongpressSelectHandleTypeTransmit =  2<<0  //转发
+};
 
 
 
