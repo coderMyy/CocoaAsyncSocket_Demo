@@ -195,7 +195,7 @@
     self.timeContainer.hidden = !audioModel.shouldShowTime;
     //处理失败按钮
     BOOL isSend   = [audioModel.isSend integerValue];
-    self.failureButton.hidden   = isSend || audioModel.isSending.integerValue;
+    self.failureButton.hidden   = isSend || audioModel.isSending.integerValue || !audioModel.byMyself.integerValue;
     //昵称隐藏处理
     self.nickNameLabel.hidden = audioModel.byMyself.integerValue || hashEqual(audioModel.chatType, @"userChat");
     //红点隐藏处理

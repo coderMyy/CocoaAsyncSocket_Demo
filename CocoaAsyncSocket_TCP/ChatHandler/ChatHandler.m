@@ -362,6 +362,7 @@ NSInteger autoConnectCount = TCP_AutoConnectCount;
         reply.contenType = Content_Text;
         reply.toUserID = textModel.fromUserID;
         reply.chatType = @"userChat";
+        reply.byMyself = @0;
         ChatMessageType type = ChatMessageType_Normal;
         for (id<ChatHandlerDelegate>delegate in self.delegates) {
             if ([delegate respondsToSelector:@selector(didReceiveMessage:type:)]) {
@@ -399,6 +400,7 @@ NSInteger autoConnectCount = TCP_AutoConnectCount;
         reply.contenType = Content_Text;
         reply.toUserID = audioModel.fromUserID;
         reply.chatType = @"userChat";
+        reply.byMyself = @0;
         ChatMessageType type = ChatMessageType_Normal;
         for (id<ChatHandlerDelegate>delegate in self.delegates) {
             if ([delegate respondsToSelector:@selector(didReceiveMessage:type:)]) {
@@ -438,6 +440,7 @@ NSInteger autoConnectCount = TCP_AutoConnectCount;
             reply.contenType = Content_Text;
             reply.toUserID = obj.fromUserID;
             reply.chatType = @"userChat";
+            reply.byMyself = @0;
             ChatMessageType type = ChatMessageType_Normal;
             for (id<ChatHandlerDelegate>delegate in self.delegates) {
                 if ([delegate respondsToSelector:@selector(didReceiveMessage:type:)]) {

@@ -682,6 +682,8 @@ static const CGFloat defaultInputHeight     = 35; //默认输入框 35
 - (void)keyboardResignFirstResponder:(NSNotification *)note
 {
     [self.msgTextView resignFirstResponder];
+    //按钮初始化刷新
+    [self reloadSwitchButtons];
     [self customKeyboardMove:SCREEN_HEIGHT - Height(self.messageBar.frame)];
 }
 

@@ -304,6 +304,7 @@
     [self.talkMessages addObjectsFromArray:picMessages];
     [self.chatTableView reloadData];
     [self scrollToBottom];
+    [[ChatHandler shareInstance]sendPicMessage:picMessages];
 }
 
 #pragma mark - 发送视频消息

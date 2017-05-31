@@ -165,7 +165,7 @@
     //处理转圈
     textModel.isSending.integerValue &&textModel.byMyself.integerValue ? [self.activiView startAnimating] : [self.activiView stopAnimating];
     //处理红叹号
-    self.failureButton.hidden = textModel.isSend.integerValue || textModel.isSending.integerValue || textModel.byMyself.integerValue;
+    self.failureButton.hidden = textModel.isSend.integerValue || textModel.isSending.integerValue || !textModel.byMyself.integerValue;
     //处理昵称显示
     self.nickNameLabel.hidden = textModel.byMyself.integerValue || hashEqual(textModel.chatType, @"userChat");
     //赋值
