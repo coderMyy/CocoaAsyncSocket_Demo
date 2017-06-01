@@ -129,7 +129,7 @@
     chatModel.groupName    = config.groupName;
     chatModel.noDisturb       = config.noDisturb;
     
-    return chatModel;
+    return chatModel; 
 }
 
 //初始化文本消息模型

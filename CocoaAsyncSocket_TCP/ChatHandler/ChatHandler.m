@@ -339,7 +339,7 @@ NSInteger autoConnectCount = TCP_AutoConnectCount;
 {
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         
-        //模拟回执
+        //模拟服务器回执
         ChatModel *receipet = [[ChatModel alloc]init];
         receipet.messageType = Message_NormalReceipt;
         receipet.sendTime = textModel.sendTime;
@@ -375,9 +375,10 @@ NSInteger autoConnectCount = TCP_AutoConnectCount;
 //发送语音消息
 - (void)sendAudioMessage:(ChatModel *)audioModel
 {
+    //此处调用上传 , 上传成功后调用socket发送消息
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         
-        //模拟回执
+        //模拟服务器回执
         ChatModel *receipet = [[ChatModel alloc]init];
         receipet.messageType = Message_NormalReceipt;
         receipet.sendTime = audioModel.sendTime;
@@ -413,14 +414,16 @@ NSInteger autoConnectCount = TCP_AutoConnectCount;
 //发送图片消息
 - (void)sendPicMessage:(NSArray<ChatModel *>*)picModels
 {
-    
+ 
+    //此处调用上传 , 上传成功后调用socket发送消息
     [picModels enumerateObjectsUsingBlock:^(ChatModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             
-            //模拟回执
+            //模拟服务器回执
             ChatModel *receipet = [[ChatModel alloc]init];
             receipet.messageType = Message_NormalReceipt;
             receipet.sendTime = obj.sendTime;
+            NSLog(@"---回执--%@",receipet.sendTime);
             ChatMessageType type = ChatMessageType_NormalReceipt;
             for (id<ChatHandlerDelegate>delegate in self.delegates) {
                 if ([delegate respondsToSelector:@selector(didReceiveMessage:type:)]) {

@@ -171,7 +171,7 @@
     //处理失败按钮 , 处理进度按钮 ,昵称隐藏处理
     BOOL isSend   = [imageModel.isSend integerValue];
     self.failureButton.hidden    = !imageModel.byMyself.integerValue || isSend || imageModel.isSending.integerValue;
-    self.progressLabel.hidden  = !imageModel.byMyself.integerValue || imageModel.isSending.integerValue;
+    self.progressLabel.hidden  = !imageModel.byMyself.integerValue || !imageModel.isSending.integerValue;
     self.nickNameLabel.hidden = imageModel.byMyself.integerValue || hashEqual(imageModel.chatType, @"userChat");
         
     //赋值
