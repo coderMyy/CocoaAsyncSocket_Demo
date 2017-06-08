@@ -326,11 +326,18 @@ NSInteger autoConnectCount = TCP_AutoConnectCount;
     
 //    if (_connectStatus == SocketConnectStatus_DisconnectByUser) return; //主动断开连接
     
+    //网络中断 , 断开连接
     if (networkStatus == RealStatusNotReachable||_connectStatus == SocketConnectStatus_UnConnected) {
         [self serverInterruption];//断开连接,默认还会重连3次 ,还未连接自动断开
     }
+    
+    //如果网络监测有网 , 但是socket处于未连接状态 , 进行重连
     if (networkStatus == RealStatusViaWWAN || networkStatus == RealStatusViaWiFi) {
-        [self connectServerHost]; //连接服务器
+        
+        if (_connectStatus == SocketConnectStatus_UnConnected) {
+         
+            [self connectServerHost]; //连接服务器
+        }
     }
 }
 
