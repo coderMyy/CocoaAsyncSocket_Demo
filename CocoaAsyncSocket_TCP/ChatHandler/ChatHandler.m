@@ -156,8 +156,10 @@ NSInteger autoConnectCount = TCP_AutoConnectCount;
     [_chatSocket disconnect];
     //关闭心跳定时器
     dispatch_source_cancel(self.beatTimer);
-    //置为初始化
+    //未接收到服务器心跳次数,置为初始化
     _senBeatCount = 0;
+    //自动重连次数 , 置为初始化
+    autoConnectCount = TCP_AutoConnectCount;
 }
 
 
@@ -192,7 +194,7 @@ NSInteger autoConnectCount = TCP_AutoConnectCount;
     //接收到服务器的心跳
     if ([messageModel.beatID isEqualToString:TCP_beatBody]) {
         
-        //置为0
+        //未接到服务器心跳次数置为0
         _senBeatCount = 0;
         NSLog(@"------------------接收到服务器心跳-------------------");
         return;
@@ -222,6 +224,8 @@ NSInteger autoConnectCount = TCP_AutoConnectCount;
         messageType = ChatMessageType_LoginReceipt;
         //开始发送心跳
         [self sendBeat];
+        //重新建立连接后 , 重置自动重连次数
+        autoConnectCount = TCP_AutoConnectCount;
         
         //发送普通消息失败回执
     }else if ([messageModel.messageType isEqualToString:Message_InvalidReceipt]){
