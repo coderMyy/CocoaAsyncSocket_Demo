@@ -20,14 +20,8 @@ typedef void(^albumAuthorizationCallBack)();
   下载获取视频
 
  */
-+ (void)openPhotoPickerGetVideo:(videoPathCallback)videoPathCallback target:(UIViewController *)target cacheDirectory:(NSString *)basePath
++ (void)openPhotoPickerGetVideo:(videoBaseInfoCallback)callback target:(UIViewController *)target
 {
-    
-    if (![[NSFileManager defaultManager]fileExistsAtPath:basePath]) {
-        
-        [[NSFileManager defaultManager]createDirectoryAtPath:basePath withIntermediateDirectories:YES attributes:nil error:nil];
-    }
-    
     //每次只能选取一个视频
     TZImagePickerController *picker = [self initPickerWithtaget:target maxCount:1];
     picker.allowPickingImage = NO;
@@ -35,8 +29,7 @@ typedef void(^albumAuthorizationCallBack)();
     picker.didFinishPickingVideoHandle = ^(UIImage *coverImage,id asset){
         
         //缓存视频到本地
-        [self getVideoPathFromPHAsset:asset cachePath:basePath complete:videoPathCallback cover:coverImage];
-        
+        [self getVideoPathFromPHAsset:asset complete:callback cover:coverImage];
      };
 }
 
@@ -53,11 +46,9 @@ typedef void(^albumAuthorizationCallBack)();
   缓存视频到本地
 
  @param asset            <#asset description#>
- @param basePath         <#basePath description#>
- @param videPathCallback <#videPathCallback description#>
  @param cover <#coverCallbackNow description#>
  */
-+ (void)getVideoPathFromPHAsset:(PHAsset *)asset cachePath:(NSString *)basePath complete:(videoPathCallback)videPathCallback cover:(UIImage *)cover {
++ (void)getVideoPathFromPHAsset:(PHAsset *)asset complete:(videoBaseInfoCallback)callback cover:(UIImage *)cover {
     NSArray *assetResources = [PHAssetResource assetResourcesForAsset:asset];
     PHAssetResource *resource;
     
@@ -72,52 +63,18 @@ typedef void(^albumAuthorizationCallBack)();
         //命名规范可以自行定义 ， 但是要保证不要重复
         fileName = [NSString stringWithFormat:@"chatVideo_%@%@",getCurrentTime(),resource.originalFilename];
     }
-    //视频存储路径
-    NSString *PATH_MOVIE_FILE = [basePath stringByAppendingPathComponent:fileName];
     //创建视频模型
     ChatAlbumModel *videoModel = [[ChatAlbumModel alloc]init];
     //缩略图
     videoModel.videoCoverImg = cover;
-    //缓存路径
-    videoModel.videoCachePath = PATH_MOVIE_FILE;
     //视频时长
     videoModel.duration = [@(asset.duration)stringValue];
-    
-    //异步存储
-    dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        
-        if (asset.mediaType == PHAssetMediaTypeVideo || asset.mediaSubtypes == PHAssetMediaSubtypePhotoLive) {
-            PHVideoRequestOptions *options = [[PHVideoRequestOptions alloc] init];
-            options.version = PHImageRequestOptionsVersionCurrent;
-            options.deliveryMode = PHImageRequestOptionsDeliveryModeFastFormat;  //此处可调节质量
-        
-            [[NSFileManager defaultManager] removeItemAtPath:PATH_MOVIE_FILE error:nil];
-            [[PHAssetResourceManager defaultManager] writeDataForAssetResource:resource
-                                                                        toFile:[NSURL fileURLWithPath:PATH_MOVIE_FILE]
-                                                                       options:nil
-                                                             completionHandler:^(NSError * _Nullable error) {
-                                                                 if (error) {
-                                                                     
-                                                                     dispatch_async(dispatch_get_main_queue(), ^{
-                                                                         videPathCallback(nil);
-                                                                     });
-                                                                     
-                                                                 } else {
-                                                                     long long int size = [[NSData dataWithContentsOfFile:PATH_MOVIE_FILE]length];
-                                                                     dispatch_async(dispatch_get_main_queue(), ^{
-                                                                         videoModel.size = [@(size)stringValue];
-                                                                         videPathCallback(videoModel);
-                                                                         NSLog(@"------------相册视频回调----------");
-                                                                     });
-                                                                 }
-                                                             }];
-        } else {
-            dispatch_async(dispatch_get_main_queue(), ^{
-               
-                videPathCallback(nil);
-            });
-        }
-    });
+    //视频名称
+    videoModel.name = fileName;
+    //回调含有基本信息的视频模型
+    if (callback) {
+        callback(videoModel);
+    }
 }
 
 

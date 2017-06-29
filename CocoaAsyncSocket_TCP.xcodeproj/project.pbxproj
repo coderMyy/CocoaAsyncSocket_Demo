@@ -22,6 +22,11 @@
 		B816A1E11ED040A20024859F /* TZVideoPlayerController.m in Sources */ = {isa = PBXBuildFile; fileRef = B816A1D21ED040A20024859F /* TZVideoPlayerController.m */; };
 		B816A1E21ED040A20024859F /* UIView+Layout.m in Sources */ = {isa = PBXBuildFile; fileRef = B816A1D41ED040A20024859F /* UIView+Layout.m */; };
 		B816A1E81ED056070024859F /* ChatAlbumModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B816A1E71ED056070024859F /* ChatAlbumModel.m */; };
+		B83F1ADC1F050F7C0041850D /* ChatAudioPlayTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B83F1AD21F050F7C0041850D /* ChatAudioPlayTool.m */; };
+		B83F1ADD1F050F7C0041850D /* ChatRecordTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B83F1AD41F050F7C0041850D /* ChatRecordTool.m */; };
+		B83F1ADE1F050F7C0041850D /* libmp3lame.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B83F1AD81F050F7C0041850D /* libmp3lame.a */; };
+		B83F1ADF1F050F7C0041850D /* Mp3Recorder.m in Sources */ = {isa = PBXBuildFile; fileRef = B83F1ADA1F050F7C0041850D /* Mp3Recorder.m */; };
+		B83F1AE01F050F7C0041850D /* TSMessagesDefaultDesign.json in Resources */ = {isa = PBXBuildFile; fileRef = B83F1ADB1F050F7C0041850D /* TSMessagesDefaultDesign.json */; };
 		B85F39BF1EC9C95100B2EA9E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B85F39BE1EC9C95100B2EA9E /* main.m */; };
 		B85F39C81EC9C95100B2EA9E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B85F39C61EC9C95100B2EA9E /* Main.storyboard */; };
 		B85F39CA1EC9C95100B2EA9E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B85F39C91EC9C95100B2EA9E /* Assets.xcassets */; };
@@ -75,13 +80,8 @@
 		B85F3A8D1EC9C9E400B2EA9E /* ChatUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = B85F3A881EC9C9E400B2EA9E /* ChatUtil.m */; };
 		B85F3A8E1EC9C9E400B2EA9E /* ChatModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B85F3A8B1EC9C9E400B2EA9E /* ChatModel.m */; };
 		B862F5B51ECE7EB300B40BA1 /* ChatEmotions.plist in Resources */ = {isa = PBXBuildFile; fileRef = B862F5B41ECE7EB300B40BA1 /* ChatEmotions.plist */; };
-		B8661AA21ECD7D120022753D /* libmp3lame.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B8661A9E1ECD7D120022753D /* libmp3lame.a */; };
-		B8661AA31ECD7D120022753D /* Mp3Recorder.m in Sources */ = {isa = PBXBuildFile; fileRef = B8661AA01ECD7D120022753D /* Mp3Recorder.m */; };
-		B8661AA41ECD7D120022753D /* TSMessagesDefaultDesign.json in Resources */ = {isa = PBXBuildFile; fileRef = B8661AA11ECD7D120022753D /* TSMessagesDefaultDesign.json */; };
-		B8661AA71ECD95680022753D /* ChatRecordTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B8661AA61ECD95680022753D /* ChatRecordTool.m */; };
 		B8661AAA1ECD998E0022753D /* UIImageView+GIF.m in Sources */ = {isa = PBXBuildFile; fileRef = B8661AA91ECD998E0022753D /* UIImageView+GIF.m */; };
 		B89E046A1ED03F23000863F1 /* UIImage+photoPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = B89E04691ED03F23000863F1 /* UIImage+photoPicker.m */; };
-		B8CD69BD1ED6D53300AFCD93 /* ChatAudioPlayTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B8CD69BC1ED6D53300AFCD93 /* ChatAudioPlayTool.m */; };
 		B8EEC0C91ED47E2800F52E79 /* ChatConfigModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B8EEC0C81ED47E2800F52E79 /* ChatConfigModel.m */; };
 		E1527204E4A6C66E20ABAB19 /* Pods_CocoaAsyncSocket_TCP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24AA3076491D2596209CE424 /* Pods_CocoaAsyncSocket_TCP.framework */; };
 /* End PBXBuildFile section */
@@ -136,6 +136,16 @@
 		B816A1D41ED040A20024859F /* UIView+Layout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Layout.m"; sourceTree = "<group>"; };
 		B816A1E61ED056070024859F /* ChatAlbumModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatAlbumModel.h; sourceTree = "<group>"; };
 		B816A1E71ED056070024859F /* ChatAlbumModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatAlbumModel.m; sourceTree = "<group>"; };
+		B83F1AD11F050F7C0041850D /* ChatAudioPlayTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatAudioPlayTool.h; sourceTree = "<group>"; };
+		B83F1AD21F050F7C0041850D /* ChatAudioPlayTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatAudioPlayTool.m; sourceTree = "<group>"; };
+		B83F1AD31F050F7C0041850D /* ChatRecordTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatRecordTool.h; sourceTree = "<group>"; };
+		B83F1AD41F050F7C0041850D /* ChatRecordTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatRecordTool.m; sourceTree = "<group>"; };
+		B83F1AD61F050F7C0041850D /* ACMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACMacros.h; sourceTree = "<group>"; };
+		B83F1AD71F050F7C0041850D /* lame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lame.h; sourceTree = "<group>"; };
+		B83F1AD81F050F7C0041850D /* libmp3lame.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libmp3lame.a; sourceTree = "<group>"; };
+		B83F1AD91F050F7C0041850D /* Mp3Recorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mp3Recorder.h; sourceTree = "<group>"; };
+		B83F1ADA1F050F7C0041850D /* Mp3Recorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Mp3Recorder.m; sourceTree = "<group>"; };
+		B83F1ADB1F050F7C0041850D /* TSMessagesDefaultDesign.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TSMessagesDefaultDesign.json; sourceTree = "<group>"; };
 		B85F39BA1EC9C95100B2EA9E /* CocoaAsyncSocket_TCP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CocoaAsyncSocket_TCP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B85F39BE1EC9C95100B2EA9E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B85F39C71EC9C95100B2EA9E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -242,20 +252,10 @@
 		B85F3A8A1EC9C9E400B2EA9E /* ChatModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatModel.h; sourceTree = "<group>"; };
 		B85F3A8B1EC9C9E400B2EA9E /* ChatModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatModel.m; sourceTree = "<group>"; };
 		B862F5B41ECE7EB300B40BA1 /* ChatEmotions.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ChatEmotions.plist; sourceTree = "<group>"; };
-		B8661A9C1ECD7D120022753D /* ACMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACMacros.h; sourceTree = "<group>"; };
-		B8661A9D1ECD7D120022753D /* lame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lame.h; sourceTree = "<group>"; };
-		B8661A9E1ECD7D120022753D /* libmp3lame.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libmp3lame.a; sourceTree = "<group>"; };
-		B8661A9F1ECD7D120022753D /* Mp3Recorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mp3Recorder.h; sourceTree = "<group>"; };
-		B8661AA01ECD7D120022753D /* Mp3Recorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Mp3Recorder.m; sourceTree = "<group>"; };
-		B8661AA11ECD7D120022753D /* TSMessagesDefaultDesign.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TSMessagesDefaultDesign.json; sourceTree = "<group>"; };
-		B8661AA51ECD95680022753D /* ChatRecordTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatRecordTool.h; sourceTree = "<group>"; };
-		B8661AA61ECD95680022753D /* ChatRecordTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatRecordTool.m; sourceTree = "<group>"; };
 		B8661AA81ECD998E0022753D /* UIImageView+GIF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+GIF.h"; sourceTree = "<group>"; };
 		B8661AA91ECD998E0022753D /* UIImageView+GIF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+GIF.m"; sourceTree = "<group>"; };
 		B89E04681ED03F23000863F1 /* UIImage+photoPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+photoPicker.h"; sourceTree = "<group>"; };
 		B89E04691ED03F23000863F1 /* UIImage+photoPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+photoPicker.m"; sourceTree = "<group>"; };
-		B8CD69BB1ED6D53300AFCD93 /* ChatAudioPlayTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatAudioPlayTool.h; sourceTree = "<group>"; };
-		B8CD69BC1ED6D53300AFCD93 /* ChatAudioPlayTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatAudioPlayTool.m; sourceTree = "<group>"; };
 		B8EEC0C71ED47E2800F52E79 /* ChatConfigModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatConfigModel.h; sourceTree = "<group>"; };
 		B8EEC0C81ED47E2800F52E79 /* ChatConfigModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatConfigModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -266,7 +266,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1527204E4A6C66E20ABAB19 /* Pods_CocoaAsyncSocket_TCP.framework in Frameworks */,
-				B8661AA21ECD7D120022753D /* libmp3lame.a in Frameworks */,
+				B83F1ADE1F050F7C0041850D /* libmp3lame.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -321,16 +321,29 @@
 			path = TZImagePickerController;
 			sourceTree = "<group>";
 		};
-		B8565C8F1ECC67C300D53996 /* ChatRecordCover */ = {
+		B83F1AD01F050F7C0041850D /* ChatRecord */ = {
 			isa = PBXGroup;
 			children = (
-				B8661A9B1ECD7D120022753D /* RecordUtil */,
-				B8661AA51ECD95680022753D /* ChatRecordTool.h */,
-				B8661AA61ECD95680022753D /* ChatRecordTool.m */,
-				B8CD69BB1ED6D53300AFCD93 /* ChatAudioPlayTool.h */,
-				B8CD69BC1ED6D53300AFCD93 /* ChatAudioPlayTool.m */,
+				B83F1AD11F050F7C0041850D /* ChatAudioPlayTool.h */,
+				B83F1AD21F050F7C0041850D /* ChatAudioPlayTool.m */,
+				B83F1AD31F050F7C0041850D /* ChatRecordTool.h */,
+				B83F1AD41F050F7C0041850D /* ChatRecordTool.m */,
+				B83F1AD51F050F7C0041850D /* RecordUtil */,
 			);
-			path = ChatRecordCover;
+			path = ChatRecord;
+			sourceTree = "<group>";
+		};
+		B83F1AD51F050F7C0041850D /* RecordUtil */ = {
+			isa = PBXGroup;
+			children = (
+				B83F1AD61F050F7C0041850D /* ACMacros.h */,
+				B83F1AD71F050F7C0041850D /* lame.h */,
+				B83F1AD81F050F7C0041850D /* libmp3lame.a */,
+				B83F1AD91F050F7C0041850D /* Mp3Recorder.h */,
+				B83F1ADA1F050F7C0041850D /* Mp3Recorder.m */,
+				B83F1ADB1F050F7C0041850D /* TSMessagesDefaultDesign.json */,
+			);
+			path = RecordUtil;
 			sourceTree = "<group>";
 		};
 		B85F39B11EC9C95100B2EA9E = {
@@ -586,7 +599,6 @@
 		B85F3A661EC9C9DE00B2EA9E /* View */ = {
 			isa = PBXGroup;
 			children = (
-				B8565C8F1ECC67C300D53996 /* ChatRecordCover */,
 				B85F3A671EC9C9DE00B2EA9E /* ChatCells */,
 				B85F3A741EC9C9DE00B2EA9E /* ChatListCell */,
 				B85F3A781EC9C9DE00B2EA9E /* KeyBoard */,
@@ -636,6 +648,7 @@
 		B85F3A841EC9C9E400B2EA9E /* ChatHandler */ = {
 			isa = PBXGroup;
 			children = (
+				B83F1AD01F050F7C0041850D /* ChatRecord */,
 				B85F3A851EC9C9E400B2EA9E /* ChatHandler.h */,
 				B85F3A861EC9C9E400B2EA9E /* ChatHandler.m */,
 				B85F3A871EC9C9E400B2EA9E /* ChatUtil.h */,
@@ -655,19 +668,6 @@
 				B8EEC0C81ED47E2800F52E79 /* ChatConfigModel.m */,
 			);
 			path = ChatModel;
-			sourceTree = "<group>";
-		};
-		B8661A9B1ECD7D120022753D /* RecordUtil */ = {
-			isa = PBXGroup;
-			children = (
-				B8661A9C1ECD7D120022753D /* ACMacros.h */,
-				B8661A9D1ECD7D120022753D /* lame.h */,
-				B8661A9E1ECD7D120022753D /* libmp3lame.a */,
-				B8661A9F1ECD7D120022753D /* Mp3Recorder.h */,
-				B8661AA01ECD7D120022753D /* Mp3Recorder.m */,
-				B8661AA11ECD7D120022753D /* TSMessagesDefaultDesign.json */,
-			);
-			path = RecordUtil;
 			sourceTree = "<group>";
 		};
 		CBB7B1986CB029097EB5B82F /* Frameworks */ = {
@@ -798,10 +798,10 @@
 			files = (
 				B85F39CD1EC9C95100B2EA9E /* LaunchScreen.storyboard in Resources */,
 				B85F39CA1EC9C95100B2EA9E /* Assets.xcassets in Resources */,
+				B83F1AE01F050F7C0041850D /* TSMessagesDefaultDesign.json in Resources */,
 				B816A1DB1ED040A20024859F /* TZImagePickerController.bundle in Resources */,
 				B85F3A821EC9C9DE00B2EA9E /* ChatListCell.xib in Resources */,
 				B85F3A601EC9C9C600B2EA9E /* Tabbars.plist in Resources */,
-				B8661AA41ECD7D120022753D /* TSMessagesDefaultDesign.json in Resources */,
 				B862F5B51ECE7EB300B40BA1 /* ChatEmotions.plist in Resources */,
 				B85F39C81EC9C95100B2EA9E /* Main.storyboard in Resources */,
 			);
@@ -893,7 +893,6 @@
 				B816A1E11ED040A20024859F /* TZVideoPlayerController.m in Sources */,
 				B85F3A651EC9C9C600B2EA9E /* ThirdViewController.m in Sources */,
 				B85F3A4C1EC9C9C600B2EA9E /* UIImageView+SDWebImage.m in Sources */,
-				B8661AA31ECD7D120022753D /* Mp3Recorder.m in Sources */,
 				B85F3A641EC9C9C600B2EA9E /* MainViewController.m in Sources */,
 				B85F3A8E1EC9C9E400B2EA9E /* ChatModel.m in Sources */,
 				B85F3A581EC9C9C600B2EA9E /* ReachStateWIFI.m in Sources */,
@@ -905,12 +904,10 @@
 				B85F3A7E1EC9C9DE00B2EA9E /* ChatTextCell.m in Sources */,
 				B85F3A571EC9C9C600B2EA9E /* ReachStateUnReachable.m in Sources */,
 				B816A1D61ED040A20024859F /* TZAssetCell.m in Sources */,
-				B8661AA71ECD95680022753D /* ChatRecordTool.m in Sources */,
 				B85F3A551EC9C9C600B2EA9E /* ReachStateLoading.m in Sources */,
 				B8661AAA1ECD998E0022753D /* UIImageView+GIF.m in Sources */,
 				B85F3A491EC9C9C600B2EA9E /* NSDate+extension.m in Sources */,
 				B816A1D81ED040A20024859F /* TZGifPhotoPreviewController.m in Sources */,
-				B8CD69BD1ED6D53300AFCD93 /* ChatAudioPlayTool.m in Sources */,
 				B85F3A621EC9C9C600B2EA9E /* ChatViewController.m in Sources */,
 				B816A1E21ED040A20024859F /* UIView+Layout.m in Sources */,
 				B85F3A4E1EC9C9C600B2EA9E /* MYCoretextResultTool.m in Sources */,
@@ -918,6 +915,9 @@
 				B85F3A5A1EC9C9C600B2EA9E /* PingFoundation.m in Sources */,
 				B816A1DF1ED040A20024859F /* TZPhotoPreviewController.m in Sources */,
 				B85F3A5D1EC9C9C600B2EA9E /* RealReachability.m in Sources */,
+				B83F1ADC1F050F7C0041850D /* ChatAudioPlayTool.m in Sources */,
+				B83F1ADD1F050F7C0041850D /* ChatRecordTool.m in Sources */,
+				B83F1ADF1F050F7C0041850D /* Mp3Recorder.m in Sources */,
 				B85F3A561EC9C9C600B2EA9E /* ReachStateUnloaded.m in Sources */,
 				B85F3A811EC9C9DE00B2EA9E /* ChatListCell.m in Sources */,
 				B85F3A7D1EC9C9DE00B2EA9E /* ChatImageCell.m in Sources */,
@@ -1097,6 +1097,8 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/CocoaAsyncSocket_TCP/View/ChatRecordCover/RecordUtil",
+					"$(PROJECT_DIR)/CocoaAsyncSocket_TCP/View/ChatRecord/RecordUtil",
+					"$(PROJECT_DIR)/CocoaAsyncSocket_TCP/ChatHandler/ChatRecord/RecordUtil",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mengyao-block-outlook.CocoaAsyncSocket-TCP";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1115,6 +1117,8 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/CocoaAsyncSocket_TCP/View/ChatRecordCover/RecordUtil",
+					"$(PROJECT_DIR)/CocoaAsyncSocket_TCP/View/ChatRecord/RecordUtil",
+					"$(PROJECT_DIR)/CocoaAsyncSocket_TCP/ChatHandler/ChatRecord/RecordUtil",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mengyao-block-outlook.CocoaAsyncSocket-TCP";
 				PRODUCT_NAME = "$(TARGET_NAME)";

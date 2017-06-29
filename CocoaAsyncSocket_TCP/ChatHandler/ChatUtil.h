@@ -10,6 +10,7 @@
 
 @class ChatModel,ChatAlbumModel;
 
+typedef void(^videoModelCallback)(ChatModel *videoModel);
 @interface ChatUtil : NSObject
 
 //消息高度计算
@@ -22,6 +23,6 @@
 //初始化图片消息模型
 + (NSArray<ChatModel *> *)initPicMessage:(NSArray<ChatAlbumModel *> *)pics config:(ChatModel *)config;
 //初始化视频消息模型
-+ (ChatModel *)initVideoMessage:(ChatAlbumModel *)video config:(ChatModel *)config;
++ (void)initVideoMessage:(ChatAlbumModel *)video config:(ChatModel *)config videoCallback:(videoModelCallback)callback;
 
 @end

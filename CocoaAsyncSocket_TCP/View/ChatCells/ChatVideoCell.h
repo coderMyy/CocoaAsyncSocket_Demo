@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class ChatModel;
+
 @interface ChatVideoCell : UITableViewCell
+
+@property (nonatomic, strong) ChatModel *videoModel;
 
 @end

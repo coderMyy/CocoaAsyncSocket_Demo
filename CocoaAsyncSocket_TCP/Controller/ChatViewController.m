@@ -224,7 +224,7 @@
     }else if (hashEqual(chatModel.contenType, Content_Video)){
         
         ChatVideoCell *videoCell = [tableView dequeueReusableCellWithIdentifier:@"ChatVideoCell"];
-        
+        videoCell.videoModel = chatModel;
         return videoCell;
         
         //文件消息
@@ -310,7 +310,14 @@
 #pragma mark - 发送视频消息
 - (void)sendVideoMessage:(ChatAlbumModel *)videoModel
 {
-    
+    //视频消息基本信息配置
+     [ChatUtil initVideoMessage:videoModel config:_config videoCallback:^(ChatModel *videoModel) {
+        
+         [self.talkMessages addObject:videoModel];
+         [self.chatTableView reloadData];
+         [self scrollToBottom];
+         [[ChatHandler shareInstance]sendVideoMessage:videoModel];
+    }];
 }
 
 #pragma mark - 滚动,点击等相关处理

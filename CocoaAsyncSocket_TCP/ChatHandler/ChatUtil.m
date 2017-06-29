@@ -10,6 +10,7 @@
 #import "ChatModel.h"
 #import "ChatAlbumModel.h"
 #import "MYCoreTextLabel.h"
+#import <Photos/Photos.h>
 
 @implementation ChatUtil
 
@@ -242,9 +243,72 @@
     return tmpArray;
 }
 //初始化视频消息模型
-+ (ChatModel *)initVideoMessage:(ChatAlbumModel *)video config:(ChatModel *)config
++ (void)initVideoMessage:(ChatAlbumModel *)video config:(ChatModel *)config videoCallback:(videoModelCallback)callback
 {
-    return nil;
+    PHAsset *asset = video.videoAsset;
+    NSString *basePath = nil;
+    NSArray *assetResources = [PHAssetResource assetResourcesForAsset:asset];
+    PHAssetResource *resource;
+    
+    for (PHAssetResource *assetRes in assetResources) {
+        if (assetRes.type == PHAssetResourceTypePairedVideo ||
+            assetRes.type == PHAssetResourceTypeVideo) {
+            resource = assetRes;
+        }
+    }
+    if (hashEqual(config.chatType, @"userChat")) {
+        basePath = [ChatCache_Path stringByAppendingPathComponent:config.toUserID];
+    }else{
+        basePath = [ChatCache_Path stringByAppendingPathComponent:config.groupID];
+    }
+    
+    NSFileManager *manager = [NSFileManager defaultManager];
+    BOOL exist = [manager fileExistsAtPath:basePath];
+    if (!exist) {
+        [manager createDirectoryAtPath:basePath withIntermediateDirectories:YES attributes:nil error:NULL];
+    }
+    //具体路径
+    NSString *detailPath = [basePath stringByAppendingString:video.name];
+    
+    //创建视频消息模型
+    ChatModel *videoModel = [self creatMessageModel:config];
+    videoModel.contenType  = Content_Video;
+    videoModel.content.fileName = video.name;
+    
+    //异步存储
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        
+        if (asset.mediaType == PHAssetMediaTypeVideo || asset.mediaSubtypes == PHAssetMediaSubtypePhotoLive) {
+            PHVideoRequestOptions *options = [[PHVideoRequestOptions alloc] init];
+            options.version = PHImageRequestOptionsVersionCurrent;
+            options.deliveryMode = PHImageRequestOptionsDeliveryModeFastFormat;  //此处可调节质量
+            [[NSFileManager defaultManager] removeItemAtPath:detailPath error:nil];
+            [[PHAssetResourceManager defaultManager] writeDataForAssetResource:resource
+                                                                        toFile:[NSURL fileURLWithPath:detailPath]
+                                                                       options:nil
+                                                             completionHandler:^(NSError * _Nullable error) {
+                                                                 if (error) {
+                                                                     
+                                                                     dispatch_async(dispatch_get_main_queue(), ^{
+                                                                         callback(nil);
+                                                                     });
+                                                                     
+                                                                 } else {
+                                                                     long long int size = [[NSData dataWithContentsOfFile:detailPath]length];
+                                                                     dispatch_async(dispatch_get_main_queue(), ^{
+                                                                         videoModel.content.fileSize = [@(size)stringValue];
+                                                                         callback(videoModel);
+                                                                         NSLog(@"------------相册视频回调----------");
+                                                                     });
+                                                                 }
+                                                             }];
+        } else {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                callback(nil);
+            });
+        }
+    });
 }
 
 

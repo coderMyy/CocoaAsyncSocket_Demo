@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <Photos/Photos.h>
 
 @interface ChatAlbumModel : NSObject
 
@@ -25,7 +26,7 @@
 //图片尺寸
 @property (nonatomic, assign) CGSize  picSize;
 //视频缓存地址
-@property (nonatomic, copy) NSString *videoCachePath;
+@property (nonatomic, strong) PHAsset *videoAsset;
 //视频缩略图
 @property (nonatomic, strong) UIImage *videoCoverImg;
 //视频 , 语音时长

@@ -13,7 +13,7 @@
 typedef void(^photoPickerImagesCallback)(NSArray<ChatAlbumModel *> *images);
 
 //返回视频存储的位置
-typedef void(^videoPathCallback)(ChatAlbumModel *videoModel);
+typedef void(^videoBaseInfoCallback)(ChatAlbumModel *videoModel);
 
 
 @interface UIImage (photoPicker)
@@ -28,10 +28,7 @@ typedef void(^videoPathCallback)(ChatAlbumModel *videoModel);
 
 /**
  获取选中的视频
-
- @param videoPathCallback <#videoPathFileNameCallback description#>
- @param target                    <#target description#>
  */
-+ (void)openPhotoPickerGetVideo:(videoPathCallback)videoPathCallback target:(UIViewController *)target cacheDirectory:(NSString *)basePath;
++ (void)openPhotoPickerGetVideo:(videoBaseInfoCallback)callback target:(UIViewController *)target cacheDirectory:(NSString *)basePath;
 
 @end
