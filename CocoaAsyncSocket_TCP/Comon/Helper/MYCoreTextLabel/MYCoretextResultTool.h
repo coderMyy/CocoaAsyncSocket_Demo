@@ -8,7 +8,6 @@
 /**
  
  Github地址 : https://github.com/coderMyy/MYCoreTextLabel 求Star , Fork .....
- 博客地址    : http://blog.csdn.net/codermy  , 偶尔会记录一下学习的东西 .
  
  */
 
@@ -28,15 +27,15 @@
  */
 + (NSMutableArray<MYSubCoretextResult *> *)subTextWithEmotion:(NSString *)text;
 
-#pragma mark - 设置自定义链接
+//配置自定义链接数组
 + (void)customLinks:(NSArray<NSString *> *)customLinks;
-
-
 /**
  赋值keyword
-
+ 
  @param keywords <#keywords description#>
  */
 + (void)keyWord:(NSArray<NSString *> *)keywords;
+
++ (void)webLink:(BOOL)web trend:(BOOL)trend topic:(BOOL)topic phone:(BOOL)phone mail:(BOOL)mail;
 
 @end

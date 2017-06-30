@@ -42,9 +42,6 @@
 		B85F3A4A1EC9C9C600B2EA9E /* NSString+extension.m in Sources */ = {isa = PBXBuildFile; fileRef = B85F3A041EC9C9C600B2EA9E /* NSString+extension.m */; };
 		B85F3A4B1EC9C9C600B2EA9E /* UIImage+colorImage.m in Sources */ = {isa = PBXBuildFile; fileRef = B85F3A061EC9C9C600B2EA9E /* UIImage+colorImage.m */; };
 		B85F3A4C1EC9C9C600B2EA9E /* UIImageView+SDWebImage.m in Sources */ = {isa = PBXBuildFile; fileRef = B85F3A081EC9C9C600B2EA9E /* UIImageView+SDWebImage.m */; };
-		B85F3A4D1EC9C9C600B2EA9E /* MYCoreTextLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = B85F3A0E1EC9C9C600B2EA9E /* MYCoreTextLabel.m */; };
-		B85F3A4E1EC9C9C600B2EA9E /* MYCoretextResultTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B85F3A101EC9C9C600B2EA9E /* MYCoretextResultTool.m */; };
-		B85F3A4F1EC9C9C600B2EA9E /* MYSubCoretextResult.m in Sources */ = {isa = PBXBuildFile; fileRef = B85F3A121EC9C9C600B2EA9E /* MYSubCoretextResult.m */; };
 		B85F3A501EC9C9C600B2EA9E /* ChatNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = B85F3A151EC9C9C600B2EA9E /* ChatNavigationController.m */; };
 		B85F3A511EC9C9C600B2EA9E /* LocalConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = B85F3A191EC9C9C600B2EA9E /* LocalConnection.m */; };
 		B85F3A521EC9C9C600B2EA9E /* FSMEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = B85F3A1D1EC9C9C600B2EA9E /* FSMEngine.m */; };
@@ -82,6 +79,9 @@
 		B862F5B51ECE7EB300B40BA1 /* ChatEmotions.plist in Resources */ = {isa = PBXBuildFile; fileRef = B862F5B41ECE7EB300B40BA1 /* ChatEmotions.plist */; };
 		B8661AAA1ECD998E0022753D /* UIImageView+GIF.m in Sources */ = {isa = PBXBuildFile; fileRef = B8661AA91ECD998E0022753D /* UIImageView+GIF.m */; };
 		B89E046A1ED03F23000863F1 /* UIImage+photoPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = B89E04691ED03F23000863F1 /* UIImage+photoPicker.m */; };
+		B8A04C8D1F06002100882727 /* MYCoreTextLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = B8A04C881F06002100882727 /* MYCoreTextLabel.m */; };
+		B8A04C8E1F06002100882727 /* MYCoretextResultTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B8A04C8A1F06002100882727 /* MYCoretextResultTool.m */; };
+		B8A04C8F1F06002100882727 /* MYSubCoretextResult.m in Sources */ = {isa = PBXBuildFile; fileRef = B8A04C8C1F06002100882727 /* MYSubCoretextResult.m */; };
 		B8EEC0C91ED47E2800F52E79 /* ChatConfigModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B8EEC0C81ED47E2800F52E79 /* ChatConfigModel.m */; };
 		E1527204E4A6C66E20ABAB19 /* Pods_CocoaAsyncSocket_TCP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24AA3076491D2596209CE424 /* Pods_CocoaAsyncSocket_TCP.framework */; };
 /* End PBXBuildFile section */
@@ -178,12 +178,6 @@
 		B85F3A081EC9C9C600B2EA9E /* UIImageView+SDWebImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+SDWebImage.m"; sourceTree = "<group>"; };
 		B85F3A091EC9C9C600B2EA9E /* Config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
 		B85F3A0A1EC9C9C600B2EA9E /* Constant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constant.h; sourceTree = "<group>"; };
-		B85F3A0D1EC9C9C600B2EA9E /* MYCoreTextLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYCoreTextLabel.h; sourceTree = "<group>"; };
-		B85F3A0E1EC9C9C600B2EA9E /* MYCoreTextLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYCoreTextLabel.m; sourceTree = "<group>"; };
-		B85F3A0F1EC9C9C600B2EA9E /* MYCoretextResultTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYCoretextResultTool.h; sourceTree = "<group>"; };
-		B85F3A101EC9C9C600B2EA9E /* MYCoretextResultTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYCoretextResultTool.m; sourceTree = "<group>"; };
-		B85F3A111EC9C9C600B2EA9E /* MYSubCoretextResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYSubCoretextResult.h; sourceTree = "<group>"; };
-		B85F3A121EC9C9C600B2EA9E /* MYSubCoretextResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYSubCoretextResult.m; sourceTree = "<group>"; };
 		B85F3A141EC9C9C600B2EA9E /* ChatNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatNavigationController.h; sourceTree = "<group>"; };
 		B85F3A151EC9C9C600B2EA9E /* ChatNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatNavigationController.m; sourceTree = "<group>"; };
 		B85F3A181EC9C9C600B2EA9E /* LocalConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalConnection.h; sourceTree = "<group>"; };
@@ -256,6 +250,12 @@
 		B8661AA91ECD998E0022753D /* UIImageView+GIF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+GIF.m"; sourceTree = "<group>"; };
 		B89E04681ED03F23000863F1 /* UIImage+photoPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+photoPicker.h"; sourceTree = "<group>"; };
 		B89E04691ED03F23000863F1 /* UIImage+photoPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+photoPicker.m"; sourceTree = "<group>"; };
+		B8A04C871F06002100882727 /* MYCoreTextLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYCoreTextLabel.h; sourceTree = "<group>"; };
+		B8A04C881F06002100882727 /* MYCoreTextLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYCoreTextLabel.m; sourceTree = "<group>"; };
+		B8A04C891F06002100882727 /* MYCoretextResultTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYCoretextResultTool.h; sourceTree = "<group>"; };
+		B8A04C8A1F06002100882727 /* MYCoretextResultTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYCoretextResultTool.m; sourceTree = "<group>"; };
+		B8A04C8B1F06002100882727 /* MYSubCoretextResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYSubCoretextResult.h; sourceTree = "<group>"; };
+		B8A04C8C1F06002100882727 /* MYSubCoretextResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYSubCoretextResult.m; sourceTree = "<group>"; };
 		B8EEC0C71ED47E2800F52E79 /* ChatConfigModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatConfigModel.h; sourceTree = "<group>"; };
 		B8EEC0C81ED47E2800F52E79 /* ChatConfigModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatConfigModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -482,23 +482,10 @@
 		B85F3A0B1EC9C9C600B2EA9E /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				B8A04C861F06002100882727 /* MYCoreTextLabel */,
 				B816A1B91ED040A20024859F /* TZImagePickerController */,
-				B85F3A0C1EC9C9C600B2EA9E /* MYCoreTextLabel */,
 			);
 			path = Helper;
-			sourceTree = "<group>";
-		};
-		B85F3A0C1EC9C9C600B2EA9E /* MYCoreTextLabel */ = {
-			isa = PBXGroup;
-			children = (
-				B85F3A0D1EC9C9C600B2EA9E /* MYCoreTextLabel.h */,
-				B85F3A0E1EC9C9C600B2EA9E /* MYCoreTextLabel.m */,
-				B85F3A0F1EC9C9C600B2EA9E /* MYCoretextResultTool.h */,
-				B85F3A101EC9C9C600B2EA9E /* MYCoretextResultTool.m */,
-				B85F3A111EC9C9C600B2EA9E /* MYSubCoretextResult.h */,
-				B85F3A121EC9C9C600B2EA9E /* MYSubCoretextResult.m */,
-			);
-			path = MYCoreTextLabel;
 			sourceTree = "<group>";
 		};
 		B85F3A131EC9C9C600B2EA9E /* Navigation */ = {
@@ -668,6 +655,19 @@
 				B8EEC0C81ED47E2800F52E79 /* ChatConfigModel.m */,
 			);
 			path = ChatModel;
+			sourceTree = "<group>";
+		};
+		B8A04C861F06002100882727 /* MYCoreTextLabel */ = {
+			isa = PBXGroup;
+			children = (
+				B8A04C871F06002100882727 /* MYCoreTextLabel.h */,
+				B8A04C881F06002100882727 /* MYCoreTextLabel.m */,
+				B8A04C891F06002100882727 /* MYCoretextResultTool.h */,
+				B8A04C8A1F06002100882727 /* MYCoretextResultTool.m */,
+				B8A04C8B1F06002100882727 /* MYSubCoretextResult.h */,
+				B8A04C8C1F06002100882727 /* MYSubCoretextResult.m */,
+			);
+			path = MYCoreTextLabel;
 			sourceTree = "<group>";
 		};
 		CBB7B1986CB029097EB5B82F /* Frameworks */ = {
@@ -878,9 +878,10 @@
 			files = (
 				B85F3A7C1EC9C9DE00B2EA9E /* ChatFileCell.m in Sources */,
 				B85F3A801EC9C9DE00B2EA9E /* ChatVideoCell.m in Sources */,
+				B8A04C8E1F06002100882727 /* MYCoretextResultTool.m in Sources */,
 				B85F39F61EC9C9BD00B2EA9E /* AppDelegate.m in Sources */,
 				B85F3A8D1EC9C9E400B2EA9E /* ChatUtil.m in Sources */,
-				B85F3A4F1EC9C9C600B2EA9E /* MYSubCoretextResult.m in Sources */,
+				B8A04C8F1F06002100882727 /* MYSubCoretextResult.m in Sources */,
 				B85F3A4B1EC9C9C600B2EA9E /* UIImage+colorImage.m in Sources */,
 				B85F39F51EC9C9BD00B2EA9E /* AppDelegate+main.m in Sources */,
 				B816A1D51ED040A20024859F /* NSBundle+TZImagePicker.m in Sources */,
@@ -906,11 +907,11 @@
 				B816A1D61ED040A20024859F /* TZAssetCell.m in Sources */,
 				B85F3A551EC9C9C600B2EA9E /* ReachStateLoading.m in Sources */,
 				B8661AAA1ECD998E0022753D /* UIImageView+GIF.m in Sources */,
+				B8A04C8D1F06002100882727 /* MYCoreTextLabel.m in Sources */,
 				B85F3A491EC9C9C600B2EA9E /* NSDate+extension.m in Sources */,
 				B816A1D81ED040A20024859F /* TZGifPhotoPreviewController.m in Sources */,
 				B85F3A621EC9C9C600B2EA9E /* ChatViewController.m in Sources */,
 				B816A1E21ED040A20024859F /* UIView+Layout.m in Sources */,
-				B85F3A4E1EC9C9C600B2EA9E /* MYCoretextResultTool.m in Sources */,
 				B85F3A5E1EC9C9C600B2EA9E /* ChatTabbar.m in Sources */,
 				B85F3A5A1EC9C9C600B2EA9E /* PingFoundation.m in Sources */,
 				B816A1DF1ED040A20024859F /* TZPhotoPreviewController.m in Sources */,
@@ -924,7 +925,6 @@
 				B85F3A5C1EC9C9C600B2EA9E /* README.md in Sources */,
 				B85F3A531EC9C9C600B2EA9E /* FSMStateUtil.m in Sources */,
 				B85F39BF1EC9C95100B2EA9E /* main.m in Sources */,
-				B85F3A4D1EC9C9C600B2EA9E /* MYCoreTextLabel.m in Sources */,
 				B816A1DA1ED040A20024859F /* TZImageManager.m in Sources */,
 				B85F3A501EC9C9C600B2EA9E /* ChatNavigationController.m in Sources */,
 				B816A1DE1ED040A20024859F /* TZPhotoPreviewCell.m in Sources */,

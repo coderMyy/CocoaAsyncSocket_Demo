@@ -274,6 +274,7 @@
     ChatModel *videoModel = [self creatMessageModel:config];
     videoModel.contenType  = Content_Video;
     videoModel.content.fileName = video.name;
+    videoModel.content.picSize = video.videoCoverImg.size;
     
     //异步存储
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
@@ -313,8 +314,58 @@
 
 
 
+#pragma mark - data大小转换
++ (NSString *)dataSize:(ChatModel *)chatModel
+{
+    long long int size = chatModel.content.fileSize.longLongValue;
+    if (size<1024) {
+        return [NSString stringWithFormat:@"%lldb",size];
+        
+    }else if (size>1024 && size < 1024 *1024) {
+        
+        return [NSString stringWithFormat:@"%.1fk",(CGFloat)(1.0 *size/1024)];
+        
+    }else if(size >1024 && size< 1024*1024*1024){
+        
+        return [NSString stringWithFormat:@"%.1fM",(CGFloat)(1.0 *size/1024/1024)];
+    }else{
+        
+        return [NSString stringWithFormat:@"%.1fG",(CGFloat)(1.0 *size/1024/1024/1024)];
+    }
+}
 
-
+#pragma mark - 时间戳转换成世界
++ (NSString *)videoDurationWithSeconds:(long long int)duration
+{
+    //60秒以内
+    if (duration == 0) {
+        return @"00:00:00";
+    }else if (duration < 60) {
+        return [NSString stringWithFormat:@"%@:%@:%lld",@"00",@"00",duration];  // 00:00
+    }else if (duration<3600){  //一小时内
+        NSString *hourStr = @"00:";  //小时 //00:00:00
+        NSString *minitesStr = [NSString stringWithFormat:@"%02lld:",duration/60]; //分钟   8
+        NSString *secondsStr = [NSString stringWithFormat:@"%02lld",duration%60];     // 0
+        return [[hourStr stringByAppendingString:minitesStr]stringByAppendingString:secondsStr];
+    }else{ //大于一小时
+        
+        NSString *hourStr = [NSString stringWithFormat:@"%02lld:",duration/3600]; //小时
+        
+        NSInteger lastSeconds = duration%3600; //余下的秒数
+        if (lastSeconds > 60) {  //余下大于一分钟
+            
+            NSString *minitesStr = [NSString stringWithFormat:@"%02ld:",lastSeconds/60];
+            NSInteger seconds = lastSeconds%60;
+            NSString *secondsStr = [NSString stringWithFormat:@"%02ld",(long)seconds];
+            return [[hourStr stringByAppendingString:minitesStr]stringByAppendingString:secondsStr];
+        }else{
+            
+            NSString *minitesStr = @"00:";
+            NSString *secondsStr = [NSString stringWithFormat:@"%02ld",(long)lastSeconds];
+            return [[hourStr stringByAppendingString:minitesStr]stringByAppendingString:secondsStr];
+        }
+    }
+}
 
 
 

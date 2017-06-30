@@ -10,10 +10,12 @@
 
 @protocol Mp3RecorderDelegate <NSObject>
 
+@optional
 - (void)failRecord;
 
 - (void)beginConvert;
 
+@required
 - (void)endConvertWithData:(NSData *)voiceData seconds:(NSTimeInterval)time;
 
 @end

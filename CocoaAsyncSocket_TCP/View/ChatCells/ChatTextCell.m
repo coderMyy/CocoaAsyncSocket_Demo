@@ -48,9 +48,11 @@
         _coreLabel = [[MYCoreTextLabel alloc]init];
         _coreLabel.textFont = FontSet(14);
         _coreLabel.textColor = UICOLOR_RGB_Alpha(0x333333, 1);
-        _coreLabel.hiddenNormalLink = YES;
         _coreLabel.lineSpacing = 6;
         _coreLabel.delegate = self;
+        _coreLabel.showWebLink = YES;
+        _coreLabel.showMailLink = YES;
+        _coreLabel.showPhoneLink = YES;
     }
     return _coreLabel;
 }
@@ -129,6 +131,9 @@
         });
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(toUserInfo)];
         [_iconView addGestureRecognizer:tap];
+        //头像长按
+        UILongPressGestureRecognizer *iconLongPress = [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(iconLongPress:)];
+        [_iconView addGestureRecognizer:iconLongPress];
     }
     return _iconView;
 }
@@ -187,7 +192,7 @@
     }else{
         self.nickNameLabel.text = _textModel.nickName;
         backImage = LoadImage(@"对方文字气泡");
-        [self.coreLabel setText:_textModel.content.text customLinks:@[@"请假",@"报销",@"申请年假",@"假期查询"] keywords:nil];
+        [self.coreLabel setText:_textModel.content.text customLinks:nil keywords:nil];
     }
     backImage = [backImage stretchableImageWithLeftCapWidth:backImage.size.width * 0.8 topCapHeight:backImage.size.height *0.8];
     self.backButton.image = backImage;
@@ -232,4 +237,27 @@
 }
 
 
+#pragma mark - 消息长按
+- (void)longpressHandle
+{
+    
+}
+
+#pragma mark - 进入个人资料详情
+- (void)toUserInfo
+{
+    
+}
+
+#pragma mark - 重新发送
+- (void)sendAgain
+{
+    
+}
+
+#pragma mark - 头像长按
+- (void)iconLongPress:(UILongPressGestureRecognizer *)longpress
+{
+    
+}
 @end

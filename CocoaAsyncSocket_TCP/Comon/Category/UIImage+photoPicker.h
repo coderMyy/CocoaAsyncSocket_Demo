@@ -29,6 +29,6 @@ typedef void(^videoBaseInfoCallback)(ChatAlbumModel *videoModel);
 /**
  获取选中的视频
  */
-+ (void)openPhotoPickerGetVideo:(videoBaseInfoCallback)callback target:(UIViewController *)target cacheDirectory:(NSString *)basePath;
++ (void)openPhotoPickerGetVideo:(videoBaseInfoCallback)callback target:(UIViewController *)target;
 
 @end

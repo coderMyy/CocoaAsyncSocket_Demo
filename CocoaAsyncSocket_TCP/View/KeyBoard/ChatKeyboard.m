@@ -557,16 +557,10 @@ static const CGFloat defaultInputHeight     = 35; //默认输入框 35
         case 2:
         {
             [UIImage openPhotoPickerGetVideo:^(ChatAlbumModel *videoModel) {
-                
-                ChatModel *videoChatModel = [[ChatModel alloc]init];
-                ChatContentModel *content = [[ChatContentModel alloc]init];
-                videoChatModel.content = content;
-                videoChatModel.content.picSize = videoModel.videoCoverImg.size;
-                videoChatModel.content.fileName = videoModel.name;
-                videoChatModel.contenType      = Content_Video;
-
-                
-            } target:self.target cacheDirectory:nil];
+                if (_videoCallback) {
+                    _videoCallback(videoModel);
+                }
+            } target:_target];
             NSLog(@"-------------点击了视频相册");
         }
             break;
