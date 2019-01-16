@@ -13,10 +13,6 @@
 #define NSLog(...)
 #endif
 
-// We post the ping result to this notification,
-// which is a NSNumber from BOOL; YES -> success , NO -> failure.
-NSString *const kPingResultNotification = @"kPingResultNotification";
-
 @interface PingHelper() <PingFoundationDelegate>
 
 @property (nonatomic, strong) NSMutableArray *completionBlocks;
@@ -34,7 +30,7 @@ NSString *const kPingResultNotification = @"kPingResultNotification";
     if ((self = [super init]))
     {
         _isPinging = NO;
-        
+        _timeout = 2.0f;
         _completionBlocks = [NSMutableArray array];
     }
     return self;
@@ -48,24 +44,11 @@ NSString *const kPingResultNotification = @"kPingResultNotification";
     [self clearPingFoundation];
 }
 
-#pragma mark - Singlton Method
-
-+ (instancetype)sharedInstance
-{
-    static id pingHelper = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        pingHelper = [[self alloc] init];
-    });
-    
-    return pingHelper;
-}
-
 #pragma mark - actions
 
 - (void)pingWithBlock:(void (^)(BOOL isSuccess))completion
 {
-    NSLog(@"pingWithBlock");
+    //NSLog(@"pingWithBlock");
     if (completion)
     {
         // copy the block, then added to the blocks array.
@@ -106,7 +89,7 @@ NSString *const kPingResultNotification = @"kPingResultNotification";
 
 - (void)startPing
 {
-    NSLog(@"startPing");
+    //NSLog(@"startPing");
     [self clearPingFoundation];
     
     self.isPinging = YES;
@@ -115,7 +98,7 @@ NSString *const kPingResultNotification = @"kPingResultNotification";
     self.pingFoundation.delegate = self;
     [self.pingFoundation start];
     
-    [self performSelector:@selector(pingTimeOut) withObject:nil afterDelay:2.0f];
+    [self performSelector:@selector(pingTimeOut) withObject:nil afterDelay:self.timeout];
 }
 
 - (void)setHost:(NSString *)host
@@ -133,12 +116,20 @@ NSString *const kPingResultNotification = @"kPingResultNotification";
 
 #pragma mark - inner methods
 
+- (void)doubleCheck
+{
+    [self clearPingFoundation];
+    
+    self.isPinging = YES;
+    
+    self.pingFoundation = [[PingFoundation alloc] initWithHostName:self.hostForCheck];
+    self.pingFoundation.delegate = self;
+    [self.pingFoundation start];
+    
+}
+
 - (void)endWithFlag:(BOOL)isSuccess
 {
-    // TODO(optimization):
-    //somewhere around here we should introduce a double check after 3 seconds on another host,
-    // if maybe not truely failed.
-    
     [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(pingTimeOut) object:nil];
     
     if (!self.isPinging)
@@ -157,11 +148,6 @@ NSString *const kPingResultNotification = @"kPingResultNotification";
         }
         [self.completionBlocks removeAllObjects];
     }
-    
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [[NSNotificationCenter defaultCenter] postNotificationName:kPingResultNotification
-                                                            object:[NSNumber numberWithBool:isSuccess]];
-        });
 }
 
 #pragma mark - PingFoundation delegate
@@ -191,22 +177,10 @@ NSString *const kPingResultNotification = @"kPingResultNotification";
     [self endWithFlag:YES];
 }
 
-- (void)pingFoundation:(PingFoundation *)pinger didSendPacket:(NSData *)packet sequenceNumber:(uint16_t)sequenceNumber
-{
-    //NSLog(@"didSendPacket, sequenceNumber = %@", @(sequenceNumber));
-}
-
-- (void)pingFoundation:(PingFoundation *)pinger didReceiveUnexpectedPacket:(NSData *)packet
-{
-    //NSLog(@"didReceiveUnexpectedPacket");
-}
-
 #pragma mark - TimeOut handler
 
 - (void)pingTimeOut
 {
-    //NSLog(@"pingTimeOut");
-    
     if (!self.isPinging)
     {
         return;
@@ -223,11 +197,6 @@ NSString *const kPingResultNotification = @"kPingResultNotification";
         }
         [self.completionBlocks removeAllObjects];
     }
-    
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [[NSNotificationCenter defaultCenter] postNotificationName:kPingResultNotification
-                                                            object:[NSNumber numberWithBool:NO]];
-    });
 }
 
 @end
